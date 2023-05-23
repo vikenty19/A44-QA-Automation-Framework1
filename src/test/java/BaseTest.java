@@ -26,6 +26,7 @@ public class BaseTest {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
         options.addArguments("--disable-notifications");
+        options.addArguments("--start-maximized");
 
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
@@ -39,6 +40,12 @@ public class BaseTest {
     public String generateRandomName(){
         Faker faker = new Faker(new Locale("en-US"));
         String newName = faker.name().firstName();
+        return newName;
+    }
+
+    public String generateRandomPlaylistName(){
+        Faker faker = new Faker(new Locale("en-US"));
+        String newName = faker.address().country();
         return newName;
     }
 
@@ -64,5 +71,12 @@ public class BaseTest {
     public void openUrl() {
         String url = "https://bbb.testpro.io/";
         driver.get(url);
+    }
+
+
+    public void login(String email, String password){
+        enterEmail(email);
+        enterPassword(password);
+        clickLoginBtn();
     }
 }
