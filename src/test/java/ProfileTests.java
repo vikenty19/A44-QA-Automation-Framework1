@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 public class ProfileTests extends BaseTest {
 
-    @Test
+    @Test(groups = "ProfileTests")
     public void changeProfileName() {
         openUrl();
         enterEmail("demo@class.com");
