@@ -1,12 +1,13 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class Homework18 extends BaseTest {
 
     @Test
-    public void playSong() throws InterruptedException{
+    public void playSong() throws InterruptedException {
         // String playlistName = generateRandomPlaylistName();
         // login
         openUrl();
@@ -18,17 +19,21 @@ public class Homework18 extends BaseTest {
 
 
         // Play the song
-       WebElement hoverable = driver.findElement(By.cssSelector("span[role='button'] > .fa.fa-play"));
+        WebElement hoverable = driver.findElement(By.cssSelector(".album-thumb-wrapper .fa-play"));
         new Actions(driver)
                 .moveToElement(hoverable)
                 .perform();
+        hoverable.click();
         Thread.sleep(5000);
-       /* WebElement clickable = driver.findElement(By.id("clickable"));
-        new Actions(driver)
-                .doubleClick(clickable)
-                .perform();*/
 
-       // WebElement playBtn = driver.findElement(By.cssSelector("span[title='Play or resume']"));
-        //playBtn.click();
+
+        WebElement pauseBtn = driver.findElement(By.cssSelector(".fa-pause"));
+        new Actions(driver)
+                .moveToElement(pauseBtn)
+                .perform();
+        hoverable.click();
+
+
+        Assert.assertTrue(pauseBtn.isDisplayed());
     }
 }
