@@ -15,7 +15,7 @@ public class Homework17 extends BaseTest {
         String playlistName = generateRandomPlaylistName();
         // login
         openUrl();
-        login("demo@class.com", "te$t$tudent");
+        login("vicplach123@gmail.com", "MEGAdelta06@");
         // search for song
         WebElement searchInput = driver.findElement(By.cssSelector("[type='search']"));
         searchInput.click();
