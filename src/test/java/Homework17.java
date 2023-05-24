@@ -15,7 +15,7 @@ public class Homework17 extends BaseTest {
         String playlistName = generateRandomPlaylistName();
         // login
         openUrl();
-        login("demo@class.com", "te$t$tudent");
+        login("vicplach123@gmail.com", "MEGAdelta06@");
         // search for song
         WebElement searchInput = driver.findElement(By.cssSelector("[type='search']"));
         searchInput.click();
@@ -36,9 +36,15 @@ public class Homework17 extends BaseTest {
         newPlaylistNameInput.clear();
         newPlaylistNameInput.sendKeys(playlistName);
         // click Enter
-        new Actions(driver)
+      /*  new Actions(driver)
                 .keyDown(Keys.ENTER)
-                .perform();
+                .perform();*/
+
+
+        WebElement clickEnter = driver.findElement(By.cssSelector("#songResultsWrapper [type='submit']"));
+        clickEnter.click();
+
+
         // assertions - success banner and song name in playlist
         WebElement successBanner = driver.findElement(By.cssSelector(".success"));
         Assert.assertTrue(successBanner.isDisplayed());
