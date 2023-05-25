@@ -17,14 +17,16 @@ public class Homework17 extends BaseTest {
         openUrl();
         login("vicplach123@gmail.com", "MEGAdelta06@");
         // search for song
-        WebElement searchInput = driver.findElement(By.cssSelector("[type='search']"));
-        searchInput.click();
-        searchInput.clear();
-        searchInput.sendKeys(text);
+
+        seachForSong(text);
+
         // click results view all button
-        WebElement viewAllBtn = driver.findElement(By.xpath("//button[@data-test='view-all-songs-btn']"));
-        viewAllBtn.click();
+
+        clickViewAllbtn();
+
         // click first song
+
+
         List<WebElement> songsInResults = driver.findElements(By.cssSelector(".search-results .song-item .title"));
         songsInResults.get(0).click();
         // click Add To
@@ -46,4 +48,11 @@ public class Homework17 extends BaseTest {
         String songText = songName.getText();
         Assert.assertEquals(text, songText);
     }
+
+    private void clickViewAllbtn() {
+        WebElement viewAllBtn = driver.findElement(By.xpath("//button[@data-test='view-all-songs-btn']"));
+        viewAllBtn.click();
+    }
+
+
 }
