@@ -1,6 +1,7 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.util.List;
@@ -8,9 +9,27 @@ import java.util.List;
 
 public class LoginTests extends BaseTest {
 
+    @DataProvider(name="IncorrectLoginProviders")
+    public static Object[][] getDataFromDataProviders(){
+        return new Object[][]{
+                {"notExisting@email.com", "NotExistingPassword"},
+                {"demo@class.com", ""},
+                {"", ""},
+        };
+    }
+
+    @Test(dataProvider = "IncorrectLoginProviders")
+    public void negativeLoginTests(String email, String password) throws InterruptedException {
+        String url = "https://bbb.testpro.io/";
+        enterEmail(email);
+        enterPassword(password);
+        clickLoginBtn();
+        Thread.sleep(3000);
+        Assert.assertEquals(driver.getCurrentUrl(), url);
+    }
+
     @Test
     public void loginSucceedTest() throws InterruptedException {
-        openUrl();
         enterEmail("demo@class.com");
         enterPassword("te$t$tudent");
         clickLoginBtn();
@@ -23,7 +42,6 @@ public class LoginTests extends BaseTest {
 
     @Test
     public void loginEmptyPasswordTest() {
-        openUrl();
         enterEmail("demo@class.com");
         clickLoginBtn();
         WebElement submitLogin = driver.findElement(By.cssSelector("button[type='submit']"));
@@ -32,7 +50,6 @@ public class LoginTests extends BaseTest {
 
     @Test
     public void loginInvalidEmailTest() {
-        openUrl();
         enterEmail("notexists@class.com");
         enterPassword("te$t$tudent");
         clickLoginBtn();
