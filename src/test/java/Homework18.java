@@ -27,7 +27,7 @@ public class Homework18 extends BaseTest {
         Thread.sleep(5000);
 
 
-        WebElement pauseBtn = driver.findElement(By.cssSelector(".fa-pause"));
+        WebElement pauseBtn = driver.findElement(By.cssSelector("span[role='button'] > .fa.fa-pause"));
         new Actions(driver)
                 .moveToElement(pauseBtn)
                 .perform();
