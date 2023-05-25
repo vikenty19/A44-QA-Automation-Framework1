@@ -8,11 +8,11 @@
             <class name="LoginTests"/>
             <class name="ProfileTests"/>
             <class name="SongsTests"/>
-<<<<<<< HEAD
+
             <class name="Homework17"/>
-=======
+
             <class name="CSVDataProviderTest"/>
->>>>>>> f435e409018bda69670919eafe5bd13e29797283
+
         </classes>
     </test>
 </suite>
