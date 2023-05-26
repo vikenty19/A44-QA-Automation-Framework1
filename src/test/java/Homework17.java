@@ -2,6 +2,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.interactions.SourceType;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -11,7 +12,7 @@ public class Homework17 extends BaseTest {
 
     @Test
     public void addSongToPlaylist() {
-        String text = "Dark Days";
+        String text = "Ketsa - Beautiful";
         String playlistName = generateRandomPlaylistName();
         // login
         openUrl();
@@ -25,28 +26,45 @@ public class Homework17 extends BaseTest {
         clickViewAllbtn();
 
         // click first song
+        clickFirstSong();
 
-
-        List<WebElement> songsInResults = driver.findElements(By.cssSelector(".search-results .song-item .title"));
-        songsInResults.get(0).click();
         // click Add To
-        WebElement addToBtn = driver.findElement(By.cssSelector("[data-test='add-to-btn']"));
-        addToBtn.click();
+
+        clickAddTo();
+
         // create new playlist
+        newPlaylistWhileSearchingSong(playlistName);
+
+
+        // assertions - success banner and song name in playlist
+
+        Assert.assertTrue(isSuccessBannerDisplayed());
+
+        Assert.assertEquals(text, getSongName());
+    }
+
+    private void newPlaylistWhileSearchingSong(String playlistName) {
         WebElement newPlaylistNameInput = driver.findElement(By.cssSelector("[id='songResultsWrapper'] [placeholder='Playlist name']"));
         newPlaylistNameInput.click();
         newPlaylistNameInput.clear();
         newPlaylistNameInput.sendKeys(playlistName);
+        System.out.println(playlistName);
         // click Enter
         new Actions(driver)
                 .keyDown(Keys.ENTER)
                 .perform();
-        // assertions - success banner and song name in playlist
-        WebElement successBanner = driver.findElement(By.cssSelector(".success"));
-        Assert.assertTrue(successBanner.isDisplayed());
-        WebElement songName = driver.findElement(By.cssSelector("#playlistWrapper .song-item .title"));
-        String songText = songName.getText();
-        Assert.assertEquals(text, songText);
+    }
+
+    private void clickAddTo() {
+        WebElement addToBtn = driver.findElement(By.cssSelector("[data-test='add-to-btn']"));
+        addToBtn.click();
+
+    }
+
+    private void clickFirstSong() {
+        List<WebElement> songsInResults = driver.findElements(By.cssSelector(".search-results .song-item .title"));
+        songsInResults.get(0).click();
+
     }
 
     private void clickViewAllbtn() {
@@ -54,5 +72,15 @@ public class Homework17 extends BaseTest {
         viewAllBtn.click();
     }
 
+    public boolean isSuccessBannerDisplayed() {
+        WebElement successBanner = driver.findElement(By.cssSelector(".success"));
+        return successBanner.isDisplayed();
+    }
+ public String getSongName(){
+     WebElement songName = driver.findElement(By.cssSelector("#playlistWrapper .song-item .title"));
+     String songText = songName.getText();
+     System.out.println(songText);
+     return songText;
 
+ }
 }
