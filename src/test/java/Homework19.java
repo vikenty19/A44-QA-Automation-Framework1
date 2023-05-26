@@ -52,5 +52,8 @@ public class Homework19 extends BaseTest {
         Thread.sleep(3000);
         WebElement pressOK = driver.findElement(By.cssSelector("[tabindex='1']"));
         pressOK.click();
+        Thread.sleep(3000);
+        WebElement deleteSuccess = driver.findElement(By.cssSelector(".success"));
+        Assert.assertTrue(deleteSuccess.isDisplayed());
     }
 }
