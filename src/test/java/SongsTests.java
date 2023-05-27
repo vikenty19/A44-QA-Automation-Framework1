@@ -2,12 +2,23 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.List;
 
 public class SongsTests extends BaseTest {
+
+    @Test
+    public void checkVisibilityTest() {
+        login("demo@class.com", "te$t$tudent");
+        WebElement title = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("title")));
+        String text = title.getText();
+        System.out.println(text);
+        System.out.println("Is element invisible? === " + wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("title"))));
+      //  WebElement title2 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("title")));  // should fail
+    }
 
     @Test
     public void addSongToPlaylist() {

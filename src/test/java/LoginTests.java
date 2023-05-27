@@ -24,7 +24,7 @@ public class LoginTests extends BaseTest {
         enterEmail(email);
         enterPassword(password);
         clickLoginBtn();
-        Thread.sleep(3000);
+       // Thread.sleep(3000);
         Assert.assertEquals(driver.getCurrentUrl(), url);
     }
 
