@@ -123,9 +123,9 @@ public class BaseTest {
         newPlaylistNameInput.click();
         newPlaylistNameInput.clear();
         newPlaylistNameInput.sendKeys(playlistName);
-        newPlaylistNameInput.click();
-        newPlaylistNameInput.clear();
-        newPlaylistNameInput.sendKeys(playlistName);
+      //  newPlaylistNameInput.click();
+        //newPlaylistNameInput.clear();
+     //   newPlaylistNameInput.sendKeys(playlistName);
         // click Enter
         new Actions(driver)
                 .keyDown(Keys.ENTER)
