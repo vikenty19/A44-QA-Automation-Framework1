@@ -76,6 +76,12 @@ public class BaseTest {
         emailInput.sendKeys(email);
     }
 
+
+    public WebElement waitUntilClickable(By element){
+        return new WebDriverWait(driver, Duration.ofSeconds(4)).until(ExpectedConditions.elementToBeClickable(element));
+    }
+
+
     public void openUrl(String url) {
         driver.get(url);
     }
