@@ -34,6 +34,7 @@ public class Homework20 extends BaseTest {
                 .keyDown(Keys.ENTER)
                 .perform();
        // Thread.sleep(300);
+        // playlist appearance confirmation
         WebElement newPlaylistConfirm = driver.findElement(By.cssSelector("section#playlistWrapper h1"));
 
         wait.until(ExpectedConditions.textToBePresentInElement(newPlaylistConfirm, playlistName));
@@ -54,7 +55,7 @@ public class Homework20 extends BaseTest {
 
         List<WebElement> PlayLists = driver.findElements(By.cssSelector("#playlists a"));
         List<String> PlaylistNames = new ArrayList<>();
-        //System.out.println(PlayLists);
+        //playlist deleting check
 
         for (int i = 0; i < PlayLists.size(); i++) {
             String PlaylistName = PlayLists.get(i).getText();
