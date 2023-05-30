@@ -14,8 +14,8 @@ public class Homework20 extends BaseTest {
     @Test
     public void deletePlaylist() throws InterruptedException {
         login("vicplach123@gmail.com", "MEGAdelta06@");
-          String playlistName = generateRandomPlaylistName();
-        //  String text = "Dark Days";
+        String playlistName = generateRandomPlaylistName();
+
         //create playlist before deleting it
 
         WebElement plusPlaylistbtn = wait.until(ExpectedConditions
@@ -25,16 +25,18 @@ public class Homework20 extends BaseTest {
                 .elementToBeClickable(By.cssSelector("[data-testid='playlist-context-menu-create-simple']")));
         newPlaylistbtn.click();
 
-        WebElement inputNewPlaylist = wait.until(ExpectedConditions
-                .visibilityOfElementLocated(By.cssSelector("input[name='name']")));
+        WebElement inputNewPlaylist = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[name='name']")));
+
         inputNewPlaylist.click();
         inputNewPlaylist.clear();
         inputNewPlaylist.sendKeys(playlistName);
         new Actions(driver)
                 .keyDown(Keys.ENTER)
                 .perform();
-        Thread.sleep(300);
+       // Thread.sleep(300);
         WebElement newPlaylistConfirm = driver.findElement(By.cssSelector("section#playlistWrapper h1"));
+
+        wait.until(ExpectedConditions.textToBePresentInElement(newPlaylistConfirm, playlistName));
         // check the playlist creation
         System.out.println(newPlaylistConfirm.getText());
         Assert.assertEquals(newPlaylistConfirm.getText(), playlistName);
@@ -43,16 +45,18 @@ public class Homework20 extends BaseTest {
                 .elementToBeClickable(By.cssSelector(".btn-delete-playlist")));
         playlistDelete.click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".success")));
+
         System.out.println("OK");
+        // refresh page
         driver.navigate().refresh();
 
-        Thread.sleep(1000);
+        //Thread.sleep(1000);
 
         List<WebElement> PlayLists = driver.findElements(By.cssSelector("#playlists a"));
-        List<String>PlaylistNames = new ArrayList<>();
-        System.out.println(PlayLists);
+        List<String> PlaylistNames = new ArrayList<>();
+        //System.out.println(PlayLists);
 
-        for (int i = 0; i <PlayLists.size() ; i++) {
+        for (int i = 0; i < PlayLists.size(); i++) {
             String PlaylistName = PlayLists.get(i).getText();
             PlaylistNames.add(PlaylistName);
 
