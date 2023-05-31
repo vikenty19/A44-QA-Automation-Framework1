@@ -11,15 +11,16 @@
             <class name="Homework17"/>
             <class name="Homework19"/>
             <class name="Homework20"/>
+            <class name="Homework21"/>
             <class name="CSVDataProviderTest"/>
 
 
             <class name="PlaylistTests"/>
-<<<<<<< HEAD
 
-=======
+
+
             <class name="ActionsTests"/>
->>>>>>> 158631c4cd86af22197e8885c335c475e1615cd1
+
         </classes>
     </test>
 </suite>
