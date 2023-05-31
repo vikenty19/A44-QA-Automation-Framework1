@@ -29,7 +29,9 @@ public class Homework21 extends BaseTest{
 
         //rename playlist
         doubleClickChoosePlaylist();
+
         enterNewName(newName);
+
         System.out.println(newName);
         Assert.assertFalse(playlistName.contains(newName));
 
