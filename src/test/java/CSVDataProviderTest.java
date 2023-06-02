@@ -4,6 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import pages.LoginPage;
 
 import java.io.Reader;
 import java.nio.file.Files;
@@ -36,7 +37,8 @@ public class CSVDataProviderTest extends BaseTest {
     @Test(dataProvider = "getSongsData")
     // test that uses data from csv file
     public void searchSongsTests(String song) {
-        login("demo@class.com", "te$t$tudent");
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login("demo@class.com", "te$t$tudent");
         searchForSong(song);
         WebElement header = driver.findElement(By.cssSelector("strong"));
         String searchHeader = header.getText();
