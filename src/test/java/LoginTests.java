@@ -55,9 +55,8 @@ public class LoginTests extends BaseTest {
     @Test
     public void loginInvalidEmailTest() {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.enterEmail("notexists@class.com");
-        loginPage.enterPassword("MEGAdelta06@");
-        loginPage.clickLoginBtn();
+        loginPage.login("notexists@class.com","MEGAdelta06@");
+
         WebElement submitLogin = driver.findElement(By.cssSelector("button[type='submit']"));
         Assert.assertTrue(submitLogin.isDisplayed());
     }

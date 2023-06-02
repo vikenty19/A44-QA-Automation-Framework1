@@ -21,9 +21,9 @@ public class Basepage {
      wait = new WebDriverWait(driver, Duration.ofSeconds(5));
      actions = new Actions(driver);
  }
-     public WebElement waitUntilVisible(By element){
-         return new WebDriverWait(driver, Duration.ofSeconds(4)).until(ExpectedConditions.visibilityOfElementLocated(element));
-     }
+    public WebElement waitUntilVisible(By element){
+        return new WebDriverWait(driver, Duration.ofSeconds(4)).until(ExpectedConditions.visibilityOfElementLocated(element));
+    }
 
      public WebElement waitUntilClickable(By element){
          return new WebDriverWait(driver, Duration.ofSeconds(4)).until(ExpectedConditions.elementToBeClickable(element));
