@@ -1,3 +1,4 @@
+import PageModel.LoginPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -19,40 +20,44 @@ public class LoginTests extends BaseTest {
     }
 
     @Test(dataProvider = "IncorrectLoginProviders")
-    public void negativeLoginTests(String email, String password) throws InterruptedException {
-        String url = "https://bbb.testpro.io/";
-        enterEmail(email);
-        enterPassword(password);
-        clickLoginBtn();
-       // Thread.sleep(3000);
+    public void negativeLoginTests(String email, String password)  {
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.enterEmail(email);
+        loginPage.enterPassword(password);
+        loginPage.clickLoginBtn();
+
         Assert.assertEquals(driver.getCurrentUrl(), url);
     }
 
     @Test
-    public void loginSucceedTest() throws InterruptedException {
-        enterEmail("demo@class.com");
-        enterPassword("te$t$tudent");
-        clickLoginBtn();
+    public void loginSucceedTest() {
+        LoginPage loginPage = new LoginPage(driver);
+
+        loginPage.enterEmail("vicplach123@gmail.com");
+        loginPage.enterPassword("MEGAdelta06@");
+        loginPage.clickLoginBtn();
         // find if avatar exists
         WebElement avatar = driver.findElement(By.cssSelector(".avatar"));
         Assert.assertTrue(avatar.isDisplayed());
-        Thread.sleep(5000);
+
     }
 
 
     @Test
     public void loginEmptyPasswordTest() {
-        enterEmail("demo@class.com");
-        clickLoginBtn();
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.enterEmail("MEGAdelta06@");
+        loginPage.clickLoginBtn();
         WebElement submitLogin = driver.findElement(By.cssSelector("button[type='submit']"));
         Assert.assertTrue(submitLogin.isDisplayed());
     }
 
     @Test
     public void loginInvalidEmailTest() {
-        enterEmail("notexists@class.com");
-        enterPassword("te$t$tudent");
-        clickLoginBtn();
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.enterEmail("notexists@class.com");
+        loginPage.enterPassword("MEGAdelta06@");
+        loginPage.clickLoginBtn();
         WebElement submitLogin = driver.findElement(By.cssSelector("button[type='submit']"));
         Assert.assertTrue(submitLogin.isDisplayed());
     }

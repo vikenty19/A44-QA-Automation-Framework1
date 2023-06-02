@@ -19,8 +19,11 @@ import java.util.List;
 import java.util.Locale;
 
 public class BaseTest {
-    static WebDriver driver;
-    WebDriverWait wait;
+   public static WebDriver driver = null;
+
+
+    public static String url = "https://bbb.testpro.io/";
+    public static WebDriverWait wait= null;
 
     @BeforeSuite
     static void setupDriver() {
@@ -40,7 +43,7 @@ public class BaseTest {
        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 
-        String url = "https://bbb.testpro.io/";
+
         openUrl(url);
     }
 

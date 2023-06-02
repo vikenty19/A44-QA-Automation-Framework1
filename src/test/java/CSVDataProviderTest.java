@@ -1,3 +1,4 @@
+import PageModel.LoginPage;
 import com.opencsv.CSVReader;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -36,7 +37,8 @@ public class CSVDataProviderTest extends BaseTest {
     @Test(dataProvider = "getSongsData")
     // test that uses data from csv file
     public void searchSongsTests(String song) {
-        login("demo@class.com", "te$t$tudent");
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login("demo@class.com", "te$t$tudent");
         searchForSong(song);
         WebElement header = driver.findElement(By.cssSelector("strong"));
         String searchHeader = header.getText();
