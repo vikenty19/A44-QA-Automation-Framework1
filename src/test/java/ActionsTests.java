@@ -30,7 +30,7 @@ public class ActionsTests extends BaseTest {
 
         // Soft assert example
         SoftAssert softAssert = new SoftAssert();
-        softAssert.assertFalse(songsNumberBefore == songsNumberAfter,
+        softAssert.assertTrue(songsNumberBefore == songsNumberAfter,
                 "=== Songs number before should be equal songs number after ===");
         softAssert.assertEquals(driver.getCurrentUrl(), "https://bbb.testpro.io/#!/queue");
         System.out.println("Hello world");
