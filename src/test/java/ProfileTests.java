@@ -1,3 +1,4 @@
+import PageModel.LoginPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -7,12 +8,14 @@ public class ProfileTests extends BaseTest {
 
     @Test(groups = "ProfileTests")
     public void changeProfileName() {
-        enterEmail("demo@class.com");
-        enterPassword("te$t$tudent");
-        clickLoginBtn();
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login("demo@class.com", "te$t$tudent");
+        loginPage.clickLoginBtn();
+
         // open profile
         WebElement avatar = driver.findElement(By.cssSelector(".avatar"));
         avatar.click();
+
         // type password
         WebElement currentPasswordInput = driver.findElement(By.id("inputProfileCurrentPassword"));
         currentPasswordInput.click();

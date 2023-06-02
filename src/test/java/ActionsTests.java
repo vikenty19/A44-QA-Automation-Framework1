@@ -1,3 +1,4 @@
+import PageModel.LoginPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -13,7 +14,8 @@ public class ActionsTests extends BaseTest {
     @Test
     public void playSongTest() {
         // hover over in clickPlayBtn
-        login("demo@class.com", "te$t$tudent");
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login("demo@class.com", "te$t$tudent");
         clickFooterPlayBtn();
         Assert.assertTrue(pauseBtnExists());
 
@@ -39,8 +41,8 @@ public class ActionsTests extends BaseTest {
     public void renamePlaylist() {
         // double click
         String playlistName = "Summer songs";
-
-        login("demo@class.com", "te$t$tudent");
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login("demo@class.com", "te$t$tudent");
         doubleClickChoosePlaylist();
         enterPlaylistName(playlistName);
         String newName = getPlaylistName();
@@ -49,7 +51,8 @@ public class ActionsTests extends BaseTest {
 
     @Test
     public void playSongFromListTest() {
-        login("demo@class.com", "te$t$tudent");
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login("demo@class.com", "te$t$tudent");
         goToAllSongs();
         // right click on first song
         rightClickOnFirstSong();
@@ -116,8 +119,8 @@ public class ActionsTests extends BaseTest {
 
     @Test
     public void countSongsInPlaylist() {
-
-        login("demo@class.com", "te$t$tudent");
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login("demo@class.com", "te$t$tudent");
         WebElement playlist = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".playlist:nth-child(4)")));
         playlist.click();
         List<WebElement> songs = driver.findElements(By.cssSelector("#playlistWrapper .song-item"));

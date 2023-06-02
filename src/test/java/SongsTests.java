@@ -1,3 +1,4 @@
+import PageModel.LoginPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -12,7 +13,8 @@ public class SongsTests extends BaseTest {
 
     @Test
     public void checkVisibilityTest() {
-        login("demo@class.com", "te$t$tudent");
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login("demo@class.com", "te$t$tudent");
         WebElement title = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("title")));
         String text = title.getText();
         System.out.println(text);
@@ -24,7 +26,8 @@ public class SongsTests extends BaseTest {
     public void addSongToPlaylist() {
         String text = "Dark Days";
         String playlistName = generateRandomPlaylistName();
-        login("demo@class.com", "te$t$tudent");
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login("demo@class.com", "te$t$tudent");
         searchForSong(text);
         clickViewAllBtn();
         clickFirstSearchResultSong();
@@ -37,7 +40,8 @@ public class SongsTests extends BaseTest {
 
     @Test
     public void playSong() {
-        login("demo@class.com", "te$t$tudent");
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login("demo@class.com", "te$t$tudent");
         WebElement buttonPlayOrResume = driver.findElement(By.cssSelector("[title='Play or resume']"));
         new Actions(driver)
                 .moveToElement(buttonPlayOrResume)
