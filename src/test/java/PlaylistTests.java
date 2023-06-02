@@ -5,6 +5,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.LoginPage;
+import pages.PlaylistPage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,26 +15,16 @@ public class PlaylistTests extends BaseTest {
 
     @Test
     public void deletePlaylist() throws InterruptedException {
-        String playlist = generateRandomPlaylistName();
-        login("demo@class.com", "te$t$tudent");
+        LoginPage loginPage = new LoginPage(driver);
+        PlaylistPage playlistPage = new PlaylistPage(driver);
+        String playlist = playlistPage.generateRandomPlaylistName();
+        loginPage.login("demo@class.com", "te$t$tudent");
         // CREATE PLAYLIST
         // click Plus btn
-        WebElement plusBtn = waitUntilVisible(By.cssSelector("[data-testid='sidebar-create-playlist-btn']"));
-        plusBtn.click();
         // click Create new playlist
-        wait.until(ExpectedConditions
-                        .elementToBeClickable(By.cssSelector("[data-testid='playlist-context-menu-create-simple']")))
-                .click();
-        // Add playlist name
-        WebElement inputPlaylistName = wait.until(ExpectedConditions
-                .visibilityOfElementLocated(By.cssSelector(".create input")));
-        inputPlaylistName.click();
-        inputPlaylistName.clear();
-        inputPlaylistName.sendKeys(playlist);
-        // click Enter
-        new Actions(driver)
-                .keyDown(Keys.ENTER)
-                .perform();
+
+        playlistPage.createNewPlaylistUsingPlusBtn(playlist);
+
         // check playlist name in header
         WebElement playlistHeader = driver.findElement(By.cssSelector("#playlistWrapper h1"));
         wait.until(ExpectedConditions
@@ -57,4 +49,5 @@ public class PlaylistTests extends BaseTest {
         // assert playlist was deleted
         Assert.assertFalse(playlistNames.contains(playlist));
     }
+
 }
