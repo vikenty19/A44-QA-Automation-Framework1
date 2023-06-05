@@ -105,18 +105,9 @@ public class BaseTest {
         clickLoginBtn();
     }
 
-    public void searchForSong(String text) {
-        WebElement searchInput = driver.findElement(By.cssSelector("[type='search']"));
-        searchInput.click();
-        searchInput.clear();
-        searchInput.sendKeys(text);
-    }
 
-    public String getSongName(){
-        WebElement songName = driver.findElement(By.cssSelector("#playlistWrapper .song-item .title"));
-        String songText = songName.getText();
-        return songText;
-    }
+
+
 
     public boolean isBannerDisplayed(){
         WebElement successBanner = driver.findElement(By.cssSelector(".success"));
@@ -142,14 +133,7 @@ public class BaseTest {
         addToBtn.click();
     }
 
-    public void clickFirstSearchResultSong() {
-        List<WebElement> songsInResults = driver.findElements(By.cssSelector(".search-results .song-item .title"));
-        songsInResults.get(0).click();
-    }
 
-    public void clickViewAllBtn() {
-        WebElement viewAllBtn = driver.findElement(By.xpath("//button[@data-test='view-all-songs-btn']"));
-        viewAllBtn.click();
-    }
+
 
 }

@@ -1,3 +1,4 @@
+import PageModel.SongsPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -16,14 +17,14 @@ public class Homework19 extends BaseTest {
         String text = "Dark Days";
         // search for song
         inputSearch(text);
-
+        SongsPage songsPage = new SongsPage(driver);
 
 
         // click results view all button
-        clickViewAllBtn();
+        songsPage.clickViewAllBtn();
 
         // click first song
-        clickFirstSearchResultSong();
+        songsPage.clickFirstSearchResultSong();
 
         // click Add To
         clickAddToPlaylistBtn();
@@ -35,11 +36,11 @@ public class Homework19 extends BaseTest {
         isBannerDisplayed();
 
         // check the song
-        getSongName();
+        songsPage.getSongName();
 
 
         // assertion of name
-        Assert.assertEquals(text, getSongName());
+        Assert.assertEquals(text, songsPage.getSongName());
         // Find playlist
         findCreatedPlaylist();
 

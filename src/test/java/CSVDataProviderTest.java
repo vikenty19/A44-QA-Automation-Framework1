@@ -1,4 +1,5 @@
 import PageModel.LoginPage;
+import PageModel.SongsPage;
 import com.opencsv.CSVReader;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -39,7 +40,8 @@ public class CSVDataProviderTest extends BaseTest {
     public void searchSongsTests(String song) {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login("demo@class.com", "te$t$tudent");
-        searchForSong(song);
+        SongsPage songsPage = new SongsPage(driver);
+        songsPage.searchForSong(song);
         WebElement header = driver.findElement(By.cssSelector("strong"));
         String searchHeader = header.getText();
         Assert.assertEquals(song, searchHeader);

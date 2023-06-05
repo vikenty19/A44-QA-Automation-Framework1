@@ -31,14 +31,15 @@ public class SongsTests extends BaseTest {
         String playlistName = generateRandomPlaylistName();
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login("demo@class.com", "te$t$tudent");
-        searchForSong(text);
-        clickViewAllBtn();
-        clickFirstSearchResultSong();
+        SongsPage songsPage = new SongsPage(driver);
+        songsPage.searchForSong(text);
+        songsPage.clickViewAllBtn();
+        songsPage.clickFirstSearchResultSong();
         clickAddToPlaylistBtn();
         createNewPlaylistWhileAddingSong(playlistName);
 
         Assert.assertTrue(isBannerDisplayed());
-        Assert.assertEquals(text, getSongName());
+        Assert.assertEquals(text, songsPage.getSongName());
     }
 
     @Test
