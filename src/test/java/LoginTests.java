@@ -1,3 +1,4 @@
+import PageModel.HomePage;
 import PageModel.LoginPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -32,13 +33,9 @@ public class LoginTests extends BaseTest {
     @Test
     public void loginSucceedTest() {
         LoginPage loginPage = new LoginPage(driver);
-
-        loginPage.enterEmail("vicplach123@gmail.com");
-        loginPage.enterPassword("MEGAdelta06@");
-        loginPage.clickLoginBtn();
-        // find if avatar exists
-        WebElement avatar = driver.findElement(By.cssSelector(".avatar"));
-        Assert.assertTrue(avatar.isDisplayed());
+        HomePage homePage = new HomePage(driver);
+        loginPage.login("vicplach123@gmail.com","MEGAdelta06@");
+        Assert.assertTrue(homePage.getAvatar());
 
     }
 
