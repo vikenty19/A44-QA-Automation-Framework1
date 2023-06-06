@@ -13,7 +13,7 @@ public class SongsPage extends Basepage {
         super(givenDriver);
     }
 
- //    @FindBy(css ="[title='Play or resume']" )
+//    @FindBy(css ="[title='Play or resume']" )
   //     WebElement playPauseBtn;
    By playPauseBtn =By.cssSelector("[title='Play or resume']");
 
