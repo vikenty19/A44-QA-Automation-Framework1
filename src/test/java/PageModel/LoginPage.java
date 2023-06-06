@@ -13,7 +13,7 @@ public class LoginPage extends Basepage {
     By emailField = By.cssSelector("[type='email']");
     By  passwordField = By.cssSelector("[type='password']");
   By submitLoginBtn = By.cssSelector("button[type='submit']");
-
+By submitBtnLocator = By.cssSelector("button[type='submit']");
 
     public void enterEmail(String email) {
         WebElement emailInput = wait.until(ExpectedConditions.visibilityOfElementLocated(emailField));
@@ -42,7 +42,7 @@ public class LoginPage extends Basepage {
     }
 
     public boolean isSubmitBtnDisplayed() {
-        return driver.findElement(By.cssSelector("button[type='submit']")).isDisplayed();
+        return driver.findElement(submitBtnLocator).isDisplayed();
     }
 
 
