@@ -9,10 +9,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.Parameters;
+import org.testng.annotations.*;
 
 import java.time.Duration;
 import java.util.List;
@@ -59,37 +56,11 @@ public class BaseTest {
     }
 
 
-    public WebElement waitUntilVisible(By element){
-        return new WebDriverWait(driver, Duration.ofSeconds(4)).until(ExpectedConditions.visibilityOfElementLocated(element));
-    }
-
-    public WebElement waitUntilClickable(By element){
-        return new WebDriverWait(driver, Duration.ofSeconds(4)).until(ExpectedConditions.elementToBeClickable(element));
-    }
-
 
     public void openUrl(String url) {
         driver.get(url);
     }
 
-
-    public void searchForSong(String text) {
-        WebElement searchInput = driver.findElement(By.cssSelector("[type='search']"));
-        searchInput.click();
-        searchInput.clear();
-        searchInput.sendKeys(text);
-    }
-
-    public String getSongName(){
-        WebElement songName = driver.findElement(By.cssSelector("#playlistWrapper .song-item .title"));
-        String songText = songName.getText();
-        return songText;
-    }
-
-    public boolean isBannerDisplayed(){
-        WebElement successBanner = driver.findElement(By.cssSelector(".success"));
-        return successBanner.isDisplayed();
-    }
 
 
     public void clickAddToPlaylistBtn() {
@@ -105,6 +76,15 @@ public class BaseTest {
     public void clickViewAllBtn() {
         WebElement viewAllBtn = driver.findElement(By.xpath("//button[@data-test='view-all-songs-btn']"));
         viewAllBtn.click();
+    }
+
+    @DataProvider(name="IncorrectLoginProviders")
+    public static Object[][] getDataFromDataProviders(){
+        return new Object[][]{
+                {"notExisting@email.com", "NotExistingPassword"},
+                {"demo@class.com", ""},
+                {"", ""},
+        };
     }
 
 }
