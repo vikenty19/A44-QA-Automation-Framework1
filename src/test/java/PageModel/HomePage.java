@@ -7,6 +7,7 @@ import org.testng.Assert;
 
 public class HomePage extends Basepage {
     public HomePage(WebDriver givenDriver) {
+
         super(givenDriver);
     }
 

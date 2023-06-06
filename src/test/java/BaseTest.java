@@ -20,11 +20,11 @@ import java.util.List;
 import java.util.Locale;
 
 public class BaseTest {
-   public static WebDriver driver = null;
+    public static WebDriver driver = null;
 
 
     public static String url = "https://bbb.testpro.io/";
-    public static WebDriverWait wait= null;
+    public static WebDriverWait wait = null;
 
 
     @BeforeSuite
@@ -34,15 +34,15 @@ public class BaseTest {
 
     @BeforeMethod
 //    @Parameters({"BaseURL"})
-  //  public void setUpBrowser(String BaseURL){
-        public void setUpBrowser(){
+    //  public void setUpBrowser(String BaseURL){
+    public void setUpBrowser() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
         options.addArguments("--disable-notifications");
         options.addArguments("--start-maximized");
 
         driver = new ChromeDriver(options);
-       driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 
 
@@ -50,23 +50,23 @@ public class BaseTest {
     }
 
     @AfterMethod(alwaysRun = true)
-    public void tearDown(){
+    public void tearDown() {
         driver.quit();
     }
 
-    public String generateRandomName(){
+    public String generateRandomName() {
         Faker faker = new Faker(new Locale("en-US"));
         String newName = faker.name().firstName();
         return newName;
     }
 
-    public String generateRandomPlaylistName(){
+    public String generateRandomPlaylistName() {
         Faker faker = new Faker(new Locale("en-US"));
         String newName = faker.address().country();
         return newName;
     }
 
-  public void clickLoginBtn() {
+    public void clickLoginBtn() {
         WebElement submitLogin = driver.findElement(By.cssSelector("button[type='submit']"));
         submitLogin.click();
     }
@@ -85,11 +85,11 @@ public class BaseTest {
         emailInput.sendKeys(email);
     }
 
-    public WebElement waitUntilVisible(By element){
+    public WebElement waitUntilVisible(By element) {
         return new WebDriverWait(driver, Duration.ofSeconds(4)).until(ExpectedConditions.visibilityOfElementLocated(element));
     }
 
-    public WebElement waitUntilClickable(By element){
+    public WebElement waitUntilClickable(By element) {
         return new WebDriverWait(driver, Duration.ofSeconds(4)).until(ExpectedConditions.elementToBeClickable(element));
     }
 
@@ -99,30 +99,24 @@ public class BaseTest {
     }
 
 
-    public void login(String email, String password){
+    public void login(String email, String password) {
         enterEmail(email);
         enterPassword(password);
         clickLoginBtn();
     }
 
 
-
-
-
-    public boolean isBannerDisplayed(){
+    public boolean isBannerDisplayed() {
         WebElement successBanner = driver.findElement(By.cssSelector(".success"));
         return successBanner.isDisplayed();
     }
 
     public void createNewPlaylistWhileAddingSong(String playlistName) {
-        WebElement newPlaylistNameInput = driver.findElement(By.cssSelector("[id='songResultsWrapper'] [placeholder='Playlist name']"));
+        By inputNewPlistNameLocator = By.cssSelector("[id='songResultsWrapper'] [placeholder='Playlist name']");
+        WebElement newPlaylistNameInput = driver.findElement(inputNewPlistNameLocator);
         newPlaylistNameInput.click();
         newPlaylistNameInput.clear();
         newPlaylistNameInput.sendKeys(playlistName);
-      //  newPlaylistNameInput.click();
-        //newPlaylistNameInput.clear();
-     //   newPlaylistNameInput.sendKeys(playlistName);
-        // click Enter
         new Actions(driver)
                 .keyDown(Keys.ENTER)
                 .perform();
@@ -132,8 +126,6 @@ public class BaseTest {
         WebElement addToBtn = driver.findElement(By.cssSelector("[data-test='add-to-btn']"));
         addToBtn.click();
     }
-
-
 
 
 }

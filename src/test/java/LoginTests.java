@@ -11,8 +11,8 @@ import java.util.List;
 
 public class LoginTests extends BaseTest {
 
-    @DataProvider(name="IncorrectLoginProviders")
-    public static Object[][] getDataFromDataProviders(){
+    @DataProvider(name = "IncorrectLoginProviders")
+    public static Object[][] getDataFromDataProviders() {
         return new Object[][]{
                 {"notExisting@email.com", "NotExistingPassword"},
                 {"demo@class.com", ""},
@@ -21,7 +21,7 @@ public class LoginTests extends BaseTest {
     }
 
     @Test(dataProvider = "IncorrectLoginProviders")
-    public void negativeLoginTests(String email, String password)  {
+    public void negativeLoginTests(String email, String password) {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.enterEmail(email);
         loginPage.enterPassword(password);
@@ -34,7 +34,7 @@ public class LoginTests extends BaseTest {
     public void loginSucceedTest() {
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
-        loginPage.login("vicplach123@gmail.com","MEGAdelta06@");
+        loginPage.login("vicplach123@gmail.com", "MEGAdelta06@");
         Assert.assertTrue(homePage.getAvatar());
 
     }
@@ -45,20 +45,15 @@ public class LoginTests extends BaseTest {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.enterEmail("MEGAdelta06@");
         loginPage.clickLoginBtn();
-        WebElement submitLogin = driver.findElement(By.cssSelector("button[type='submit']"));
-        Assert.assertTrue(submitLogin.isDisplayed());
+        loginPage.isSubmitBtnDisplayed();
     }
 
     @Test
     public void loginInvalidEmailTest() {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.login("notexists@class.com","MEGAdelta06@");
-
-        WebElement submitLogin = driver.findElement(By.cssSelector("button[type='submit']"));
-        Assert.assertTrue(submitLogin.isDisplayed());
-    }
+        loginPage.login("notexists@class.com", "MEGAdelta06@");
+        loginPage.isSubmitBtnDisplayed();
+     }
 
 
-    //        Email("demo@class.com");
-//        Password("te$t$tudent");
 }

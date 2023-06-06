@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
 
 public class LoginPage extends Basepage {
     public LoginPage(WebDriver givenDriver) {
@@ -39,4 +40,10 @@ public class LoginPage extends Basepage {
         enterPassword(password);
         clickLoginBtn();
     }
+
+    public boolean isSubmitBtnDisplayed() {
+        return driver.findElement(By.cssSelector("button[type='submit']")).isDisplayed();
+    }
+
+
 }
