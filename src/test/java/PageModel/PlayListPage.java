@@ -13,13 +13,16 @@ public class PlayListPage extends Basepage{
     }
 
  By clickPlusLocator = By.cssSelector("[data-testid='sidebar-create-playlist-btn']");
-
+     By successBanner = By.cssSelector(".success");
     public void clickPlusPlaylistBtn(){
         WebElement plusBtn = waitUntilVisible(clickPlusLocator);
         plusBtn.click();
 
     }
-    public void createPlaylistName(String playlist)  {
+    public void createNewPlaylistName(String playlist)  {
+        wait.until(ExpectedConditions
+                        .elementToBeClickable(By.cssSelector("[data-testid='playlist-context-menu-create-simple']")))
+                .click();
         WebElement inputPlaylistName = wait.until(ExpectedConditions
                 .visibilityOfElementLocated(By.cssSelector(".create input")));
         inputPlaylistName.click();
@@ -30,7 +33,10 @@ public class PlayListPage extends Basepage{
                 .keyDown(Keys.ENTER)
                 .perform();
     }
-
+    public WebElement verifySuccessBanner() {
+        //  WebElement successBanner = driver.findElement(By.cssSelector(".success"));
+        return   wait.until(ExpectedConditions.visibilityOfElementLocated(successBanner));
+    }
 
 }
 
