@@ -19,8 +19,7 @@ public class PlaylistTests extends BaseTest {
         loginPage.login("demo@class.com", "te$t$tudent");
         // CREATE PLAYLIST
         // click Plus btn
-        WebElement plusBtn = waitUntilVisible(By.cssSelector("[data-testid='sidebar-create-playlist-btn']"));
-        plusBtn.click();
+
         // click Create new playlist
         wait.until(ExpectedConditions
                         .elementToBeClickable(By.cssSelector("[data-testid='playlist-context-menu-create-simple']")))
