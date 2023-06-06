@@ -1,4 +1,5 @@
 import PageModel.LoginPage;
+import PageModel.PlayListPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -17,23 +18,20 @@ public class PlaylistTests extends BaseTest {
         String playlist = generateRandomPlaylistName();
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login("demo@class.com", "te$t$tudent");
+        PlayListPage playListPage = new PlayListPage(driver);
         // CREATE PLAYLIST
-        // click Plus btn
+
+        playListPage.clickPlusPlaylistBtn();
 
         // click Create new playlist
         wait.until(ExpectedConditions
                         .elementToBeClickable(By.cssSelector("[data-testid='playlist-context-menu-create-simple']")))
                 .click();
         // Add playlist name
-        WebElement inputPlaylistName = wait.until(ExpectedConditions
-                .visibilityOfElementLocated(By.cssSelector(".create input")));
-        inputPlaylistName.click();
-        inputPlaylistName.clear();
-        inputPlaylistName.sendKeys(playlist);
-        // click Enter
-        new Actions(driver)
-                .keyDown(Keys.ENTER)
-                .perform();
+       playListPage.createPlaylistName(playlist);
+
+        
+
         // check playlist name in header
         WebElement playlistHeader = driver.findElement(By.cssSelector("#playlistWrapper h1"));
         wait.until(ExpectedConditions
@@ -57,5 +55,14 @@ public class PlaylistTests extends BaseTest {
         System.out.println(playlistNames);
         // assert playlist was deleted
         Assert.assertFalse(playlistNames.contains(playlist));
+
+
+
+
     }
+
+
+
+
+
 }
