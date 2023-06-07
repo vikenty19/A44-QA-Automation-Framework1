@@ -1,4 +1,5 @@
 import PageModel.LoginPage;
+import PageModel.ProfilePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -10,10 +11,13 @@ public class ProfileTests extends BaseTest {
     @Test(groups = "ProfileTests")
     public void changeProfileName() {
         LoginPage loginPage = new LoginPage(driver);
+        ProfilePage profilePage = new ProfilePage(driver);
         loginPage.login("demo@class.com", "te$t$tudent");
         loginPage.clickLoginBtn();
 
         // open profile
+        profilePage.clickAvatar();
+
         WebElement avatar = wait.until(ExpectedConditions
                 .elementToBeClickable(By.cssSelector(".avatar")));
         avatar.click();
@@ -44,4 +48,8 @@ public class ProfileTests extends BaseTest {
         String newName = profile.getText();
         Assert.assertEquals(newName, name);
     }
+
+
+
+
 }
