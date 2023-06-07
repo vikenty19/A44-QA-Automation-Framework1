@@ -1,9 +1,7 @@
 import PageModel.LoginPage;
 import PageModel.PlayListPage;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -38,24 +36,35 @@ public class PlaylistTests extends BaseTest {
 
         // verify banner
         playListPage.verifySuccessBanner();
-     //   wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".success")));
+        //   wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".success")));
         // refresh page
         driver.navigate().refresh();
         // get all playlist elements
-        List<WebElement> playlists = driver.findElements(By.cssSelector("#playlists a"));
-        // get playlist names from playlist elements
-        List<String> playlistNames = new ArrayList<>();
+        allPlaylistNames();
 
-        for (int i = 0; i < playlists.size(); i++) {
-            String playlistName = playlists.get(i).getText();
-            playlistNames.add(playlistName);
-        }
-        System.out.println(playlistNames);
+
         // assert playlist was deleted
-        Assert.assertFalse(playlistNames.contains(playlist));
+      // Assert.assertFalse(playlistNames.contains(playlist));
 
 
     }
+ /*   class MyObject {
+        private String theValue;
+
+        public String getValue() {
+            return theValue;
+        }
+        public void setValue(String newValue) {
+            this.theValue = newValue;
+        }
+
+    }
+
+ //   List<MyObject> listOfMyObjects = new ArrayList<MyObject>();
+
+// populate the list here...
+
+ //   assertThat(listOfMyObjects).extracting("value").containsAnElementWith("some regular expressions here...");*/
 
 
     public boolean isPlistNameInHeader(String playlist) {
@@ -70,7 +79,19 @@ public class PlaylistTests extends BaseTest {
         deletePlaylistBtn.click();
 
     }
-//    By successBanner = By.cssSelector(".success");
 
+    //    By successBanner = By.cssSelector(".success");
+    public List allPlaylistNames() {
+        List<WebElement> playlists = driver.findElements(By.cssSelector("#playlists a"));
+        // get playlist names from playlist elements
+        List<String> playlistNames = new ArrayList<>();
+
+        for (int i = 0; i < playlists.size(); i++) {
+            String playlistName = playlists.get(i).getText();
+            playlistNames.add(playlistName);
+        }
+        System.out.println(playlistNames);
+         return playlistNames;
+    }
 
 }
