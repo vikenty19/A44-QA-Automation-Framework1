@@ -13,7 +13,7 @@ import java.util.List;
 public class Homework19 extends BaseTest {
 
     @Test
-    public void deletePlaylist()  {
+    public void deletePlaylist() {
         LoginPage loginPage = new LoginPage(driver);
         PlayListPage playListPage = new PlayListPage(driver);
         loginPage.login("vicplach123@gmail.com", "MEGAdelta06@");
@@ -56,8 +56,6 @@ public class Homework19 extends BaseTest {
         isBannerDisplayed();
 
 
-
-
     }
 
     private void deleteCreatedPlaylist() {
@@ -84,4 +82,7 @@ public class Homework19 extends BaseTest {
 
 
     }
+
+
+
 }

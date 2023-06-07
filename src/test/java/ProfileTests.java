@@ -1,6 +1,7 @@
 import PageModel.LoginPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -13,7 +14,8 @@ public class ProfileTests extends BaseTest {
         loginPage.clickLoginBtn();
 
         // open profile
-        WebElement avatar = driver.findElement(By.cssSelector(".avatar"));
+        WebElement avatar = wait.until(ExpectedConditions
+                .elementToBeClickable(By.cssSelector(".avatar")));
         avatar.click();
 
         // type password
