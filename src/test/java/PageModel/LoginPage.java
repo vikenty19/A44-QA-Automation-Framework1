@@ -14,7 +14,7 @@ public class LoginPage extends Basepage {
     By passwordField = By.cssSelector("[type='password']");
     By submitLoginBtn = By.cssSelector("button[type='submit']");
     By submitBtnLocator = By.cssSelector("button[type='submit']");
-    String log = "demo@class.com";
+
     public void enterEmail(String email) {
         WebElement emailInput = wait.until(ExpectedConditions.visibilityOfElementLocated(emailField));
         emailInput.click();
@@ -24,14 +24,16 @@ public class LoginPage extends Basepage {
 
 
     public void enterPassword(String password) {
-        WebElement passwordInput = wait.until(ExpectedConditions.elementToBeClickable(passwordField));
+        WebElement passwordInput = wait
+                .until(ExpectedConditions.elementToBeClickable(passwordField));
         passwordInput.click();
         passwordInput.clear();
         passwordInput.sendKeys(password);
     }
 
     public void clickLoginBtn() {
-        WebElement submitLogin = wait.until(ExpectedConditions.elementToBeClickable(submitLoginBtn));
+        WebElement submitLogin = wait.until(ExpectedConditions
+                .elementToBeClickable(submitLoginBtn));
         submitLogin.click();
     }
 

@@ -20,10 +20,7 @@ public class ProfileTests extends BaseTest {
         loginPage.enterPassword("te$t$tudent");
         String name = basepage.generateRandomName();
         System.out.println(name);
-        WebElement profileName = driver.findElement(By.cssSelector("#inputProfileName"));
-        profileName.click();
-        profileName.clear();
-        profileName.sendKeys(name);
+        profilePage.NameOfProfile(name);
         loginPage.enterEmail("demo@class.com");
         profilePage.clickSbmit();
         basepage.refreshPage();
