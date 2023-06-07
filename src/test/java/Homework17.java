@@ -1,6 +1,8 @@
+import PageModel.LoginPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.devtools.v104.log.Log;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -11,11 +13,12 @@ public class Homework17 extends BaseTest {
 
     @Test
     public void addSongToPlaylist() {
+        LoginPage loginPage = new LoginPage(driver);
         String text = "Dark Days";
         String playlistName = generateRandomPlaylistName();
         // login
 
-        login("demo@class.com", "te$t$tudent");
+        loginPage.login("demo@class.com", "te$t$tudent");
         // search for song
         WebElement searchInput = driver.findElement(By.cssSelector("[type='search']"));
         searchInput.click();

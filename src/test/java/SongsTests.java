@@ -1,4 +1,5 @@
 import PageModel.LoginPage;
+import PageModel.PlayListPage;
 import PageModel.SongsPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -29,14 +30,15 @@ public class SongsTests extends BaseTest {
     public void addSongToPlaylist() {
         String text = "Dark Days";
         String playlistName = generateRandomPlaylistName();
+        PlayListPage playListPage = new PlayListPage(driver);
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login("demo@class.com", "te$t$tudent");
         SongsPage songsPage = new SongsPage(driver);
         songsPage.searchForSong(text);
         songsPage.clickViewAllBtn();
         songsPage.clickFirstSearchResultSong();
-        clickAddToPlaylistBtn();
-        createNewPlaylistWhileAddingSong(playlistName);
+        playListPage.clickAddToPlaylistBtn();
+        playListPage.createNewPlaylistWhileAddingSong(playlistName);
 
         Assert.assertTrue(isBannerDisplayed());
         Assert.assertEquals(text, songsPage.getSongName());

@@ -21,6 +21,15 @@ public class Basepage {
      wait = new WebDriverWait(driver, Duration.ofSeconds(5));
      actions = new Actions(driver);
  }
+
+    public void refreshPage(){
+        driver.navigate().refresh();
+
+    }
+
+
+
+
     public WebElement waitUntilVisible(By element){
         return new WebDriverWait(driver, Duration.ofSeconds(4)).until(ExpectedConditions.visibilityOfElementLocated(element));
     }

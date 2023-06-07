@@ -1,3 +1,5 @@
+import PageModel.LoginPage;
+import PageModel.PlayListPage;
 import PageModel.SongsPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -11,8 +13,11 @@ import java.util.List;
 public class Homework19 extends BaseTest {
 
     @Test
-    public void deletePlaylist() throws InterruptedException {
-        login("vicplach123@gmail.com", "MEGAdelta06@");
+    public void deletePlaylist()  {
+        LoginPage loginPage = new LoginPage(driver);
+        PlayListPage playListPage = new PlayListPage(driver);
+        loginPage.login("vicplach123@gmail.com", "MEGAdelta06@");
+
         String playlistName = generateRandomPlaylistName();
         String text = "Dark Days";
         // search for song
@@ -27,10 +32,10 @@ public class Homework19 extends BaseTest {
         songsPage.clickFirstSearchResultSong();
 
         // click Add To
-        clickAddToPlaylistBtn();
+        playListPage.clickAddToPlaylistBtn();
 
         // create new playlist
-        createNewPlaylistWhileAddingSong(playlistName);
+        playListPage.createNewPlaylistWhileAddingSong(playlistName);
 
 
         isBannerDisplayed();
@@ -47,7 +52,7 @@ public class Homework19 extends BaseTest {
         //Delete playlist
         deleteCreatedPlaylist();
 
-        // Thread.sleep(3000);
+
         isBannerDisplayed();
 
 

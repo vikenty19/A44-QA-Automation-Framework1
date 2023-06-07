@@ -66,35 +66,9 @@ public class BaseTest {
         return newName;
     }
 
-    public void clickLoginBtn() {
-        WebElement submitLogin = driver.findElement(By.cssSelector("button[type='submit']"));
-        submitLogin.click();
-    }
-
-    public void enterPassword(String password) {
-        WebElement passwordInput = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("[type='password']")));
-        passwordInput.click();
-        passwordInput.clear();
-        passwordInput.sendKeys(password);
-    }
-
-    public void enterEmail(String email) {
-        WebElement emailInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[type='email']")));
-        emailInput.click();
-        emailInput.clear();
-        emailInput.sendKeys(email);
-    }
-
 
     public void openUrl(String url) {
         driver.get(url);
-    }
-
-
-    public void login(String email, String password) {
-        enterEmail(email);
-        enterPassword(password);
-        clickLoginBtn();
     }
 
 
@@ -103,21 +77,6 @@ public class BaseTest {
         return successBanner.isDisplayed();
     }
 
-    public void createNewPlaylistWhileAddingSong(String playlistName) {
-        By inputNewPlistNameLocator = By.cssSelector("[id='songResultsWrapper'] [placeholder='Playlist name']");
-        WebElement newPlaylistNameInput = driver.findElement(inputNewPlistNameLocator);
-        newPlaylistNameInput.click();
-        newPlaylistNameInput.clear();
-        newPlaylistNameInput.sendKeys(playlistName);
-        new Actions(driver)
-                .keyDown(Keys.ENTER)
-                .perform();
-    }
-
-    public void clickAddToPlaylistBtn() {
-        WebElement addToBtn = driver.findElement(By.cssSelector("[data-test='add-to-btn']"));
-        addToBtn.click();
-    }
 
 
 }

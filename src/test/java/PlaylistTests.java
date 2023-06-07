@@ -1,3 +1,4 @@
+import PageModel.Basepage;
 import PageModel.LoginPage;
 import PageModel.PlayListPage;
 import org.openqa.selenium.By;
@@ -14,7 +15,7 @@ public class PlaylistTests extends BaseTest {
     @Test
     public void deletePlaylist() {
         String playlist = generateRandomPlaylistName();
-
+        Basepage basepage = new Basepage(driver);
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login("demo@class.com", "te$t$tudent");
         PlayListPage playListPage = new PlayListPage(driver);
@@ -38,7 +39,7 @@ public class PlaylistTests extends BaseTest {
         playListPage.verifySuccessBanner();
         //   wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".success")));
         // refresh page
-        driver.navigate().refresh();
+       basepage.refreshPage();
         // get all playlist elements
         allPlaylistNames();
 
@@ -93,5 +94,6 @@ public class PlaylistTests extends BaseTest {
         System.out.println(playlistNames);
          return playlistNames;
     }
+
 
 }

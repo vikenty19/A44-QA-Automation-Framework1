@@ -1,3 +1,4 @@
+import PageModel.LoginPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -13,7 +14,8 @@ public class Homework20 extends BaseTest {
 
     @Test
     public void deletePlaylist()  {
-        login("vicplach123@gmail.com", "MEGAdelta06@");
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login("vicplach123@gmail.com", "MEGAdelta06@");
         String playlistName = generateRandomPlaylistName();
 
         //create playlist before deleting it

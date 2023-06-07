@@ -1,3 +1,4 @@
+import PageModel.LoginPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -14,8 +15,8 @@ public class Homework21 extends BaseTest{
     public void renamePlaylist(){
         String playlistName = "Stay tune" ;
         String  newName = "Don't feel sorry";
-
-        login("vicplach123@gmail.com", "MEGAdelta06@");
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login("vicplach123@gmail.com", "MEGAdelta06@");
 
 
         //create playlist
