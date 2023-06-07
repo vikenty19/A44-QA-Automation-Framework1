@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
 
 public class ProfilePage extends Basepage{
     public ProfilePage(WebDriver givenDriver) {
@@ -21,5 +22,13 @@ public class ProfilePage extends Basepage{
         saveBtn.click();
 
     }
+    public void compareNames(String name) {
+        WebElement profile = wait.until(ExpectedConditions
+                .elementToBeClickable(By.cssSelector(".view-profile>span")));
+        String newName = profile.getText();
+        Assert.assertEquals(newName, name);
+    }
+
+
 
 }

@@ -25,7 +25,7 @@ public class BaseTest {
 
     public static String url = "https://bbb.testpro.io/";
     public static WebDriverWait wait = null;
-
+    public By successLocator = By.cssSelector(".success");
 
     @BeforeSuite
     static void setupDriver() {
@@ -55,7 +55,6 @@ public class BaseTest {
     }
 
 
-
     public String generateRandomPlaylistName() {
         Faker faker = new Faker(new Locale("en-US"));
         String newName = faker.address().country();
@@ -69,10 +68,9 @@ public class BaseTest {
 
 
     public boolean isBannerDisplayed() {
-        WebElement successBanner = driver.findElement(By.cssSelector(".success"));
+        WebElement successBanner = driver.findElement(successLocator);
         return successBanner.isDisplayed();
     }
-
 
 
 }

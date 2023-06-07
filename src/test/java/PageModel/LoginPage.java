@@ -11,10 +11,10 @@ public class LoginPage extends Basepage {
         super(givenDriver);
     }
     By emailField = By.cssSelector("[type='email']");
-    By  passwordField = By.cssSelector("[type='password']");
-  By submitLoginBtn = By.cssSelector("button[type='submit']");
-By submitBtnLocator = By.cssSelector("button[type='submit']");
-
+    By passwordField = By.cssSelector("[type='password']");
+    By submitLoginBtn = By.cssSelector("button[type='submit']");
+    By submitBtnLocator = By.cssSelector("button[type='submit']");
+    String log = "demo@class.com";
     public void enterEmail(String email) {
         WebElement emailInput = wait.until(ExpectedConditions.visibilityOfElementLocated(emailField));
         emailInput.click();
