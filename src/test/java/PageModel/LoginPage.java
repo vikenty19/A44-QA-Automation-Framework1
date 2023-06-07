@@ -31,7 +31,7 @@ By submitBtnLocator = By.cssSelector("button[type='submit']");
     }
 
     public void clickLoginBtn() {
-        WebElement submitLogin = driver.findElement(submitLoginBtn);
+        WebElement submitLogin = wait.until(ExpectedConditions.elementToBeClickable(submitLoginBtn));
         submitLogin.click();
     }
 

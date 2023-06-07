@@ -1,3 +1,4 @@
+import PageModel.Basepage;
 import PageModel.LoginPage;
 import PageModel.ProfilePage;
 import org.openqa.selenium.By;
@@ -12,39 +13,38 @@ public class ProfileTests extends BaseTest {
     public void changeProfileName() {
         LoginPage loginPage = new LoginPage(driver);
         ProfilePage profilePage = new ProfilePage(driver);
+        Basepage basepage= new Basepage(driver);
         loginPage.login("demo@class.com", "te$t$tudent");
         loginPage.clickLoginBtn();
 
         // open profile
         profilePage.clickAvatar();
 
-        WebElement avatar = wait.until(ExpectedConditions
-                .elementToBeClickable(By.cssSelector(".avatar")));
-        avatar.click();
+        loginPage.enterPassword("te$t$tudent");
 
-        // type password
-        WebElement currentPasswordInput = driver.findElement(By.id("inputProfileCurrentPassword"));
-        currentPasswordInput.click();
-        currentPasswordInput.clear();
-        currentPasswordInput.sendKeys("te$t$tudent");
+
         // type new name
-        String name = generateRandomName();
+        String name = basepage.generateRandomName();
         System.out.println(name);
         WebElement profileName = driver.findElement(By.cssSelector("#inputProfileName"));
         profileName.click();
         profileName.clear();
         profileName.sendKeys(name);
         // type email
-        WebElement emailInput = driver.findElement(By.cssSelector("#inputProfileEmail"));
-        emailInput.click();
-        emailInput.clear();
-        emailInput.sendKeys("demo@class.com");
+
+        loginPage.enterEmail("demo@class.com");
+
+
         // click save
-        WebElement saveBtn = driver.findElement(By.cssSelector(".btn-submit"));
-        saveBtn.click();
+          profilePage.clickSbmit();
+
         // assert profile name is new
-        driver.navigate().refresh();
-        WebElement profile = driver.findElement(By.cssSelector(".view-profile>span"));
+        basepage.refreshPage();
+
+
+
+        WebElement profile = wait.until(ExpectedConditions
+                .elementToBeClickable(By.cssSelector(".view-profile>span")));
         String newName = profile.getText();
         Assert.assertEquals(newName, name);
     }

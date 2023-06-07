@@ -33,19 +33,17 @@ public class PlayListPage extends Basepage{
                 .keyDown(Keys.ENTER)
                 .perform();
     }
+
+
     public WebElement verifySuccessBanner() {
-        //  WebElement successBanner = driver.findElement(By.cssSelector(".success"));
         return   wait.until(ExpectedConditions.visibilityOfElementLocated(successBanner));
     }
+
     public void createNewPlaylistWhileAddingSong(String playlistName) {
         WebElement newPlaylistNameInput = driver.findElement(By.cssSelector("[id='songResultsWrapper'] [placeholder='Playlist name']"));
         newPlaylistNameInput.click();
         newPlaylistNameInput.clear();
         newPlaylistNameInput.sendKeys(playlistName);
-        //  newPlaylistNameInput.click();
-        //newPlaylistNameInput.clear();
-        //   newPlaylistNameInput.sendKeys(playlistName);
-        // click Enter
         new Actions(driver)
                 .keyDown(Keys.ENTER)
                 .perform();

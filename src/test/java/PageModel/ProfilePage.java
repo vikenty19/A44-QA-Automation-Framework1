@@ -16,6 +16,10 @@ public class ProfilePage extends Basepage{
 
     }
 
+    public void clickSbmit(){
+        WebElement saveBtn = driver.findElement(By.cssSelector(".btn-submit"));
+        saveBtn.click();
 
+    }
 
 }
