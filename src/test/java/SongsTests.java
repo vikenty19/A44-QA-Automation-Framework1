@@ -2,14 +2,10 @@ import PageModel.LoginPage;
 import PageModel.PlayListPage;
 import PageModel.SongsPage;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import java.util.List;
 
 public class SongsTests extends BaseTest {
 
@@ -17,14 +13,14 @@ public class SongsTests extends BaseTest {
     public void checkVisibilityTest() {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login("demo@class.com", "te$t$tudent");
-
-        WebElement title = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("title")));
-        String text = title.getText();
+        SongsPage songsPage = new SongsPage(driver);
+        String text = songsPage.getSongText();
         System.out.println("WHERE IS TEXT?" + text);
         System.out.println("Is element invisible? === " + wait
                 .until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("title"))));
 
     }
+
 
     @Test
     public void addSongToPlaylist() {

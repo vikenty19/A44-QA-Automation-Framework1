@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 
@@ -62,5 +63,10 @@ public class SongsPage extends Basepage {
     public String getSongName() {
         String songText = songName.getText();
         return songText;
+    }
+    public  String getSongText() {
+        WebElement title = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("title")));
+        String text = title.getText();
+        return text;
     }
 }
