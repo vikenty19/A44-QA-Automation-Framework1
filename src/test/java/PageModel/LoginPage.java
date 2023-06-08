@@ -23,27 +23,28 @@ public class LoginPage extends Basepage {
     @FindBy(css ="button[type='submit']" )
             WebElement submitLogin;
 
-    By submitBtnLocator = By.cssSelector("button[type='submit']");
+   private By submitBtnLocator = By.cssSelector("button[type='submit']");
 
-    public void enterEmail(String email) {
+    public LoginPage enterEmail(String email) {
 
         emailInput.click();
         emailInput.clear();
         emailInput.sendKeys(email);
+        return this;
     }
 
 
-    public void enterPassword(String password) {
+    public LoginPage enterPassword(String password) {
 
         passwordInput.click();
         passwordInput.clear();
         passwordInput.sendKeys(password);
+        return this;
     }
 
-    public void clickLoginBtn() {
-  //      WebElement submitLogin = wait.until(ExpectedConditions
-    //            .elementToBeClickable(submitLoginBtn));
+    public LoginPage clickLoginBtn() {
         submitLogin.click();
+        return this;
     }
 
     public void login(String email, String password) {

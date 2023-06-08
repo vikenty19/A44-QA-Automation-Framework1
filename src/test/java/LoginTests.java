@@ -23,9 +23,9 @@ public class LoginTests extends BaseTest {
     @Test(dataProvider = "IncorrectLoginProviders")
     public void negativeLoginTests(String email, String password) {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.enterEmail(email);
-        loginPage.enterPassword(password);
-        loginPage.clickLoginBtn();
+        loginPage.enterEmail(email)
+                    .enterPassword(password)
+                     .clickLoginBtn();
 
         Assert.assertEquals(driver.getCurrentUrl(), url);
     }
