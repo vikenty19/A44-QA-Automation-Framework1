@@ -25,7 +25,7 @@ public class LoginTests extends BaseTest {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.enterEmail(email)
                     .enterPassword(password)
-                     .clickLoginBtn();
+                    .clickLoginBtn();
 
         Assert.assertEquals(driver.getCurrentUrl(), url);
     }
@@ -43,8 +43,8 @@ public class LoginTests extends BaseTest {
     @Test
     public void loginEmptyPasswordTest() {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.enterEmail("MEGAdelta06@");
-        loginPage.clickLoginBtn();
+        loginPage.enterEmail("MEGAdelta06@")
+                  .clickLoginBtn();
         loginPage.isSubmitBtnDisplayed();
     }
 

@@ -13,13 +13,14 @@ public class SongsPage extends Basepage {
         super(givenDriver);
     }
 
-
+@FindBy(css ="[title='Play or resume']")
+        WebElement buttonPlayOrResume;
    By playPauseBtn =By.cssSelector("[title='Play or resume']");
 
-    By playBtnelement = By.cssSelector("[data-testid='pause-btn']");
-    By equalizerElement = By.cssSelector("[alt='Sound bars']");
+   private By playBtnelement = By.cssSelector("[data-testid='pause-btn']");
+    private By equalizerElement = By.cssSelector("[alt='Sound bars']");
     public void startPlaySong() {
-        WebElement buttonPlayOrResume = driver.findElement(playPauseBtn);
+     //   WebElement buttonPlayOrResume = driver.findElement(playPauseBtn);
         new Actions(driver)
                 .moveToElement(buttonPlayOrResume)
                 .perform();
