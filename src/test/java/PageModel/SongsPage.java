@@ -15,12 +15,14 @@ public class SongsPage extends Basepage {
 
 @FindBy(css ="[title='Play or resume']")
         WebElement buttonPlayOrResume;
-   By playPauseBtn =By.cssSelector("[title='Play or resume']");
+@FindBy(css ="[type='search']" )
+WebElement searchInput;
+@FindBy(xpath = "//button[@data-test='view-all-songs-btn']")
+WebElement viewAllBtn;
 
-   private By playBtnelement = By.cssSelector("[data-testid='pause-btn']");
+    private By playBtnelement = By.cssSelector("[data-testid='pause-btn']");
     private By equalizerElement = By.cssSelector("[alt='Sound bars']");
     public void startPlaySong() {
-     //   WebElement buttonPlayOrResume = driver.findElement(playPauseBtn);
         new Actions(driver)
                 .moveToElement(buttonPlayOrResume)
                 .perform();
@@ -37,13 +39,11 @@ public class SongsPage extends Basepage {
 
     }
     public void searchForSong(String text) {
-        WebElement searchInput = driver.findElement(By.cssSelector("[type='search']"));
         searchInput.click();
         searchInput.clear();
         searchInput.sendKeys(text);
     }
     public void clickViewAllBtn() {
-        WebElement viewAllBtn = driver.findElement(By.xpath("//button[@data-test='view-all-songs-btn']"));
         viewAllBtn.click();
     }
     public void clickFirstSearchResultSong() {
