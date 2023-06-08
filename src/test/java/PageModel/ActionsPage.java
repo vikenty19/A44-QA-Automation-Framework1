@@ -13,25 +13,32 @@ public class ActionsPage extends Basepage{
     public ActionsPage(WebDriver givenDriver) {
         super(givenDriver);
     }
+    private By equalizer = By.cssSelector("[data-testid='sound-bar-play']")
+    private By clickPlay = By.cssSelector(".playback");
+
+
+private By rightClick = By.cssSelector(".song-item");
+private By clickFooter = By.cssSelector("[data-testid='play-btn']");
+
     public boolean isEqualizerDisplayed() {
-        return driver.findElement(By.cssSelector("[data-testid='sound-bar-play']")).isDisplayed();
+        return driver.findElement(equalizer ).isDisplayed();
     }
 
 
     public void clickPlayBtn() {
-        WebElement playBtn = driver.findElement(By.cssSelector(".playback"));
+        WebElement playBtn = driver.findElement(clickPlay);
         playBtn.click();
     }
 
     public void rightClickOnFirstSong() {
-        WebElement firstSong = driver.findElement(By.cssSelector(".song-item"));
+        WebElement firstSong = driver.findElement(rightClick);
         Actions actions = new Actions(driver);
         actions.contextClick(firstSong).perform();
     }
 
     public void clickFooterPlayBtn() {
         Actions action = new Actions(driver);
-        WebElement playBtn = driver.findElement(By.cssSelector("[data-testid='play-btn']"));
+        WebElement playBtn = driver.findElement(clickFooter);
         action
                 .moveToElement(playBtn)
                 .perform();
