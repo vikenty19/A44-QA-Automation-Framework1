@@ -13,13 +13,19 @@ public class ActionsPage extends Basepage{
     public ActionsPage(WebDriver givenDriver) {
         super(givenDriver);
     }
-    private By equalizer = By.cssSelector("[data-testid='sound-bar-play']")
+    private By equalizer = By.cssSelector("[data-testid='sound-bar-play']");
     private By clickPlay = By.cssSelector(".playback");
 
 
 private By rightClick = By.cssSelector(".song-item");
 private By clickFooter = By.cssSelector("[data-testid='play-btn']");
-
+private By pauseExist = By.cssSelector("[data-testid='pause-btn']");
+private By allsongsLocator = By.cssSelector(".songs");
+private By doubleClick = By.cssSelector(".playlist:nth-child(3)");
+private By enterName = By.cssSelector("input[name='name']");
+private By getName = By.cssSelector(".playlist:nth-child(3)>a");
+private By getElements = By.cssSelector("#playlistWrapper .song-item");
+private By clickElement = By.cssSelector(".playlist:nth-child(4)");
     public boolean isEqualizerDisplayed() {
         return driver.findElement(equalizer ).isDisplayed();
     }
@@ -46,41 +52,42 @@ private By clickFooter = By.cssSelector("[data-testid='play-btn']");
     }
 
     public boolean pauseBtnExists() {
-        return driver.findElement(By.cssSelector("[data-testid='pause-btn']")).isDisplayed();
+        return driver.findElement(pauseExist ).isDisplayed();
     }
 
 
     public void goToAllSongs() {
-        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".songs"))).click();
+        wait.until(ExpectedConditions.elementToBeClickable(allsongsLocator)).click();
     }
 
 
     public void doubleClickChoosePlaylist() {
         WebElement playlistElement = wait.until(ExpectedConditions.
-                elementToBeClickable(By.cssSelector(".playlist:nth-child(3)")));
+                elementToBeClickable(doubleClick));
         Actions actions = new Actions(driver);
         actions.doubleClick(playlistElement).perform();
     }
 
     public void enterPlaylistName(String name) {
-        WebElement playlistInputField = driver.findElement(By.cssSelector("input[name='name']"));
+        WebElement playlistInputField = driver.findElement(enterName);
         playlistInputField.sendKeys(Keys.HOME, Keys.chord(Keys.SHIFT, Keys.END), name);
         playlistInputField.sendKeys(Keys.ENTER);
     }
 
     public String getPlaylistName() {
         WebElement playlistElement = wait.until(ExpectedConditions.
-                visibilityOfElementLocated(By.cssSelector(".playlist:nth-child(3)>a")));
+                visibilityOfElementLocated(getName));
         String name = playlistElement.getText();
         return name;
     }
     public List<WebElement> getWebElements() {
-        List<WebElement> songs = driver.findElements(By.cssSelector("#playlistWrapper .song-item"));
+        List<WebElement> songs = driver.findElements(getElements);
         return songs;
     }
 
     public void playListClick() {
-        WebElement playlist = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".playlist:nth-child(4)")));
+        WebElement playlist = wait.until(ExpectedConditions
+                .visibilityOfElementLocated(clickElement));
         playlist.click();
     }
 }
