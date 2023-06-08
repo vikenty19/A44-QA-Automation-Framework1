@@ -5,39 +5,47 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 
-public class ActionsPage extends Basepage{
+public class ActionsPage extends Basepage {
     public ActionsPage(WebDriver givenDriver) {
         super(givenDriver);
     }
+
     private By equalizer = By.cssSelector("[data-testid='sound-bar-play']");
-    private By clickPlay = By.cssSelector(".playback");
+
+    @FindBy(css = ".playback")
+    WebElement playBtn;
+
+    @FindBy(css = ".song-item")
+    WebElement firstSong;
+    @FindBy(css = ".playlist:nth-child(4)")
+    WebElement playlist;
+    private By clickFooter = By.cssSelector("[data-testid='play-btn']");
+
+    private By pauseExist = By.cssSelector("[data-testid='pause-btn']");
+    private By allsongsLocator = By.cssSelector(".songs");
+    private By doubleClick = By.cssSelector(".playlist:nth-child(3)");
+    private By enterName = By.cssSelector("input[name='name']");
+    private By getName = By.cssSelector(".playlist:nth-child(3)>a");
+    private By getElements = By.cssSelector("#playlistWrapper .song-item");
+    private By clickElement = By.cssSelector(".playlist:nth-child(4)");
 
 
-private By rightClick = By.cssSelector(".song-item");
-private By clickFooter = By.cssSelector("[data-testid='play-btn']");
-private By pauseExist = By.cssSelector("[data-testid='pause-btn']");
-private By allsongsLocator = By.cssSelector(".songs");
-private By doubleClick = By.cssSelector(".playlist:nth-child(3)");
-private By enterName = By.cssSelector("input[name='name']");
-private By getName = By.cssSelector(".playlist:nth-child(3)>a");
-private By getElements = By.cssSelector("#playlistWrapper .song-item");
-private By clickElement = By.cssSelector(".playlist:nth-child(4)");
     public boolean isEqualizerDisplayed() {
-        return driver.findElement(equalizer ).isDisplayed();
+        return driver.findElement(equalizer).isDisplayed();
     }
 
 
     public void clickPlayBtn() {
-        WebElement playBtn = driver.findElement(clickPlay);
         playBtn.click();
     }
 
     public void rightClickOnFirstSong() {
-        WebElement firstSong = driver.findElement(rightClick);
+        //   WebElement firstSong = driver.findElement(rightClick);
         Actions actions = new Actions(driver);
         actions.contextClick(firstSong).perform();
     }
@@ -52,7 +60,7 @@ private By clickElement = By.cssSelector(".playlist:nth-child(4)");
     }
 
     public boolean pauseBtnExists() {
-        return driver.findElement(pauseExist ).isDisplayed();
+        return driver.findElement(pauseExist).isDisplayed();
     }
 
 
@@ -80,14 +88,13 @@ private By clickElement = By.cssSelector(".playlist:nth-child(4)");
         String name = playlistElement.getText();
         return name;
     }
+
     public List<WebElement> getWebElements() {
         List<WebElement> songs = driver.findElements(getElements);
         return songs;
     }
 
     public void playListClick() {
-        WebElement playlist = wait.until(ExpectedConditions
-                .visibilityOfElementLocated(clickElement));
         playlist.click();
     }
 }
