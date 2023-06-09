@@ -2,14 +2,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.LoginPage;
 
 public class ProfileTests extends BaseTest {
 
     @Test(groups = "ProfileTests")
     public void changeProfileName() {
-        enterEmail("demo@class.com");
-        enterPassword("te$t$tudent");
-        clickLoginBtn();
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login("demo@class.com","te$t$tudent");
         // open profile
         WebElement avatar = driver.findElement(By.cssSelector(".avatar"));
         avatar.click();

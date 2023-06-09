@@ -5,6 +5,10 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.BasePage;
+import pages.LoginPage;
+import pages.PlaylistPage;
+import pages.SongsPage;
 
 import java.util.List;
 
@@ -12,7 +16,8 @@ public class SongsTests extends BaseTest {
 
     @Test
     public void checkVisibilityTest() {
-        login("demo@class.com", "te$t$tudent");
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login("demo@class.com", "te$t$tudent");
         WebElement title = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("title")));
         String text = title.getText();
         System.out.println(text);
@@ -22,33 +27,31 @@ public class SongsTests extends BaseTest {
 
     @Test
     public void addSongToPlaylist() {
+        LoginPage loginPage = new LoginPage(driver);
+        PlaylistPage playlistPage = new PlaylistPage(driver);
+        SongsPage songsPage = new SongsPage(driver);
+        BasePage basePage = new BasePage(driver);
         String text = "Dark Days";
-        String playlistName = generateRandomPlaylistName();
-        login("demo@class.com", "te$t$tudent");
-        searchForSong(text);
+        String playlistName = playlistPage.generateRandomPlaylistName();
+        loginPage.login("demo@class.com", "te$t$tudent");
+        songsPage.searchForSong(text);
         clickViewAllBtn();
         clickFirstSearchResultSong();
         clickAddToPlaylistBtn();
-        createNewPlaylistWhileAddingSong(playlistName);
+        playlistPage.createNewPlaylistWhileAddingSong(playlistName);
         // assertions - success banner and song name in playlist
-        Assert.assertTrue(isBannerDisplayed());
-        Assert.assertEquals(text, getSongName());
+        Assert.assertTrue(basePage.isSuccessBannerDisplayed());
+        Assert.assertEquals(text, songsPage.getSongName());
     }
 
     @Test
     public void playSong() {
-        login("demo@class.com", "te$t$tudent");
-        WebElement buttonPlayOrResume = driver.findElement(By.cssSelector("[title='Play or resume']"));
-        new Actions(driver)
-                .moveToElement(buttonPlayOrResume)
-                .perform();
-        buttonPlayOrResume.click();
-
-        WebElement pauseBtn = driver.findElement(By.cssSelector("[data-testid='pause-btn']"));
-        Assert.assertTrue(pauseBtn.isDisplayed());
-        WebElement equalizer = driver.findElement(By.cssSelector("[alt='Sound bars']"));
-        Assert.assertTrue(equalizer.isDisplayed());
+        LoginPage loginPage = new LoginPage(driver);
+        SongsPage songsPage = new SongsPage(driver);
+        loginPage.login("demo@class.com", "te$t$tudent");
+        songsPage.startPlaySong();
+        Assert.assertTrue(songsPage.isPauseBtnDisplayed());
+        Assert.assertTrue(songsPage.isEqualizerDisplayed());
     }
-
 
 }

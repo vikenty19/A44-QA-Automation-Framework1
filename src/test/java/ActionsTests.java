@@ -6,14 +6,16 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
+import pages.LoginPage;
 
 import java.util.List;
 
 public class ActionsTests extends BaseTest {
     @Test
     public void playSongTest() {
+        LoginPage loginPage = new LoginPage(driver);
         // hover over in clickPlayBtn
-        login("demo@class.com", "te$t$tudent");
+        loginPage.login("demo@class.com", "te$t$tudent");
         clickFooterPlayBtn();
         Assert.assertTrue(pauseBtnExists());
 
@@ -37,10 +39,11 @@ public class ActionsTests extends BaseTest {
 
     @Test
     public void renamePlaylist() {
+        LoginPage loginPage = new LoginPage(driver);
         // double click
         String playlistName = "Summer songs";
 
-        login("demo@class.com", "te$t$tudent");
+        loginPage.login("demo@class.com", "te$t$tudent");
         doubleClickChoosePlaylist();
         enterPlaylistName(playlistName);
         String newName = getPlaylistName();
@@ -49,7 +52,8 @@ public class ActionsTests extends BaseTest {
 
     @Test
     public void playSongFromListTest() {
-        login("demo@class.com", "te$t$tudent");
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login("demo@class.com", "te$t$tudent");
         goToAllSongs();
         // right click on first song
         rightClickOnFirstSong();
@@ -116,8 +120,9 @@ public class ActionsTests extends BaseTest {
 
     @Test
     public void countSongsInPlaylist() {
+        LoginPage loginPage = new LoginPage(driver);
 
-        login("demo@class.com", "te$t$tudent");
+        loginPage.login("demo@class.com", "te$t$tudent");
         WebElement playlist = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".playlist:nth-child(4)")));
         playlist.click();
         List<WebElement> songs = driver.findElements(By.cssSelector("#playlistWrapper .song-item"));

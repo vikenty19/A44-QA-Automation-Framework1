@@ -4,6 +4,8 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import pages.LoginPage;
+import pages.SongsPage;
 
 import java.io.Reader;
 import java.nio.file.Files;
@@ -28,7 +30,7 @@ public class CSVDataProviderTest extends BaseTest {
                 array = new Object[records.size()][row.length];
             }
             array[i][0] = row[0];
-           // array[i][1] = row[1];
+            // array[i][1] = row[1];
         }
         return array;
     }
@@ -36,8 +38,10 @@ public class CSVDataProviderTest extends BaseTest {
     @Test(dataProvider = "getSongsData")
     // test that uses data from csv file
     public void searchSongsTests(String song) {
-        login("demo@class.com", "te$t$tudent");
-        searchForSong(song);
+        SongsPage songsPage = new SongsPage(driver);
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login("demo@class.com", "te$t$tudent");
+        songsPage.searchForSong(song);
         WebElement header = driver.findElement(By.cssSelector("strong"));
         String searchHeader = header.getText();
         Assert.assertEquals(song, searchHeader);
