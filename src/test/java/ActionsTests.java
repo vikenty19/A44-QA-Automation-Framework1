@@ -28,7 +28,7 @@ public class ActionsTests extends BaseTest {
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertTrue(songsNumberBefore == songsNumberAfter,
                 "=== Songs number before should be equal songs number after ===");
-        softAssert.assertEquals(driver.getCurrentUrl(), "https://qa.koel.app/#!/home");
+        softAssert.assertEquals(driver.getCurrentUrl(), "https://qa.koel.app/#!/queue");
         System.out.println("Hello world");
         softAssert.assertAll();
     }
