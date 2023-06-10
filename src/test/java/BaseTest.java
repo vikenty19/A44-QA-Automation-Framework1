@@ -20,6 +20,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Parameters;
 
+import java.net.MalformedURLException;
 import java.net.URI;
 import java.time.Duration;
 import java.util.List;
@@ -34,14 +35,14 @@ public class BaseTest {
     public By successLocator = By.cssSelector(".success");
 
     @BeforeSuite
-    static void setupDriver() {
-        WebDriverManager.chromedriver().setup();
-    }
+ /*  static void setupDriver() {
+       WebDriverManager.chromedriver().setup();
+    }*/
 
     @BeforeMethod
 //    @Parameters({"BaseURL"})
     //  public void setUpBrowser(String BaseURL){
-    public void setUpBrowser() {
+    public void setUpBrowser() throws MalformedURLException {
  /*       ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
         options.addArguments("--disable-notifications");
@@ -57,10 +58,10 @@ public class BaseTest {
         openUrl(url);
     }
 
-    private WebDriver pickBrowser(String browser) {
+    private WebDriver pickBrowser(String browser) throws MalformedURLException {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         String gridURL = "http://192.168.1.184:4444";
-        switch (browser){
+        switch (browser) {
             case "firefox":
                 WebDriverManager.firefoxdriver().setup();
                 return driver = new FirefoxDriver();
@@ -70,12 +71,15 @@ public class BaseTest {
             case "edge":
                 WebDriverManager.edgedriver().setup();
                 return driver = new EdgeDriver();
-  /*          case "grid-firefox":
+            case "grid-firefox":
                 capabilities.setCapability("browserName", "firefox");
+                return driver = new RemoteWebDriver(URI.create(gridURL).toURL(), capabilities);
+            case "grid-chrome":
+                capabilities.setCapability("browserName","chrome");
                 return driver = new RemoteWebDriver(URI.create(gridURL).toURL(), capabilities);
             case "grid-safari":
                 capabilities.setCapability("browserName", "safari");
-                return driver = new RemoteWebDriver(URI.create(gridURL).toURL(), capabilities);*/
+                return driver = new RemoteWebDriver(URI.create(gridURL).toURL(), capabilities);
             default:
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions options = new ChromeOptions();
