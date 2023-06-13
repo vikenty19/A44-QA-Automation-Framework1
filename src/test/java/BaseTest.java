@@ -28,7 +28,7 @@ import java.util.Locale;
 
 public class BaseTest {
     public static WebDriver driver = null;
-
+    private static final ThreadLocal<WebDriver> THREAD_LOCAL = new ThreadLocal<>();
 
     public static String url = "https://qa.koel.app/#!/home";
     public static WebDriverWait wait = null;
@@ -38,7 +38,9 @@ public class BaseTest {
  /*  static void setupDriver() {
        WebDriverManager.chromedriver().setup();
     }*/
-
+    public static WebDriver getDriver() {
+        return THREAD_LOCAL.get();
+    }
     @BeforeMethod
 //    @Parameters({"BaseURL"})
     //  public void setUpBrowser(String BaseURL){
@@ -49,13 +51,12 @@ public class BaseTest {
         options.addArguments("--start-maximized");
 
         driver = new ChromeDriver(options);*/
+        THREAD_LOCAL.set(pickBrowser(System.getProperty("browser")));
+        THREAD_LOCAL.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        getDriver().get(url);
 
-        driver = pickBrowser(System.getProperty("browser"));
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 
 
-        openUrl(url);
     }
 
     private WebDriver pickBrowser(String browser) throws MalformedURLException {
@@ -93,11 +94,13 @@ public class BaseTest {
 
     @AfterMethod(alwaysRun = true)
     public void tearDown() {
-        driver.quit();
+        THREAD_LOCAL.get().close();
+        THREAD_LOCAL.remove();
     }
 
 
     public String generateRandomPlaylistName() {
+
         Faker faker = new Faker(new Locale("en-US"));
         String newName = faker.address().country();
         return newName;

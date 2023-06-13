@@ -22,7 +22,7 @@ public class LoginTests extends BaseTest {
 
     @Test(dataProvider = "IncorrectLoginProviders")
     public void negativeLoginTests(String email, String password) {
-        LoginPage loginPage = new LoginPage(driver);
+        LoginPage loginPage = new LoginPage(getDriver());
         loginPage.enterEmail(email)
                     .enterPassword(password)
                     .clickLoginBtn();
@@ -32,8 +32,8 @@ public class LoginTests extends BaseTest {
 
     @Test
     public void loginSucceedTest() {
-        LoginPage loginPage = new LoginPage(driver);
-        HomePage homePage = new HomePage(driver);
+        LoginPage loginPage = new LoginPage(getDriver());
+        HomePage homePage = new HomePage(getDriver());
         loginPage.login("vicplach123@gmail.com", "MEGAdelta06@");
         Assert.assertTrue(homePage.getAvatar());
 
@@ -42,7 +42,7 @@ public class LoginTests extends BaseTest {
 
     @Test
     public void loginEmptyPasswordTest() {
-        LoginPage loginPage = new LoginPage(driver);
+        LoginPage loginPage = new LoginPage(getDriver());
         loginPage.enterEmail("MEGAdelta06@")
                   .clickLoginBtn();
         loginPage.isSubmitBtnDisplayed();
@@ -50,7 +50,7 @@ public class LoginTests extends BaseTest {
 
     @Test
     public void loginInvalidEmailTest() {
-        LoginPage loginPage = new LoginPage(driver);
+        LoginPage loginPage = new LoginPage(getDriver());
         loginPage.login("notexists@class.com", "MEGAdelta06@");
         loginPage.isSubmitBtnDisplayed();
      }
