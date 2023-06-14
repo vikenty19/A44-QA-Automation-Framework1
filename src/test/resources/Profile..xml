@@ -6,7 +6,7 @@
             <class name="ProfileTests">
                 <methods>
                     <include name="changeProfileName"></include>
-<!--                  <include name="loginInvalidEmailTest"></include>-->
+                    <include name= "renamePlaylist"></include>
                 </methods>
             </class>
         </classes>

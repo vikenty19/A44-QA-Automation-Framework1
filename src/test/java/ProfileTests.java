@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 
 public class ProfileTests extends BaseTest {
 
-    @Test(groups = "ProfileTests.xml")
+    @Test(groups = "Profile.xml")
     public void changeProfileName() {
         LoginPage loginPage = new LoginPage(getDriver());
         ProfilePage profilePage = new ProfilePage(getDriver());

@@ -106,7 +106,7 @@ public class BaseTest {
         String hub = "@hub.lambdatest.com/wd/hub";
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setCapability("platform", "Windows 10");
-        caps.setCapability("browserName", "Edge");
+        caps.setCapability("browserName", "firefox");
         caps.setCapability("version", "112.0");
         caps.setCapability("resolution", "1024x768");
         caps.setCapability("build", "TestNG With Java");
