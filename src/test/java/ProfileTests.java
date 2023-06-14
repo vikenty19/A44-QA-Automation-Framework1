@@ -9,11 +9,11 @@ import org.testng.annotations.Test;
 
 public class ProfileTests extends BaseTest {
 
-    @Test(groups = "ProfileTests")
+    @Test(groups = "ProfileTests.xml")
     public void changeProfileName() {
-        LoginPage loginPage = new LoginPage(driver);
-        ProfilePage profilePage = new ProfilePage(driver);
-        Basepage basepage = new Basepage(driver);
+        LoginPage loginPage = new LoginPage(getDriver());
+        ProfilePage profilePage = new ProfilePage(getDriver());
+        Basepage basepage = new Basepage(getDriver());
         loginPage.login("demo@class.com", "te$t$tudent");
         loginPage.clickLoginBtn();
         profilePage.clickAvatar();

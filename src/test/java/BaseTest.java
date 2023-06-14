@@ -22,6 +22,7 @@ import org.testng.annotations.Parameters;
 
 import java.net.MalformedURLException;
 import java.net.URI;
+import java.net.URL;
 import java.time.Duration;
 import java.util.List;
 import java.util.Locale;
@@ -30,7 +31,7 @@ public class BaseTest {
     public static WebDriver driver = null;
     private static final ThreadLocal<WebDriver> THREAD_LOCAL = new ThreadLocal<>();
 
-    public static String url = "https://qa.koel.app/#!/home";
+    public static String url = "https://qa.koel.app/";
     public static WebDriverWait wait = null;
     public By successLocator = By.cssSelector(".success");
 
@@ -72,6 +73,8 @@ public class BaseTest {
             case "edge":
                 WebDriverManager.edgedriver().setup();
                 return driver = new EdgeDriver();
+            case "cloud":
+                return lambdaTest();
             case "grid-firefox":
                 capabilities.setCapability("browserName", "firefox");
                 return driver = new RemoteWebDriver(URI.create(gridURL).toURL(), capabilities);
@@ -97,7 +100,20 @@ public class BaseTest {
         THREAD_LOCAL.get().close();
         THREAD_LOCAL.remove();
     }
-
+    public WebDriver lambdaTest() throws MalformedURLException {
+        String username = "vicplach";
+        String authkey = "rWyJp95DsCIJC6QTdW4yzUxSno3xnEEBcjkK3vWmfwco8uPAt9";
+        String hub = "@hub.lambdatest.com/wd/hub";
+        DesiredCapabilities caps = new DesiredCapabilities();
+        caps.setCapability("platform", "Windows 10");
+        caps.setCapability("browserName", "Edge");
+        caps.setCapability("version", "112.0");
+        caps.setCapability("resolution", "1024x768");
+        caps.setCapability("build", "TestNG With Java");
+        caps.setCapability("name", this.getClass().getName());
+        caps.setCapability("plugin", "git-testng");
+        return new RemoteWebDriver(new URL("https://" + username + ":" + authkey + hub), caps);
+    }
 
     public String generateRandomPlaylistName() {
 

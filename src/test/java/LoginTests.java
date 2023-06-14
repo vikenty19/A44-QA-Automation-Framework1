@@ -27,7 +27,7 @@ public class LoginTests extends BaseTest {
                     .enterPassword(password)
                     .clickLoginBtn();
 
-        Assert.assertEquals(driver.getCurrentUrl(), url);
+        Assert.assertEquals(getDriver().getCurrentUrl(), url);
     }
 
     @Test

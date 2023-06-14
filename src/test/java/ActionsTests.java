@@ -14,12 +14,12 @@ import java.util.List;
 public class ActionsTests extends BaseTest {
     @Test
     public void playSongTest() {
-        ActionsPage actionsPage = new ActionsPage(driver);
-        LoginPage loginPage = new LoginPage(driver);
+        ActionsPage actionsPage = new ActionsPage(getDriver());
+        LoginPage loginPage = new LoginPage(getDriver());
         loginPage.login("demo@class.com", "te$t$tudent");
         actionsPage.clickFooterPlayBtn();
         Assert.assertTrue(actionsPage.pauseBtnExists());
-        List<WebElement> songs = driver.findElements(By.cssSelector("[data-test='song-card']"));
+        List<WebElement> songs = getDriver().findElements(By.cssSelector("[data-test='song-card']"));
         int songsNumberBefore = songs.size();
         System.out.println(songsNumberBefore);
         // Just an example: here we would add or delete an element but we didn't
@@ -28,16 +28,16 @@ public class ActionsTests extends BaseTest {
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertTrue(songsNumberBefore == songsNumberAfter,
                 "=== Songs number before should be equal songs number after ===");
-        softAssert.assertEquals(driver.getCurrentUrl(), "https://qa.koel.app/#!/queue");
+        softAssert.assertEquals(getDriver().getCurrentUrl(), "https://qa.koel.app/#!/queue");
         System.out.println("Hello world");
         softAssert.assertAll();
     }
 
     @Test
     public void renamePlaylist() {
-    ActionsPage actionsPage =new ActionsPage(driver);
+    ActionsPage actionsPage =new ActionsPage(getDriver());
         String playlistName = "Summer songs";
-        LoginPage loginPage = new LoginPage(driver);
+        LoginPage loginPage = new LoginPage(getDriver());
         loginPage.login("demo@class.com", "te$t$tudent");
         actionsPage.doubleClickChoosePlaylist();
         actionsPage.enterPlaylistName(playlistName);
@@ -47,8 +47,8 @@ public class ActionsTests extends BaseTest {
 
     @Test
     public void playSongFromListTest() {
-        ActionsPage actionsPage =new ActionsPage(driver);
-        LoginPage loginPage = new LoginPage(driver);
+        ActionsPage actionsPage =new ActionsPage(getDriver());
+        LoginPage loginPage = new LoginPage(getDriver());
         loginPage.login("demo@class.com", "te$t$tudent");
         actionsPage.goToAllSongs();
         actionsPage.rightClickOnFirstSong();
@@ -59,8 +59,8 @@ public class ActionsTests extends BaseTest {
 
     @Test
     public void countSongsInPlaylist() {
-        ActionsPage actionsPage =new ActionsPage(driver);
-        LoginPage loginPage = new LoginPage(driver);
+        ActionsPage actionsPage =new ActionsPage(getDriver());
+        LoginPage loginPage = new LoginPage(getDriver());
         loginPage.login("demo@class.com", "te$t$tudent");
         actionsPage.playListClick();
         List<WebElement> songs = actionsPage.getWebElements();

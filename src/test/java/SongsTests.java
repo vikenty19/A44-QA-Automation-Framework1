@@ -11,9 +11,9 @@ public class SongsTests extends BaseTest {
 
     @Test
     public void checkVisibilityTest() {
-        LoginPage loginPage = new LoginPage(driver);
+        LoginPage loginPage = new LoginPage(getDriver());
         loginPage.login("demo@class.com", "te$t$tudent");
-        SongsPage songsPage = new SongsPage(driver);
+        SongsPage songsPage = new SongsPage(getDriver());
         String text = songsPage.getSongText();
         System.out.println("WHERE IS TEXT?" + text);
         System.out.println("Is element invisible? === " + wait
@@ -26,10 +26,10 @@ public class SongsTests extends BaseTest {
     public void addSongToPlaylist() {
         String text = "Dark Days";
         String playlistName = generateRandomPlaylistName();
-        PlayListPage playListPage = new PlayListPage(driver);
-        LoginPage loginPage = new LoginPage(driver);
+        PlayListPage playListPage = new PlayListPage(getDriver());
+        LoginPage loginPage = new LoginPage(getDriver());
         loginPage.login("demo@class.com", "te$t$tudent");
-        SongsPage songsPage = new SongsPage(driver);
+        SongsPage songsPage = new SongsPage(getDriver());
         songsPage.searchForSong(text);
         songsPage.clickViewAllBtn();
         songsPage.clickFirstSearchResultSong();
@@ -42,8 +42,8 @@ public class SongsTests extends BaseTest {
 
     @Test
     public void playSong() {
-        LoginPage loginPage = new LoginPage(driver);
-        SongsPage songPage = new SongsPage(driver);
+        LoginPage loginPage = new LoginPage(getDriver());
+        SongsPage songPage = new SongsPage(getDriver());
         loginPage.login("demo@class.com", "te$t$tudent");
         songPage.startPlaySong();
         Assert.assertTrue(songPage.isPlayBtnDisplayed());

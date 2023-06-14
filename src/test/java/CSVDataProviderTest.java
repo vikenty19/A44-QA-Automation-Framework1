@@ -38,11 +38,11 @@ public class CSVDataProviderTest extends BaseTest {
     @Test(dataProvider = "getSongsData")
     // test that uses data from csv file
     public void searchSongsTests(String song) {
-        LoginPage loginPage = new LoginPage(driver);
+        LoginPage loginPage = new LoginPage(getDriver());
         loginPage.login("demo@class.com", "te$t$tudent");
-        SongsPage songsPage = new SongsPage(driver);
+        SongsPage songsPage = new SongsPage(getDriver());
         songsPage.searchForSong(song);
-        WebElement header = driver.findElement(By.cssSelector("strong"));
+        WebElement header = getDriver().findElement(By.cssSelector("strong"));
         String searchHeader = header.getText();
         Assert.assertEquals(song, searchHeader);
     }

@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<!--<suite name="TestNG">-->
+<suite name="TestNG" parallel="methods" thread-count="2">
+    <test name="Example Test" preserve-order="false">
+        <classes>
+            <class name="ProfileTests">
+                <methods>
+                    <include name="changeProfileName"></include>
+<!--                  <include name="loginInvalidEmailTest"></include>-->
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

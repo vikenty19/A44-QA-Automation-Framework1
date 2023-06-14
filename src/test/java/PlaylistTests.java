@@ -15,10 +15,10 @@ public class PlaylistTests extends BaseTest {
     @Test
     public void deletePlaylist() {
         String playlist = generateRandomPlaylistName();
-        Basepage basepage = new Basepage(driver);
-        LoginPage loginPage = new LoginPage(driver);
+        Basepage basepage = new Basepage(getDriver());
+        LoginPage loginPage = new LoginPage(getDriver());
         loginPage.login("demo@class.com", "te$t$tudent");
-        PlayListPage playListPage = new PlayListPage(driver);
+        PlayListPage playListPage = new PlayListPage(getDriver());
         playListPage.clickPlusPlaylistBtn();
         playListPage.createNewPlaylistName(playlist);
         playListPage.isPlistNameInHeader(playlist);
