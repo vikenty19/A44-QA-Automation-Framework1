@@ -1,5 +1,6 @@
 package stepDefiniton;
 
+import PageModel.HomePage;
 import PageModel.LoginPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -23,7 +24,7 @@ public class LoginStepDEfinition {
     public static WebDriverWait wait = null;
 
     @Given("I open Login Page")
-    public void openBrowser(){
+    public void openBrowser() {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
@@ -35,8 +36,8 @@ public class LoginStepDEfinition {
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 
 
-
     }
+
     @When("i open login page")
     public void iOpenLoginPage() {
         driver.get(url);
@@ -45,7 +46,7 @@ public class LoginStepDEfinition {
     @When("I enter email")
     public void iEnterEmail() {
         WebElement emailInput = wait.until(ExpectedConditions
-                .visibilityOfElementLocated(By.cssSelector("[type='email']" )));
+                .visibilityOfElementLocated(By.cssSelector("[type='email']")));
         emailInput.click();
         emailInput.clear();
         emailInput.sendKeys("vicplach123@gmail.com");
@@ -59,10 +60,14 @@ public class LoginStepDEfinition {
 
     @And("I click submit")
     public void iClickSubmit() {
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.clickLoginBtn();
     }
 
     @Then("I logged in")
     public void iLoggedIn() {
+        HomePage homePage = new HomePage(driver);
+        homePage.getAvatar();
     }
 
 
