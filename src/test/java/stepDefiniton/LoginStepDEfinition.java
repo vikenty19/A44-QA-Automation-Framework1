@@ -1,6 +1,9 @@
 package stepDefiniton;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -32,4 +35,19 @@ public class LoginStepDEfinition {
     }
 
 
+    @When("I enter email")
+    public void iEnterEmail() {
+    }
+
+    @And("I enter password")
+    public void iEnterPassword() {
+    }
+
+    @And("I click submit")
+    public void iClickSubmit() {
+    }
+
+    @Then("I logged in")
+    public void iLoggedIn() {
+    }
 }
