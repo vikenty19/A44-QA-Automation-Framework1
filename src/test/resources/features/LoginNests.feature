@@ -10,6 +10,6 @@ Feature: Login Tests
 Scenario: Wrong password test
   Given I open Login page
   And I enter email
-  And  I enter password
+  And  I enter a wrong password
   And i click submit
   Then I'm not logged in

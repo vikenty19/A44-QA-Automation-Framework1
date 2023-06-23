@@ -83,4 +83,23 @@ public class LoginStepDefinitions {
     public void closeBrowser() {
         driver.quit();
     }
+
+    @And("I enter a wrong password")
+    public void iEnterAWrongPassword() {
+        WebElement passwordInput = wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By.xpath("//input[@type='password']")));
+        passwordInput.click();
+        passwordInput.clear();
+        passwordInput.sendKeys("MEGAdelta");
+
+
+    }
+
+    @Then("I'm not logged in")
+    public void iMNotLoggedIn() {
+
+        WebElement submitBtnLocator = wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By.cssSelector("button[type='submit']")));
+        Assert.assertTrue(submitBtnLocator.isDisplayed());
+    }
 }
