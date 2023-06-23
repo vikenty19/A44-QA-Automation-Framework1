@@ -5,21 +5,21 @@
 <!--    <parameter name="BaseURL" value="https://bbb.testpro.io/"></parameter>-->
     <test name="Example Test" preserve-order="false">
         <classes>
-            <class name="LoginTests"/>
-            <class name="ProfileTests"/>
-            <class name="SongsTests"/>
-            <class name="Homework17"/>
-            <class name="Homework19"/>
-            <class name="Homework20"/>
-            <class name="Homework21"/>
-            <class name="CSVDataProviderTest"/>
+<!--            <class name="LoginTests"/>-->
+<!--            <class name="ProfileTests"/>-->
+<!--            <class name="SongsTests"/>-->
+<!--            <class name="Homework17"/>-->
+<!--            <class name="Homework19"/>-->
+<!--            <class name="Homework20"/>-->
+<!--            <class name="Homewo/rk21"/>-->
+<!--            <class name="CSVDataProviderTest"/>-->
+            <class name="CucumberRunner"/>
+<!--            <class name="ActionsTests"/>-->
+<!--            <class name="PlaylistTests"/>-->
 
 
-            <class name="PlaylistTests"/>
 
 
-
-            <class name="ActionsTests"/>
 
         </classes>
     </test>

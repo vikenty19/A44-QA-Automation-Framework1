@@ -1,6 +1,8 @@
 package StepDefinition;
 
 import PageModel.LoginPage;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -13,6 +15,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 
 import java.time.Duration;
 
@@ -22,10 +26,11 @@ public class LoginStepDefinitions {
 
     public static String url = "https:///qa.koel.app/";
     public static WebDriverWait wait = null;
-    @Given("I open browser")
-    public void openBrowser(){
 
-            WebDriverManager.chromedriver().setup();
+    @Before
+    public void openBrowser() {
+
+        WebDriverManager.chromedriver().setup();
 
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
@@ -39,7 +44,7 @@ public class LoginStepDefinitions {
 
     @When("I open Login page")
     public void iOpenLoginPage() {
-    driver.get(url);
+        driver.get(url);
     }
 
     @And("I enter email")
@@ -54,8 +59,8 @@ public class LoginStepDefinitions {
 
     @And("I enter password")
     public void iEnterPassword() {
-WebElement passwordInput = wait.until(ExpectedConditions
-        .visibilityOfElementLocated(By.xpath("//input[@type='password']")));
+        WebElement passwordInput = wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By.xpath("//input[@type='password']")));
         passwordInput.click();
         passwordInput.clear();
         passwordInput.sendKeys("MEGAdelta06@");
@@ -63,11 +68,19 @@ WebElement passwordInput = wait.until(ExpectedConditions
 
     @And("i click submit")
     public void iClickSubmit() {
-        LoginPage loginPage = new LoginPage(driver);
-        LoginPage.clickLoginBtn();
+        WebElement submitLogin = wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By.cssSelector("button[type='submit']")));
+        submitLogin.click();
     }
 
     @Then("I logged in")
     public void iLoggedIn() {
+        WebElement avatarLogo = wait.until(ExpectedConditions
+                .visibilityOfElementLocated( By.cssSelector(".avatar")));
+        Assert.assertTrue(avatarLogo.isDisplayed());
+    }
+    @After
+    public void closeBrowser() {
+        driver.quit();
     }
 }
