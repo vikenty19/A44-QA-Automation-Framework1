@@ -38,5 +38,8 @@ public class ProfileTests extends BaseTest {
         WebElement profile = driver.findElement(By.cssSelector(".view-profile>span"));
         String newName = profile.getText();
         Assert.assertEquals(newName, name);
+
+
+
     }
 }

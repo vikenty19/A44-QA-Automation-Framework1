@@ -20,7 +20,7 @@ public class LoginTests extends BaseTest {
 
     @Test(dataProvider = "IncorrectLoginProviders")
     public void negativeLoginTests(String email, String password) throws InterruptedException {
-        String url = "https://bbb.testpro.io/";
+        String url = "https://qa.koel.app/";
         enterEmail(email);
         enterPassword(password);
         clickLoginBtn();

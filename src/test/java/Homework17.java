@@ -45,5 +45,19 @@ public class Homework17 extends BaseTest {
         WebElement songName = driver.findElement(By.cssSelector("#playlistWrapper .song-item .title"));
         String songText = songName.getText();
         Assert.assertEquals(text, songText);
+
     }
-}
+    public void  ifItCorrect(){
+        int x = 5;
+        if (x > 5){
+            System.out.println("wrong!");
+
+        }
+        System.out.println("x = " + 5);
+    }
+
+    }
+
+
+
+
