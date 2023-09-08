@@ -16,12 +16,6 @@ import java.util.List;
 import java.util.Locale;
 
 public class BaseTest {
-    public static WebDriver driver = null;
-
-    public static String url = "https://bbb.testpro.io/";
-    public static WebDriverWait wait = null;
-
-
 
     @BeforeSuite
     static void setupDriver() {
@@ -36,7 +30,6 @@ public class BaseTest {
         options.addArguments("--remote-allow-origins=*");
         options.addArguments("--disable-notifications");
         options.addArguments("--start-maximized");
-
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
