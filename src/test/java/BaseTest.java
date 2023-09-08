@@ -26,9 +26,14 @@ public class BaseTest {
     }
 
     @BeforeMethod
-    @Parameters({"BaseURL"})
-    public void setUpBrowser(String BaseURL) {
-        //   public void setUpBrowser(String BaseURL){
+ //   @Parameters({"BaseURL"})
+    public void setUpBrowser() {
+        String url = "https://qa.koel.app/";
+   //     String url = BaseURL;
+
+   //      public void setUpBrowser(String BaseURL){
+
+   //     }
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
         options.addArguments("--disable-notifications");
@@ -36,8 +41,8 @@ public class BaseTest {
 
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-      //   String url = "https://qa.koel.app/";
-        String url = BaseURL;
+    //     String url = "https://qa.koel.app/";
+   //     String url = BaseURL;
         openUrl(url);
 
     }
