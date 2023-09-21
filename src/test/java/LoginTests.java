@@ -53,6 +53,7 @@ public class LoginTests extends BaseTest {
         List<WebElement> playlists = driver.findElements(By.cssSelector("#playlists"));
         driver.quit();
 
+<<<<<<< HEAD
         public void loginSucceedTest () throws InterruptedException {
             LoginPage loginPage = new LoginPage(driver);
             HomePage homePage = new HomePage(driver);
@@ -63,6 +64,18 @@ public class LoginTests extends BaseTest {
             Assert.assertTrue(homePage.getAvatar());
 
         }
+=======
+    public void loginSucceedTest() throws InterruptedException {
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
+        loginPage.enterEmail("demo@class.com");
+        loginPage.enterPassword("te$t$tudent");
+        loginPage.clickLoginBtn();
+        Thread.sleep(3000);
+        Assert.assertTrue(homePage.getAvatar());
+
+    }
+>>>>>>> bc9fef5ba0e9417acd59e3df15d183eb09e3253c
 
 
         @Test

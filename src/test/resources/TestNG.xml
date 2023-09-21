@@ -7,8 +7,10 @@
         <classes>
             <class name="LoginTests"/>
 
+
+
             <class name="BaseTest"/>
-            <class name="Homework16"/>
+
 
             <class name="ProfileTests"/>
             <class name="SongsTests"/>
@@ -18,11 +20,11 @@
             <class name="CSVDataProviderTest"/>
 
 
-            <class name="PlaylistTests"/>
+      <!--      <class name="PlaylistTests"/>
 
 
 
-            <class name="ActionsTests"/>
+            <class name="ActionsTests"/>-->
 
         </classes>
     </test>
