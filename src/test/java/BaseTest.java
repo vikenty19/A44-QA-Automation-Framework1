@@ -69,7 +69,7 @@ public class BaseTest {
     }
 
     public void openUrl() {
-        String url = "https://bbb.testpro.io/";
+        String url = "https://qa.koel.app/";
         driver.get(url);
     }
 
