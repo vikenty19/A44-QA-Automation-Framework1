@@ -74,10 +74,13 @@ public class BaseTest {
     }
 
 
-    public void login(String email, String password){
-        enterEmail(email);
-        enterPassword(password);
-        clickLoginBtn();
+
+
+    public void login(String email,String password) {
+
+    enterEmail(email);
+    enterPassword(password);
+    clickLoginBtn();
     }
     public void seachForSong(String text) {
         WebElement searchInput = driver.findElement(By.cssSelector("[type='search']"));

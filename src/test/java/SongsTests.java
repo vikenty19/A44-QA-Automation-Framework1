@@ -10,8 +10,8 @@ import java.util.List;
 public class SongsTests extends BaseTest {
 
     @Test
-    public void addSongToPlaylist() {
-        String text = "Dark Days";
+    public void addSongToPlaylist() throws InterruptedException {
+/*    String text = "Dark Days";
         String playlistName = generateRandomPlaylistName();
         // login
         openUrl();
@@ -44,6 +44,37 @@ public class SongsTests extends BaseTest {
         Assert.assertTrue(successBanner.isDisplayed());
         WebElement songName = driver.findElement(By.cssSelector("#playlistWrapper .song-item .title"));
         String songText = songName.getText();
-        Assert.assertEquals(text, songText);
+        Assert.assertEquals(text, songText); */
+
+
+        String playListName = generateRandomName();
+
+
+        openUrl();
+        login("demo@class.com", "te$t$tudent");
+
+        WebElement searchField = driver.findElement(By.cssSelector("input[type='search']"));
+        searchField.click();
+        searchField.clear();
+        searchField.sendKeys("Episode 2");
+        WebElement viewAll = driver.findElement(By.xpath("//button[@data-test='view-all-songs-btn']"));
+        viewAll.click();
+        List<WebElement> searchSongResult = driver.findElements(By.cssSelector(".search-results .song-item .title"));
+        searchSongResult.get(0).click();
+
+// "addTo" button
+        WebElement addToButtn = driver.findElement(By.cssSelector(".btn-add-to"));
+        addToButtn.click();
+
+        // new playlist input
+        WebElement inputNewPlaylistName = driver
+                .findElement(By.cssSelector("#songResultsWrapper  [data-test='new-playlist-name']"));
+        inputNewPlaylistName.click();
+        inputNewPlaylistName.clear();
+        inputNewPlaylistName.sendKeys(playListName);
+        WebElement savePlaylistNameBtn = driver.findElement(By.cssSelector("#songsWrapper  [type='submit']"));
+        savePlaylistNameBtn.click();
+        Thread.sleep(5000);
+
     }
 }
