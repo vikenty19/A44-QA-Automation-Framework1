@@ -7,6 +7,8 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
+import static org.testng.Assert.assertEquals;
+
 public class SongsTests extends BaseTest {
 
     @Test
@@ -47,8 +49,8 @@ public class SongsTests extends BaseTest {
         Assert.assertEquals(text, songText); */
 
 
-        String playListName = generateRandomName();
-
+        String playListName = generateRandomPlaylistName();
+        String songName = "Episode 2";
 
         openUrl();
         login("demo@class.com", "te$t$tudent");
@@ -56,7 +58,7 @@ public class SongsTests extends BaseTest {
         WebElement searchField = driver.findElement(By.cssSelector("input[type='search']"));
         searchField.click();
         searchField.clear();
-        searchField.sendKeys("Episode 2");
+        searchField.sendKeys(songName);
         WebElement viewAll = driver.findElement(By.xpath("//button[@data-test='view-all-songs-btn']"));
         viewAll.click();
         List<WebElement> searchSongResult = driver.findElements(By.cssSelector(".search-results .song-item .title"));
@@ -72,9 +74,20 @@ public class SongsTests extends BaseTest {
         inputNewPlaylistName.click();
         inputNewPlaylistName.clear();
         inputNewPlaylistName.sendKeys(playListName);
-        WebElement savePlaylistNameBtn = driver.findElement(By.cssSelector("#songsWrapper  [type='submit']"));
-        savePlaylistNameBtn.click();
-        Thread.sleep(5000);
+        WebElement savePlaylistNameBtn = driver.findElement(By
+                .cssSelector("section#songsWrapper .new-playlist > .form-new-playlist.form-save.form-simple > button[title='Save']"));
+    //    savePlaylistNameBtn.click();
+        new Actions(driver)
+                .keyDown(Keys.ENTER)
+                .perform();
 
+        WebElement successBtn = driver.findElement(By.cssSelector(".success"));
+        Thread.sleep(5000);
+        Assert.assertTrue(successBtn.isDisplayed());
+
+        WebElement songAtPlist = driver.findElement(By.cssSelector("#playlistWrapper td.title"));
+        String songNameAtPlaylist = songAtPlist.getText();
+        System.out.println(songNameAtPlaylist +"  "+ songName);
+        Assert.assertEquals(songName,songNameAtPlaylist);
     }
 }
