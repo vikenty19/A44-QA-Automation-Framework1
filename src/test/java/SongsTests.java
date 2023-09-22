@@ -54,19 +54,16 @@ public class SongsTests extends BaseTest {
 
         openUrl();
         login("demo@class.com", "te$t$tudent");
+        enterNameInSearchField(songName);
+        clickAllViewButtn();
 
-        WebElement searchField = driver.findElement(By.cssSelector("input[type='search']"));
-        searchField.click();
-        searchField.clear();
-        searchField.sendKeys(songName);
-        WebElement viewAll = driver.findElement(By.xpath("//button[@data-test='view-all-songs-btn']"));
-        viewAll.click();
-        List<WebElement> searchSongResult = driver.findElements(By.cssSelector(".search-results .song-item .title"));
-        searchSongResult.get(0).click();
+        findSongInResult();
+
+
 
 // "addTo" button
-        WebElement addToButtn = driver.findElement(By.cssSelector(".btn-add-to"));
-        addToButtn.click();
+
+        clickAddtoBtn();
 
         // new playlist input
         WebElement inputNewPlaylistName = driver
@@ -76,7 +73,7 @@ public class SongsTests extends BaseTest {
         inputNewPlaylistName.sendKeys(playListName);
         WebElement savePlaylistNameBtn = driver.findElement(By
                 .cssSelector("section#songsWrapper .new-playlist > .form-new-playlist.form-save.form-simple > button[title='Save']"));
-    //    savePlaylistNameBtn.click();
+        //    savePlaylistNameBtn.click();
         new Actions(driver)
                 .keyDown(Keys.ENTER)
                 .perform();
@@ -87,7 +84,31 @@ public class SongsTests extends BaseTest {
 
         WebElement songAtPlist = driver.findElement(By.cssSelector("#playlistWrapper td.title"));
         String songNameAtPlaylist = songAtPlist.getText();
-        System.out.println(songNameAtPlaylist +"  "+ songName);
-        Assert.assertEquals(songName,songNameAtPlaylist);
+        System.out.println(songNameAtPlaylist + "  " + songName);
+        Assert.assertEquals(songName, songNameAtPlaylist);
+    }
+
+    private void findSongInResult() {
+        List< WebElement> searchSongResult = driver.findElements(By.cssSelector(".search-results .song-item .title"));
+        searchSongResult.get(0).click();
+    }
+
+    private void clickAddtoBtn() {
+
+        WebElement addToButtn = driver.findElement(By.cssSelector(".btn-add-to"));
+        addToButtn.click();
+    }
+
+    private void clickAllViewButtn() {
+        WebElement viewAll = driver.findElement(By
+                .xpath("//button[@data-test='view-all-songs-btn']"));
+        viewAll.click();
+    }
+
+    private void enterNameInSearchField(String name) {
+        WebElement searchField = driver.findElement(By.cssSelector("input[type='search']"));
+        searchField.click();
+        searchField.clear();
+        searchField.sendKeys(name);
     }
 }
