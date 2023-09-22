@@ -10,7 +10,7 @@
             <class name="ProfileTests"/>
             <class name="SongsTests"/>
             <class name="Homework17"/>
-            <class name="Homework18"/>
+            <class name="PlaySongs"/>
         </classes>
     </test>
 </suite>
