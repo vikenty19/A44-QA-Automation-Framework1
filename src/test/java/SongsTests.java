@@ -49,45 +49,57 @@ public class SongsTests extends BaseTest {
         Assert.assertEquals(text, songText); */
 
 
+        //   String songName = "Episode 2";
         String playListName = generateRandomPlaylistName();
-        String songName = "Episode 2";
-
         openUrl();
         login("demo@class.com", "te$t$tudent");
-        enterNameInSearchField(songName);
-        clickAllViewButtn();
+        //  choose a song
+        WebElement songsTab = driver.findElement(By.cssSelector(".songs"));
+        songsTab.click();
+        List<WebElement> allSongs = driver.findElements(By.cssSelector(" td.title"));
+        for (int i = 0; i < allSongs.size(); i++) {
 
-        findSongInResult();
+            System.out.println(allSongs.get(i).getText());
+            String songName = allSongs.get(i).getText();
+            System.out.println(songName);
+            // search picked song in search field
+            enterNameInSearchField(songName);
+            clickAllViewButtn();
 
+            findSongInResult();
 
 
 // "addTo" button
 
-        clickAddtoBtn();
+            clickAddtoBtn();
 
-        // new playlist input
-        WebElement inputNewPlaylistName = driver
-                .findElement(By.cssSelector("#songResultsWrapper  [data-test='new-playlist-name']"));
-        inputNewPlaylistName.click();
-        inputNewPlaylistName.clear();
-        inputNewPlaylistName.sendKeys(playListName);
-        WebElement savePlaylistNameBtn = driver.findElement(By
-                .cssSelector("section#songsWrapper .new-playlist > .form-new-playlist.form-save.form-simple > button[title='Save']"));
-        //    savePlaylistNameBtn.click();
-        new Actions(driver)
-                .keyDown(Keys.ENTER)
-                .perform();
+            // new playlist input
+            WebElement inputNewPlaylistName = driver
+                    .findElement(By.cssSelector("#songResultsWrapper  [data-test='new-playlist-name']"));
+            inputNewPlaylistName.click();
+            inputNewPlaylistName.clear();
+            inputNewPlaylistName.sendKeys(playListName);
 
-        WebElement successBtn = driver.findElement(By.cssSelector(".success"));
-        Thread.sleep(5000);
-        Assert.assertTrue(successBtn.isDisplayed());
 
-        WebElement songAtPlist = driver.findElement(By.cssSelector("#playlistWrapper td.title"));
-        String songNameAtPlaylist = songAtPlist.getText();
-        System.out.println(songNameAtPlaylist + "  " + songName);
-        Assert.assertEquals(songName, songNameAtPlaylist);
+            //    WebElement savePlaylistNameBtn = driver.findElement(By
+            //           .cssSelector("section#songsWrapper .new-playlist > .form-new-playlist.form-save.form-simple > button[title='Save']"));
+            //    savePlaylistNameBtn.click();
+
+
+            new Actions(driver)
+                    .keyDown(Keys.ENTER)
+                    .perform();
+
+            WebElement successBtn = driver.findElement(By.cssSelector(".success"));
+
+            Assert.assertTrue(successBtn.isDisplayed());
+
+            WebElement songAtPlist = driver.findElement(By.cssSelector("#playlistWrapper td.title"));
+            String songNameAtPlaylist = songAtPlist.getText();
+            //          System.out.println(songNameAtPlaylist + "  " + songName);
+            Assert.assertEquals(songName, songNameAtPlaylist);
+        }
     }
-
     private void findSongInResult() {
         List< WebElement> searchSongResult = driver.findElements(By.cssSelector(".search-results .song-item .title"));
         searchSongResult.get(0).click();
