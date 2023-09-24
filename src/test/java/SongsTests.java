@@ -54,8 +54,8 @@ public class SongsTests extends BaseTest {
         openUrl();
         login("demo@class.com", "te$t$tudent");
         //  choose a song
-        WebElement songsTab = driver.findElement(By.cssSelector(".songs"));
-        songsTab.click();
+        clickSearchField();
+
         List<WebElement> allSongs = driver.findElements(By.cssSelector(" td.title"));
         for (int i = 0; i < 6; i++) {
             String playListName = generateRandomPlaylistName();
@@ -101,6 +101,9 @@ public class SongsTests extends BaseTest {
             Assert.assertEquals(songName, songNameAtPlaylist);
         }
     }
+
+  
+
     private void findSongInResult() {
         List< WebElement> searchSongResult = driver.findElements(By.cssSelector(".search-results .song-item .title"));
         searchSongResult.get(0).click();

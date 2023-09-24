@@ -96,5 +96,3 @@ public class BaseTest {
         searchField.clear();
         searchField.sendKeys(name);
     }
-
-}
