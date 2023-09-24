@@ -54,7 +54,7 @@ public class SongsTests extends BaseTest {
         openUrl();
         login("demo@class.com", "te$t$tudent");
         //  choose a song
-        clickSearchField();
+         clickSearchField();
 
         List<WebElement> allSongs = driver.findElements(By.cssSelector(" td.title"));
         for (int i = 0; i < 6; i++) {
@@ -102,7 +102,9 @@ public class SongsTests extends BaseTest {
         }
     }
 
-  
+
+
+
 
     private void findSongInResult() {
         List< WebElement> searchSongResult = driver.findElements(By.cssSelector(".search-results .song-item .title"));
