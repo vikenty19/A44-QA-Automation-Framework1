@@ -19,21 +19,23 @@ public class PlaySongs extends BaseTest {
 
 
         // Play the song
-        WebElement hoverable = driver.findElement(By.cssSelector(".album-thumb-wrapper .fa-play"));
+        WebElement plyBtn = driver.findElement(By.cssSelector("span.play .fa"));
         new Actions(driver)
-                .moveToElement(hoverable)
+                .moveToElement(plyBtn)
                 .perform();
-        hoverable.click();
-        Thread.sleep(5000);
+        plyBtn.click();
+        Thread.sleep(3000);
 
 
+// assert is equalizer displayed
+        WebElement equalizer = driver.findElement(By.cssSelector(".bars"));
+        Assert.assertTrue(equalizer.isDisplayed());
+// is pause btn displayed
         WebElement pauseBtn = driver.findElement(By.cssSelector("span[role='button'] > .fa.fa-pause"));
         new Actions(driver)
                 .moveToElement(pauseBtn)
                 .perform();
-        hoverable.click();
-
-
+        pauseBtn.click();
         Assert.assertTrue(pauseBtn.isDisplayed());
     }
 }

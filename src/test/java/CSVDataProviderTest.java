@@ -28,7 +28,8 @@ public class CSVDataProviderTest extends BaseTest {
                 array = new Object[records.size()][row.length];
             }
             array[i][0] = row[0];
-            // array[i][1] = row[1];
+       //      array[i][1] = row[1];
+       //       array[i][2] = row[3];
         }
         return array;
 
