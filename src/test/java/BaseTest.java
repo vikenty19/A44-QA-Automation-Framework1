@@ -82,7 +82,7 @@ public class BaseTest {
     enterPassword(password);
     clickLoginBtn();
     }
-    public void seachForSong(String text) {
+    public void searchForSong(String text) {
         WebElement searchInput = driver.findElement(By.cssSelector("[type='search']"));
         searchInput.click();
         searchInput.clear();
@@ -90,6 +90,11 @@ public class BaseTest {
 
 
     }
-
+    void enterNameInSearchField(String name) {
+        WebElement searchField = driver.findElement(By.cssSelector("input[type='search']"));
+        searchField.click();
+        searchField.clear();
+        searchField.sendKeys(name);
+    }
 
 }

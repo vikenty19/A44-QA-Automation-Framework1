@@ -50,23 +50,24 @@ public class SongsTests extends BaseTest {
 
 
         //   String songName = "Episode 2";
-        String playListName = generateRandomPlaylistName();
+
         openUrl();
         login("demo@class.com", "te$t$tudent");
         //  choose a song
         WebElement songsTab = driver.findElement(By.cssSelector(".songs"));
         songsTab.click();
         List<WebElement> allSongs = driver.findElements(By.cssSelector(" td.title"));
-        for (int i = 0; i < allSongs.size(); i++) {
-
+        for (int i = 0; i < 6; i++) {
+            String playListName = generateRandomPlaylistName();
             System.out.println(allSongs.get(i).getText());
             String songName = allSongs.get(i).getText();
             System.out.println(songName);
             // search picked song in search field
             enterNameInSearchField(songName);
             clickAllViewButtn();
-
-            findSongInResult();
+            List< WebElement> searchSongResult = driver.findElements(By.cssSelector(".search-results .song-item .title"));
+            searchSongResult.get(i).click();
+          //  findSongInResult();
 
 
 // "addTo" button
@@ -117,10 +118,5 @@ public class SongsTests extends BaseTest {
         viewAll.click();
     }
 
-    private void enterNameInSearchField(String name) {
-        WebElement searchField = driver.findElement(By.cssSelector("input[type='search']"));
-        searchField.click();
-        searchField.clear();
-        searchField.sendKeys(name);
-    }
+
 }

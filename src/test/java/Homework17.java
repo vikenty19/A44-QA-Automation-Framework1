@@ -19,7 +19,7 @@ public class Homework17 extends BaseTest {
         login("vicplach123@gmail.com", "MEGAdelta06@");
         // search for song
 
-        seachForSong(text);
+        searchForSong(text);
 
         // click results view all button
 
