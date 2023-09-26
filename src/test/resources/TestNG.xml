@@ -11,6 +11,7 @@
             <class name="SongsTests"/>
             <class name="Homework17"/>
             <class name="PlaySongs"/>
+            <class name="PlayListTests"/>
         </classes>
     </test>
 </suite>

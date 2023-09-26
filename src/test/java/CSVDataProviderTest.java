@@ -1,6 +1,7 @@
 import com.opencsv.CSVReader;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -36,13 +37,16 @@ public class CSVDataProviderTest extends BaseTest {
 
     }
     @Test(dataProvider = "getSongsData")
-    public void searcgForSong(String song) {
+    public void searchForSong(String song) {
         openUrl();
         login("demo@class.com","te$t$tudent");
+
         clickSearchField();
 
         enterNameInSearchField(song);
-        WebElement findSong = driver.findElement(By.cssSelector("strong"));
+
+        WebElement findSong = wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By.cssSelector("strong")));
         String foundSong = findSong.getText();
         System.out.println(foundSong);
         Assert.assertEquals(foundSong,song);

@@ -11,7 +11,7 @@ import java.util.List;
 public class Homework17 extends BaseTest {
 
     @Test
-    public void addSongToPlaylist() {
+    public void addSongToPlaylist() throws InterruptedException {
         String text = "Ketsa - Beautiful";
         String playlistName = generateRandomPlaylistName();
         // login
