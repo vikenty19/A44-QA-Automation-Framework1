@@ -54,6 +54,11 @@ public class BaseTest {
         String newName = faker.address().country();
         return newName;
     }
+   public String generateRandomPlaylistBookName() {
+       Faker faker=new Faker();
+      String newName =  faker.book().title();;
+        return newName;
+    }
 
     protected void clickLoginBtn() {
         WebElement submitLogin = driver.findElement(By.cssSelector("button[type='submit']"));

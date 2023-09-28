@@ -15,8 +15,8 @@ public class PlayListTests extends BaseTest {
 
     @Test
     public void deletePlaylistTest() throws InterruptedException {
-        String playlistName = "Marazm2";
-
+        String playlistName = generateRandomPlaylistBookName();
+        System.out.println(playlistName);
 
         login("demo@class.com", "te$t$tudent");
    //    WebElement plusBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".fa-plus-circle")));
@@ -41,14 +41,17 @@ public class PlayListTests extends BaseTest {
         new Actions(driver).sendKeys(playlistName)
                             .keyDown(Keys.ENTER)
                              .perform();
-         Thread.sleep(1000);
-        WebElement playListHeader = waitUntilVisible(By.cssSelector("#playlistWrapper h1"));
+  //       Thread.sleep(1000);
+         //Assertions of playlist name
+        WebElement playListHeader =driver.findElement(By.cssSelector("#playlistWrapper h1"));
+        wait.until(ExpectedConditions.textToBePresentInElement(playListHeader,playlistName));
         Assert.assertEquals(playListHeader.getText(),playlistName);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".success")));
         //delete playlist
         WebElement deletePlistBtn = waitUntilClickable(By
                 .cssSelector(".btn-delete-playlist"));
         deletePlistBtn.click();
-        Thread.sleep(1000);
+       Thread.sleep(1000);
         driver.navigate().refresh();
         List<WebElement> playlistTable =driver.findElements(By.cssSelector(".playlist.playlist>a"));
         List<String >playListNames = new ArrayList<>();
