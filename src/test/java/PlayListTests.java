@@ -6,13 +6,16 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.openqa.selenium.Keys.ENTER;
 
 public class PlayListTests extends BaseTest {
 
     @Test
     public void deletePlaylistTest() throws InterruptedException {
-        String playlistName = "Marazm";
+        String playlistName = "Marazm2";
 
 
         login("demo@class.com", "te$t$tudent");
@@ -38,13 +41,25 @@ public class PlayListTests extends BaseTest {
         new Actions(driver).sendKeys(playlistName)
                             .keyDown(Keys.ENTER)
                              .perform();
-        Thread.sleep((5000));
+         Thread.sleep(1000);
         WebElement playListHeader = waitUntilVisible(By.cssSelector("#playlistWrapper h1"));
         Assert.assertEquals(playListHeader.getText(),playlistName);
         //delete playlist
         WebElement deletePlistBtn = waitUntilClickable(By
                 .cssSelector(".btn-delete-playlist"));
         deletePlistBtn.click();
+        Thread.sleep(1000);
+        driver.navigate().refresh();
+        List<WebElement> playlistTable =driver.findElements(By.cssSelector(".playlist.playlist>a"));
+        List<String >playListNames = new ArrayList<>();
+        for (int i = 2; i< playlistTable.size();i ++) {  // i=2 to eliminate favorites,recently tabs
+         String playlName = playlistTable.get(i).getText();
+         playListNames.add(playlName);
 
+          Assert.assertNotEquals(playListNames.get(i-2),playlistName);//
+
+        }
+        System.out.println(playListNames);
+        Assert.assertFalse(playListNames.contains(playlistName));
     }
 }
