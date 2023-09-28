@@ -3,6 +3,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import static org.openqa.selenium.Keys.ENTER;
@@ -31,11 +32,19 @@ public class PlayListTests extends BaseTest {
         WebElement enterField = wait.until(ExpectedConditions
                 .elementToBeClickable(By.cssSelector("input[name='name']")));
         enterField.click();
-        enterField.click();
-        enterField.sendKeys(playlistName);
-        Thread.sleep(5000);
-        new Actions(driver).keyDown(Keys.ENTER).perform();
+        enterField.clear();
+    //    enterField.sendKeys(playlistName);
 
+        new Actions(driver).keyDown(Keys.ENTER)
+                             .sendKeys(playlistName)
+                             .perform();
+        Thread.sleep((5000));
+        WebElement playListHeader = waitUntilVisible(By.cssSelector("#playlistWrapper h1"));
+        Assert.assertEquals(playListHeader.getText(),playlistName);
+        //delete playlist
+ /*       WebElement deletePlistBtn = waitUntilClickable(By
+                .cssSelector(".btn-delete-playlist"));
+        deletePlistBtn.click();*/
 
     }
 }
