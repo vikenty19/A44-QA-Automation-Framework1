@@ -23,11 +23,13 @@ public class PlayListTests extends BaseTest {
                 .elementToBeClickable(By.cssSelector("[data-testid='playlist-context-menu-create-simple']")));
 
         newPlaylist.click();
-
+//
         //playlist name Enter
 
         WebElement enterField = wait.until(ExpectedConditions
-                .elementToBeClickable(By.xpath("//input[@name = 'name]")));
+                .elementToBeClickable(By.cssSelector("input[name='name']")));
+        enterField.click();
+        enterField.click();
         enterField.sendKeys(playlistName);
         new Actions(driver).keyDown(Keys.ENTER).perform();
 
