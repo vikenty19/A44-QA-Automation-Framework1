@@ -7,7 +7,7 @@ public class ProfileTests extends BaseTest {
 
     @Test(groups = "ProfileTests")
     public void changeProfileName() {
-        openUrl();
+
         enterEmail("demo@class.com");
         enterPassword("te$t$tudent");
         clickLoginBtn();

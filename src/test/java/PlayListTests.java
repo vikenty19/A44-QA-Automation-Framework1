@@ -10,13 +10,15 @@ import static org.openqa.selenium.Keys.ENTER;
 public class PlayListTests extends BaseTest {
 
     @Test
-    public void deletePlaylistTest() {
+    public void deletePlaylistTest() throws InterruptedException {
         String playlistName = "Marazm";
 
-        openUrl();
+
         login("demo@class.com", "te$t$tudent");
-        WebElement plusBtn = wait.until(ExpectedConditions
-                .visibilityOfElementLocated(By.cssSelector(".fa-plus-circle")));
+//        WebElement plusBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".fa-plus-circle")));
+
+        WebElement plusBtn = waitUntilVisible(By.cssSelector(".fa-plus-circle"));
+
         plusBtn.click();
 
         WebElement newPlaylist = wait.until(ExpectedConditions
@@ -31,6 +33,7 @@ public class PlayListTests extends BaseTest {
         enterField.click();
         enterField.click();
         enterField.sendKeys(playlistName);
+        Thread.sleep(5000);
         new Actions(driver).keyDown(Keys.ENTER).perform();
 
 

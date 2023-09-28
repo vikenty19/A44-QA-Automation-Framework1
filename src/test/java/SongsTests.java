@@ -51,7 +51,7 @@ public class SongsTests extends BaseTest {
 
         //   String songName = "Episode 2";
 
-        openUrl();
+
         login("demo@class.com", "te$t$tudent");
         //  choose a song
         clickSearchField();

@@ -10,7 +10,7 @@ public class PlaySongs extends BaseTest {
     public void playSong() throws InterruptedException {
         // String playlistName = generateRandomPlaylistName();
         // login
-        openUrl();
+
         login("vicplach123@gmail.com", "MEGAdelta06@");
 
         // all songs

@@ -17,7 +17,8 @@ import java.util.Locale;
 
 public class BaseTest {
     static WebDriver driver;
-   WebDriverWait wait;
+    public static String url ="https://qa.koel.app/";
+    WebDriverWait wait;
 
     @BeforeSuite
     static void setupDriver() {
@@ -32,8 +33,9 @@ public class BaseTest {
         options.addArguments("--start-maximized");
 
         driver = new ChromeDriver(options);
-    //   driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-         wait  =new WebDriverWait(driver,Duration.ofSeconds(5));
+        //   driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        openUrl(url);
     }
 
     @AfterMethod(alwaysRun = true)
@@ -73,8 +75,8 @@ public class BaseTest {
         emailInput.sendKeys(email);
     }
 
-    public void openUrl() {
-        String url = "https://qa.koel.app/";
+    public void openUrl(String url) {
+ //       String url = "https://qa.koel.app/";
         driver.get(url);
     }
 
@@ -88,7 +90,7 @@ public class BaseTest {
 
     public void searchForSong(String text) throws InterruptedException {
 
-        WebElement searchInput =wait.until(ExpectedConditions
+        WebElement searchInput = wait.until(ExpectedConditions
                 .visibilityOfElementLocated(By.cssSelector("[type='search']")));
         searchInput.click();
         searchInput.clear();
@@ -103,17 +105,22 @@ public class BaseTest {
         searchField.clear();
         searchField.sendKeys(name);
     }
+
     public void clickSearchField() {
         WebElement searchInput = wait.until(ExpectedConditions
                 .visibilityOfElementLocated(By.cssSelector("[type='search']")));
         searchInput.click();
-        searchInput.clear();;
+        searchInput.clear();
+        ;
     }
-    public WebElement waitUntilVisible(By element){
-        return new WebDriverWait(driver,Duration.ofSeconds(4)).until(ExpectedConditions.visibilityOfElementLocated(element));
+
+    public WebElement waitUntilVisible(By element) {
+        return new WebDriverWait(driver, Duration.ofSeconds(4)).until(ExpectedConditions.visibilityOfElementLocated(element));
 
     }
-    public WebElement waitUntilClickable(By element){
-        return new WebDriverWait(driver,Duration.ofSeconds(4)).until(ExpectedConditions.elementToBeClickable(element));
 
+    public WebElement waitUntilClickable(By element) {
+        return new WebDriverWait(driver, Duration.ofSeconds(4)).until(ExpectedConditions.elementToBeClickable(element));
+
+    }
 }

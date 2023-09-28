@@ -19,30 +19,31 @@ public class LoginTests extends BaseTest {
 
 
     @Test
-    public void loginSucceedTest() throws InterruptedException {
-        openUrl();
+    public void loginSucceedTest() {
+
         enterEmail("demo@class.com");
         enterPassword("te$t$tudent");
         clickLoginBtn();
+
         // find if avatar exists
-        WebElement avatar = driver.findElement(By.cssSelector(".avatar"));
+        WebElement avatar = waitUntilVisible(By.cssSelector(".avatar"));
         Assert.assertTrue(avatar.isDisplayed());
-        Thread.sleep(5000);
+
     }
 
 
     @Test
     public void loginEmptyPasswordTest() {
-        openUrl();
+
         enterEmail("demo@class.com");
         clickLoginBtn();
-        WebElement submitLogin = driver.findElement(By.cssSelector("button[type='submit']"));
+        WebElement submitLogin =waitUntilVisible(By.cssSelector("button[type='submit']"));
         Assert.assertTrue(submitLogin.isDisplayed());
     }
 
     @Test
     public void loginInvalidEmailTest() {
-        openUrl();
+
         enterEmail("notexists@class.com");
         enterPassword("te$t$tudent");
         clickLoginBtn();
@@ -51,8 +52,7 @@ public class LoginTests extends BaseTest {
     }
   @Test(dataProvider = "IncorrectLoginProviders")
     public void negativeLoginTests(String email,String password){
-      String url = "https://qa.koel.app/";
-        openUrl();
+
         enterEmail(email);
         enterPassword(password);
         clickLoginBtn();

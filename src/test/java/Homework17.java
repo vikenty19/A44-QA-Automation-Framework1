@@ -15,7 +15,7 @@ public class Homework17 extends BaseTest {
         String text = "Ketsa - Beautiful";
         String playlistName = generateRandomPlaylistName();
         // login
-        openUrl();
+
         login("vicplach123@gmail.com", "MEGAdelta06@");
         // search for song
 

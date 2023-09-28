@@ -38,7 +38,7 @@ public class CSVDataProviderTest extends BaseTest {
     }
     @Test(dataProvider = "getSongsData")
     public void searchForSong(String song) {
-        openUrl();
+
         login("demo@class.com","te$t$tudent");
 
         clickSearchField();
