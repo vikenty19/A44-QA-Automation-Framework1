@@ -8,12 +8,9 @@ import org.testng.annotations.Test;
 public class PlaySongs extends BaseTest {
 
     @Test
-    public void playSong() throws InterruptedException {
-        // String playlistName = generateRandomPlaylistName();
-        // login
+    public void playSong()  {
 
         login("vicplach123@gmail.com", "MEGAdelta06@");
-
         // all songs
         goToAllSongsTub();
         // Play the song
@@ -22,10 +19,19 @@ public class PlaySongs extends BaseTest {
         isEqualizerDisplayed();
 // is pause btn displayed
         isPauseBtnDisplayed();
-
-
     }
 
+    @Test
+    public void playSongOverPlayBtn() {
+        login("vicplach123@gmail.com", "MEGAdelta06@");
+        goToAllSongsTub();
+        //choose the song from the allSongs list
+        WebElement selectedSong = waitUntilClickable(By.cssSelector("tr:nth-child(6) .title"));
+        selectedSong.click();
+        playSongWithPlayBtn();
+        isEqualizerDisplayed();
+
+    }
     private void isPauseBtnDisplayed() {
         WebElement pauseBtn = driver.findElement(By.cssSelector("span[role='button'] > .fa.fa-pause"));
         new Actions(driver)
@@ -40,6 +46,7 @@ public class PlaySongs extends BaseTest {
         WebElement equalizer = wait.until(ExpectedConditions
                 .visibilityOfElementLocated(By.cssSelector(".bars")));
         Assert.assertTrue(equalizer.isDisplayed());
+        System.out.println("Is equalizer displyed  "+ equalizer.isDisplayed());
     }
 
     private void playSongWithPlayBtn() {
