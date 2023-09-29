@@ -38,6 +38,7 @@ public class LoginTests extends BaseTest {
         enterEmail("demo@class.com");
         clickLoginBtn();
         WebElement submitLogin =waitUntilVisible(By.cssSelector("button[type='submit']"));
+        System.out.println("Is Submit button is displayed?  " + submitLogin.isDisplayed());
         Assert.assertTrue(submitLogin.isDisplayed());
     }
 
