@@ -29,7 +29,7 @@ public class PlaySongs extends BaseTest {
         WebElement selectedSong = waitUntilClickable(By.cssSelector("tr:nth-child(1) .title"));
         selectedSong.click();
         playSongWithPlayBtn();
-        Thread.sleep(3000);
+        Thread.sleep(3000);// to check the sound
         isEqualizerDisplayed();
     }
 
