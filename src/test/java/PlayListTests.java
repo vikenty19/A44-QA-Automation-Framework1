@@ -65,4 +65,60 @@ public class PlayListTests extends BaseTest {
         System.out.println(playListNames);
         Assert.assertFalse(playListNames.contains(playlistName));
     }
+
+    @Test
+    public void renamePlayList() throws InterruptedException {
+        String playlistName = generateRandomPlaylistBookName();
+        String newPlayLIstName = "Mermaid";
+        System.out.println(playlistName);
+
+        login("demo@class.com", "te$t$tudent");
+        Thread.sleep((3000));
+     WebElement pListNameToDelete = wait.until(ExpectedConditions
+             .visibilityOfElementLocated(By.cssSelector(".playlist:nth-child(3)>a")));
+
+        new Actions(driver)
+                .doubleClick(pListNameToDelete)
+                .perform();
+        Thread.sleep(3000);
+         enterPlaylistName(newPlayLIstName);
+        System.out.println(newPlayLIstName);
+    /*    new Actions(driver)
+                .keyDown(Keys.ENTER)
+                        .perform();*/
+
+
+ /*       new Actions(driver)
+                .contextClick(pListNameToDelete)
+                .perform();
+        Thread.sleep((3000));
+        driver.navigate().refresh();
+        WebElement edit = driver.findElement(By
+                .cssSelector(" .playlist-item-menu [data-testid='playlist-context-menu-edit-71974']"));
+        new Actions(driver)
+                .click(edit)
+                .perform();
+        Thread.sleep(3000);
+        enterPlaylistName(newPlayLIstName);
+   pListNameToDelete.click();
+   //    pListNameToDelete.clear();
+        new Actions(driver)
+                .sendKeys("Mermaid")
+                .perform();*/
+    //    Thread.sleep(3000);
+
+        System.out.println(getPlaylistName());
+     Assert.assertEquals(newPlayLIstName,getPlaylistName());
+    }
+    public void enterPlaylistName(String name) {
+        WebElement playlistInputField = driver.findElement(By.cssSelector("input[name='name']"));
+        playlistInputField.sendKeys(Keys.HOME, Keys.chord(Keys.SHIFT, Keys.END), name);
+        playlistInputField.sendKeys(Keys.ENTER);
+    }
+    public String getPlaylistName(){
+        WebElement playlistInputField =wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By.cssSelector(".playlist:nth-child(3)>a")));
+        String name = playlistInputField.getText();
+        return name;
+    }
 }

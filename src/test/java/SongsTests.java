@@ -2,6 +2,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -49,12 +50,13 @@ public class SongsTests extends BaseTest {
         Assert.assertEquals(text, songText); */
 
 
-        //   String songName = "Episode 2";
+           String searchForSongName = "Episode 2";
 
 
         login("demo@class.com", "te$t$tudent");
         //  choose a song
         clickSearchField();
+        searchForSong(searchForSongName);
 
         List<WebElement> allSongs = driver.findElements(By.cssSelector(" td.title"));
         for (int i = 0; i < 6; i++) {
@@ -84,17 +86,22 @@ public class SongsTests extends BaseTest {
             //    savePlaylistNameBtn.click();
 
 
+              isSuccessBtnDisplayed();
 
-
-            WebElement successBtn = driver.findElement(By.cssSelector(".success"));
-
-            Assert.assertTrue(successBtn.isDisplayed());
 
             WebElement songAtPlist = driver.findElement(By.cssSelector("#playlistWrapper td.title"));
             String songNameAtPlaylist = songAtPlist.getText();
             //          System.out.println(songNameAtPlaylist + "  " + songName);
             Assert.assertEquals(songName, songNameAtPlaylist);
+
         }
+    }
+
+
+    private void isSuccessBtnDisplayed() {
+        WebElement successBtn = driver.findElement(By.cssSelector(".success"));
+
+        Assert.assertTrue(successBtn.isDisplayed());
     }
 
     private void createNewPlaylistByAddingSong(String playListName) {
@@ -121,8 +128,8 @@ public class SongsTests extends BaseTest {
     }
 
     private void clickAllViewButtn() {
-        WebElement viewAll = driver.findElement(By
-                .xpath("//button[@data-test='view-all-songs-btn']"));
+        WebElement viewAll =wait.until(ExpectedConditions.visibilityOfElementLocated(By
+                .xpath("//button[@data-test='view-all-songs-btn']")));
         viewAll.click();
     }
 
