@@ -32,7 +32,24 @@ public class PlaySongs extends BaseTest {
         Thread.sleep(3000);// to check the sound
         isEqualizerDisplayed();
     }
+    @Test
+    public void playSongFromListTest() {
+        login("demo@class.com", "te$t$tudent");
 
+
+        waitUntilClickable(By.cssSelector(".songs")).click();
+
+
+        WebElement playSong = driver.findElement(By.cssSelector(".items>:nth-child(3)"));
+        new Actions(driver).contextClick(playSong).perform();
+
+
+        driver.findElement(By.cssSelector(".playback")).click();
+        isEqualizerDisplayed();
+
+
+
+    }
     private void isPauseBtnDisplayed() {
         WebElement pauseBtn = driver.findElement(By.cssSelector("span[role='button'] > .fa.fa-pause"));
        new Actions(driver).moveToElement(pauseBtn)
@@ -42,12 +59,6 @@ public class PlaySongs extends BaseTest {
         System.out.println("Is pause btn displayed?  " + pauseBtn.isDisplayed());
     }
 
-    private void isEqualizerDisplayed() {
-        WebElement equalizer = wait.until(ExpectedConditions
-                .visibilityOfElementLocated(By.cssSelector(".bars")));
-        Assert.assertTrue(equalizer.isDisplayed());
-        System.out.println("Is equalizer displayed  " + equalizer.isDisplayed());
-    }
 
     private void playSongWithPlayBtn() {
         WebElement plyBtn = driver.findElement(By.cssSelector("span.play .fa"));

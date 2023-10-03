@@ -50,7 +50,7 @@ public class SongsTests extends BaseTest {
         Assert.assertEquals(text, songText); */
 
 
-           String searchForSongName = "Episode 2";
+        String searchForSongName = "Episode 2";
 
 
         login("demo@class.com", "te$t$tudent");
@@ -69,10 +69,10 @@ public class SongsTests extends BaseTest {
             clickAllViewButtn();
             List<WebElement> searchSongResult = driver.findElements(By.cssSelector(".search-results .song-item .title"));
             searchSongResult.get(i).click();
-             findSongInResult();
+            findSongInResult();
 
 
-           // "addTo" button
+            // "addTo" button
 
             clickAddtoBtn();
 
@@ -80,13 +80,12 @@ public class SongsTests extends BaseTest {
             createNewPlaylistByAddingSong(playListName);
 
 
-
             //    WebElement savePlaylistNameBtn = driver.findElement(By
             //           .cssSelector("section#songsWrapper .new-playlist > .form-new-playlist.form-save.form-simple > button[title='Save']"));
             //    savePlaylistNameBtn.click();
 
 
-              isSuccessBtnDisplayed();
+            isSuccessBtnDisplayed();
 
 
             WebElement songAtPlist = driver.findElement(By.cssSelector("#playlistWrapper td.title"));
@@ -95,7 +94,9 @@ public class SongsTests extends BaseTest {
             Assert.assertEquals(songName, songNameAtPlaylist);
 
         }
+
     }
+
 
 
     private void isSuccessBtnDisplayed() {
@@ -128,7 +129,7 @@ public class SongsTests extends BaseTest {
     }
 
     private void clickAllViewButtn() {
-        WebElement viewAll =wait.until(ExpectedConditions.visibilityOfElementLocated(By
+        WebElement viewAll = wait.until(ExpectedConditions.visibilityOfElementLocated(By
                 .xpath("//button[@data-test='view-all-songs-btn']")));
         viewAll.click();
     }
