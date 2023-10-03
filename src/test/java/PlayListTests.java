@@ -55,7 +55,7 @@ public class PlayListTests extends BaseTest {
         driver.navigate().refresh();
         List<WebElement> playlistTable =driver.findElements(By.cssSelector(".playlist.playlist>a"));
         List<String >playListNames = new ArrayList<>();
-        for (int i = 2; i< playlistTable.size();i ++) {  // i=2 to eliminate favorites,recently tabs
+        for (int i = 2; i< playlistTable.size();i ++) {  // i=2 to not include favorites,recently tabs
          String playlName = playlistTable.get(i).getText();
          playListNames.add(playlName);
 

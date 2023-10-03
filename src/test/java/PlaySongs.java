@@ -35,8 +35,7 @@ public class PlaySongs extends BaseTest {
 
     private void isPauseBtnDisplayed() {
         WebElement pauseBtn = driver.findElement(By.cssSelector("span[role='button'] > .fa.fa-pause"));
-        new Actions(driver)
-                .moveToElement(pauseBtn)
+       new Actions(driver).moveToElement(pauseBtn)
                 .perform();
         pauseBtn.click();
         Assert.assertTrue(pauseBtn.isDisplayed());
