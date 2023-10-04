@@ -32,27 +32,32 @@ public class PlaySongs extends BaseTest {
         Thread.sleep(3000);// to check the sound
         isEqualizerDisplayed();
     }
+
     @Test
     public void playSongFromListTest() {
         login("demo@class.com", "te$t$tudent");
 
+        goToAllSongsTub();
 
-        waitUntilClickable(By.cssSelector(".songs")).click();
+        rightClickOnSong();
 
+        playbackSongFromDropMenu();
 
-        WebElement playSong = driver.findElement(By.cssSelector(".items>:nth-child(3)"));
-        new Actions(driver).contextClick(playSong).perform();
-
-
-        driver.findElement(By.cssSelector(".playback")).click();
         isEqualizerDisplayed();
-
-
-
     }
+
+    private void playbackSongFromDropMenu() {
+        driver.findElement(By.cssSelector(".playback")).click();
+    }
+
+    private void rightClickOnSong() {
+        WebElement playSong = driver.findElement(By.cssSelector(".items>:nth-child(4)"));
+        new Actions(driver).contextClick(playSong).perform();
+    }
+
     private void isPauseBtnDisplayed() {
         WebElement pauseBtn = driver.findElement(By.cssSelector("span[role='button'] > .fa.fa-pause"));
-       new Actions(driver).moveToElement(pauseBtn)
+        new Actions(driver).moveToElement(pauseBtn)
                 .perform();
         pauseBtn.click();
         Assert.assertTrue(pauseBtn.isDisplayed());
