@@ -82,7 +82,7 @@ public class BaseTest {
     }
 
     public void openUrl(String url) {
- //       String url = "https://qa.koel.app/";
+
         driver.get(url);
     }
 
