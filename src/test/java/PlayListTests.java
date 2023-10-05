@@ -27,18 +27,15 @@ public class PlayListTests extends BaseTest {
         playListPage.goToPlayListField();
         playListPage.enterNewPlaylistName(playlistName);
 //
-
-        //       Thread.sleep(1000);
         //Assertions of playlist name
-        WebElement playListHeader = driver.findElement(By.cssSelector("#playlistWrapper h1"));
-        wait.until(ExpectedConditions.textToBePresentInElement(playListHeader, playlistName));
-        Assert.assertEquals(playListHeader.getText(), playlistName);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".success")));
+        playListPage.checkPlayListName(playlistName);
+        playListPage.isSuccessBunnerDisplayed();
+
+
         //delete playlist
-        WebElement deletePlistBtn = waitUntilClickable(By
-                .cssSelector(".btn-delete-playlist"));
-        deletePlistBtn.click();
-        Thread.sleep(1000);
+        playListPage.deleteCreatedPlaylist();
+
+      //  Thread.sleep(1000);
         driver.navigate().refresh();
         List<WebElement> playlistTable = driver.findElements(By.cssSelector(".playlist.playlist>a"));
         List<String> playListNames = new ArrayList<>();
