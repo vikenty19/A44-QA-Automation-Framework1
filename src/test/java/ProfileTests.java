@@ -35,7 +35,7 @@ public class ProfileTests extends BaseTest {
         WebElement saveBtn = waitUntilClickable(By.cssSelector(".btn-submit"));
         saveBtn.click();
         // assert profile name is new
-        driver.navigate().refresh();
+        driver.navigate().refresh();//разобраться!
         WebElement profile = waitUntilVisible(By.cssSelector(".view-profile>span"));
         String newName = profile.getText();
         Assert.assertEquals(newName, name);

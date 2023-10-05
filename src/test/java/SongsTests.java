@@ -1,3 +1,4 @@
+import POM.LoginPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -51,9 +52,9 @@ public class SongsTests extends BaseTest {
 
 
         String searchForSongName = "Episode 2";
+        LoginPage loginPage = new LoginPage(driver);
 
-
-        login("demo@class.com", "te$t$tudent");
+        loginPage.login("demo@class.com", "te$t$tudent");
         //  choose a song
         clickSearchField();
         searchForSong(searchForSongName);

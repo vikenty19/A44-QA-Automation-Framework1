@@ -1,3 +1,4 @@
+import POM.LoginPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -9,8 +10,8 @@ public class PlaySongs extends BaseTest {
 
     @Test
     public void playSong() {
-
-        login("vicplach123@gmail.com", "MEGAdelta06@");
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login("vicplach123@gmail.com", "MEGAdelta06@");
         // all songs
         goToAllSongsTub();
         // Play the song
@@ -23,7 +24,8 @@ public class PlaySongs extends BaseTest {
 
     @Test
     public void playSongOverPlayBtn() throws InterruptedException {
-        login("vicplach123@gmail.com", "MEGAdelta06@");
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login("vicplach123@gmail.com", "MEGAdelta06@");
         goToAllSongsTub();
         //choose the song from the allSongs list
         WebElement selectedSong = waitUntilClickable(By.cssSelector("tr:nth-child(1) .title"));
@@ -35,7 +37,8 @@ public class PlaySongs extends BaseTest {
 
     @Test
     public void playSongFromListTest() {
-        login("demo@class.com", "te$t$tudent");
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login("demo@class.com", "te$t$tudent");
 
         goToAllSongsTub();
 

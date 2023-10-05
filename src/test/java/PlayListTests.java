@@ -70,9 +70,13 @@ public class PlayListTests extends BaseTest {
         String playlistName = generateRandomPlaylistBookName();
         String newPlayLIstName = "Mermaid";
         System.out.println(playlistName);
+
+
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login("demo@class.com", "te$t$tudent");
         Thread.sleep((3000));
+
+
      WebElement pListNameToDelete = wait.until(ExpectedConditions
              .visibilityOfElementLocated(By.cssSelector(".playlist:nth-child(3)>a")));
 

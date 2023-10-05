@@ -66,20 +66,7 @@ public class BaseTest {
         submitLogin.click();
     }
 
-    public void enterPassword(String password) {
-        WebElement passwordInput = driver.findElement(By.cssSelector("[type='password']"));
-        passwordInput.click();
-        passwordInput.clear();
-        passwordInput.sendKeys(password);
-    }
 
-    public void enterEmail(String email) {
-        WebElement emailInput = wait.until(ExpectedConditions
-                .visibilityOfElementLocated(By.cssSelector("[type='email']")));
-        emailInput.click();
-        emailInput.clear();
-        emailInput.sendKeys(email);
-    }
 
     public void openUrl(String url) {
 
@@ -87,12 +74,7 @@ public class BaseTest {
     }
 
 
-    public void login(String email, String password) {
 
-        enterEmail(email);
-        enterPassword(password);
-        clickLoginBtn();
-    }
 
     public void searchForSong(String text) throws InterruptedException {
 
