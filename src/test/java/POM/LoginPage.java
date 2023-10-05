@@ -15,7 +15,7 @@ public class LoginPage extends BasePage{
     By emailField = By.cssSelector("[type='email']");
     By passwordField = By.cssSelector("[type='password']");
     By loginBtn =By.cssSelector("button[type='submit']");
-    protected void clickLoginBtn() {
+  public void clickLoginBtn() {
         WebElement submitLogin = wait.until(ExpectedConditions
                 .visibilityOfElementLocated(loginBtn));
         submitLogin.click();
@@ -29,12 +29,17 @@ public class LoginPage extends BasePage{
         passwordInput.sendKeys(password);
     }
 
-    protected void enterEmail(String email) {
+    public void enterEmail(String email) {
         WebElement emailInput = wait.until(ExpectedConditions
                 .visibilityOfElementLocated( emailField  ));
         emailInput.click();
         emailInput.clear();
         emailInput.sendKeys(email);
     }
+   public void login(String email, String password) {
 
+        enterEmail(email);
+        enterPassword(password);
+        clickLoginBtn();
+    }
 }

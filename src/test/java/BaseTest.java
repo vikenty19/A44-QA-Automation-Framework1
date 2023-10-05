@@ -17,9 +17,9 @@ import java.time.Duration;
 import java.util.Locale;
 
 public class BaseTest {
-    static WebDriver driver;
+    public static WebDriver driver = null;
     public static String url ="https://qa.koel.app/";
-    WebDriverWait wait;
+    public static WebDriverWait wait = null;
 
     @BeforeSuite
     static void setupDriver() {
@@ -61,7 +61,7 @@ public class BaseTest {
         return newName;
     }
 
-    protected void clickLoginBtn() {
+  public  void clickLoginBtn() {
         WebElement submitLogin = driver.findElement(By.cssSelector("button[type='submit']"));
         submitLogin.click();
     }
@@ -73,7 +73,7 @@ public class BaseTest {
         passwordInput.sendKeys(password);
     }
 
-    protected void enterEmail(String email) {
+    public void enterEmail(String email) {
         WebElement emailInput = wait.until(ExpectedConditions
                 .visibilityOfElementLocated(By.cssSelector("[type='email']")));
         emailInput.click();
