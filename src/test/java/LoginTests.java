@@ -1,3 +1,4 @@
+import POM.HomePage;
 import POM.LoginPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -22,14 +23,16 @@ public class LoginTests extends BaseTest {
     @Test
     public void loginSucceedTest() throws InterruptedException {
         LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
         loginPage.enterEmail("demo@class.com");
         loginPage.enterPassword("te$t$tudent");
         loginPage.clickLoginBtn();
 
         // find if avatar exists
         Thread.sleep(3000);
-        WebElement avatar = waitUntilVisible(By.cssSelector(".avatar"));
-        Assert.assertTrue(avatar.isDisplayed());
+       // WebElement avatar = waitUntilVisible(By.cssSelector(".avatar"));
+        homePage.getAvatar();
+        Assert.assertTrue(homePage.getAvatar().isDisplayed());
 
     }
 

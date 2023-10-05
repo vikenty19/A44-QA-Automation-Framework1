@@ -19,6 +19,9 @@ public class BasePage {
         actions = new Actions(givenDriver);
 
     }
+    public WebElement findElement(By locator){
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
     public WebElement waitUntilVisible(By element) {
         return new WebDriverWait(driver, Duration.ofSeconds(4)).until(ExpectedConditions.visibilityOfElementLocated(element));
 
