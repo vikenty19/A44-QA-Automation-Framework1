@@ -28,8 +28,8 @@ public class LoginTests extends BaseTest {
         loginPage.enterPassword("te$t$tudent");
         loginPage.clickLoginBtn();
         // find if avatar exists
-        Assert.assertTrue(homePage.getAvatar());
-
+        Assert.assertTrue(homePage.getAvatar()," User is NOT Logged in");
+        System.out.println("User logged successfully   " + homePage.getAvatar());
     }
 
 
