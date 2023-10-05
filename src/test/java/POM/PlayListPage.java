@@ -34,7 +34,7 @@ public class PlayListPage extends BasePage{
     public void goToPlayListField() {
         WebElement newPlaylist = wait.until(ExpectedConditions
                 .elementToBeClickable(By.cssSelector("[data-testid='playlist-context-menu-create-simple']")));
-
+        newPlaylist.click();
 
     }
 }

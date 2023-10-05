@@ -26,7 +26,7 @@ public class PlayListTests extends BaseTest {
         playListPage.plusBtnClick();
         playListPage.goToPlayListField();
 
-  //      newPlaylist.click();
+  //      
 //
         //playlist name Enter
 
