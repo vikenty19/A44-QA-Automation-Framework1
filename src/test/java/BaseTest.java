@@ -61,12 +61,7 @@ public class BaseTest {
         return newName;
     }
 
-  public  void clickLoginBtn() {
-        WebElement submitLogin = driver.findElement(By.cssSelector("button[type='submit']"));
-        submitLogin.click();
-    }
-
-
+ 
 
     public void openUrl(String url) {
 
