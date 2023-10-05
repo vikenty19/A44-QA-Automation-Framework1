@@ -21,18 +21,14 @@ public class LoginTests extends BaseTest {
 
 
     @Test
-    public void loginSucceedTest() throws InterruptedException {
+    public void loginSucceedTest() {
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
         loginPage.enterEmail("demo@class.com");
         loginPage.enterPassword("te$t$tudent");
         loginPage.clickLoginBtn();
-
         // find if avatar exists
-        Thread.sleep(3000);
-       // WebElement avatar = waitUntilVisible(By.cssSelector(".avatar"));
-        homePage.getAvatar();
-        Assert.assertTrue(homePage.getAvatar().isDisplayed());
+        Assert.assertTrue(homePage.getAvatar());
 
     }
 
