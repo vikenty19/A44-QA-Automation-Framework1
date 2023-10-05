@@ -8,7 +8,10 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
-public class PlayListPage extends BasePage{
+import java.util.ArrayList;
+import java.util.List;
+
+public class PlayListPage extends BasePage {
     public PlayListPage(WebDriver givenDriver) {
         super(givenDriver);
     }
@@ -22,11 +25,13 @@ public class PlayListPage extends BasePage{
                 .perform();
 
     }
+
     public void enterPlaylistName(String name) {
         WebElement playlistInputField = waitUntilClickable(By.cssSelector("input[name='name']"));
         playlistInputField.sendKeys(Keys.HOME, Keys.chord(Keys.SHIFT, Keys.END), name);
         playlistInputField.sendKeys(Keys.ENTER);
     }
+
     public void plusBtnClick() {
         WebElement plusBtn = waitUntilVisible(By.cssSelector(".fa-plus-circle"));
         plusBtn.click();
@@ -67,5 +72,18 @@ public class PlayListPage extends BasePage{
                 .cssSelector(".btn-delete-playlist"));
         deletePlistBtn.click();
     }
-}
 
+    public void deletedPlistNotInTheList(String name) {
+        List<WebElement> playlistTable = driver.findElements(By.cssSelector(".playlist.playlist>a"));
+        List<String> playListNames = new ArrayList<>();
+        for (int i = 2; i < playlistTable.size(); i++) {  // i=2 to not include favorites,recently tabs
+            String playlName = playlistTable.get(i).getText();
+            playListNames.add(playlName);
+
+            Assert.assertNotEquals(playListNames.get(i - 2), name);
+
+        }
+        System.out.println(playListNames);
+        Assert.assertFalse(playListNames.contains(name));
+    }
+}

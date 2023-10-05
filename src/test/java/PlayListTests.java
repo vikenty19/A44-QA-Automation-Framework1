@@ -16,7 +16,7 @@ import static org.openqa.selenium.Keys.ENTER;
 public class PlayListTests extends BaseTest {
 
     @Test
-    public void deletePlaylistTest() throws InterruptedException {
+    public void deletePlaylistTest() throws InterruptedException{
         String playlistName = generateRandomPlaylistBookName();
         System.out.println(playlistName);
         PlayListPage playListPage = new PlayListPage(driver);
@@ -35,20 +35,13 @@ public class PlayListTests extends BaseTest {
         //delete playlist
         playListPage.deleteCreatedPlaylist();
 
-      //  Thread.sleep(1000);
-        driver.navigate().refresh();
-        List<WebElement> playlistTable = driver.findElements(By.cssSelector(".playlist.playlist>a"));
-        List<String> playListNames = new ArrayList<>();
-        for (int i = 2; i < playlistTable.size(); i++) {  // i=2 to not include favorites,recently tabs
-            String playlName = playlistTable.get(i).getText();
-            playListNames.add(playlName);
-
-            Assert.assertNotEquals(playListNames.get(i - 2), playlistName);//
+             driver.navigate().refresh();
+        //Assertions
+        playListPage.deletedPlistNotInTheList(playlistName);
 
         }
-        System.out.println(playListNames);
-        Assert.assertFalse(playListNames.contains(playlistName));
-    }
+
+
 
 
     @Test
