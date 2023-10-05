@@ -1,3 +1,4 @@
+import POM.LoginPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -17,10 +18,8 @@ public class PlayListTests extends BaseTest {
     public void deletePlaylistTest() throws InterruptedException {
         String playlistName = generateRandomPlaylistBookName();
         System.out.println(playlistName);
-
-        login("demo@class.com", "te$t$tudent");
-   //    WebElement plusBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".fa-plus-circle")));
-
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login("demo@class.com", "te$t$tudent");
         WebElement plusBtn = waitUntilVisible(By.cssSelector(".fa-plus-circle"));
 
         plusBtn.click();
@@ -71,8 +70,8 @@ public class PlayListTests extends BaseTest {
         String playlistName = generateRandomPlaylistBookName();
         String newPlayLIstName = "Mermaid";
         System.out.println(playlistName);
-
-        login("demo@class.com", "te$t$tudent");
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login("demo@class.com", "te$t$tudent");
         Thread.sleep((3000));
      WebElement pListNameToDelete = wait.until(ExpectedConditions
              .visibilityOfElementLocated(By.cssSelector(".playlist:nth-child(3)>a")));

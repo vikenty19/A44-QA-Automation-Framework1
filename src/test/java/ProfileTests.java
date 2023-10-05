@@ -1,3 +1,4 @@
+import POM.LoginPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -7,36 +8,35 @@ public class ProfileTests extends BaseTest {
 
     @Test(groups = "ProfileTests")
     public void changeProfileName() {
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login("demo@class.com","te$t$tudent");
 
-        enterEmail("demo@class.com");
-        enterPassword("te$t$tudent");
-        clickLoginBtn();
         // open profile
-        WebElement avatar = driver.findElement(By.cssSelector(".avatar"));
+        WebElement avatar =waitUntilVisible(By.cssSelector(".avatar"));
         avatar.click();
         // type password
-        WebElement currentPasswordInput = driver.findElement(By.id("inputProfileCurrentPassword"));
+        WebElement currentPasswordInput = waitUntilClickable(By.id("inputProfileCurrentPassword"));
         currentPasswordInput.click();
         currentPasswordInput.clear();
         currentPasswordInput.sendKeys("te$t$tudent");
         // type new name
         String name = generateRandomName();
         System.out.println(name);
-        WebElement profileName = driver.findElement(By.cssSelector("#inputProfileName"));
+        WebElement profileName = waitUntilClickable(By.cssSelector("#inputProfileName"));
         profileName.click();
         profileName.clear();
         profileName.sendKeys(name);
         // type email
-        WebElement emailInput = driver.findElement(By.cssSelector("#inputProfileEmail"));
+        WebElement emailInput = waitUntilClickable(By.cssSelector("#inputProfileEmail"));
         emailInput.click();
         emailInput.clear();
         emailInput.sendKeys("demo@class.com");
         // click save
-        WebElement saveBtn = driver.findElement(By.cssSelector(".btn-submit"));
+        WebElement saveBtn = waitUntilClickable(By.cssSelector(".btn-submit"));
         saveBtn.click();
         // assert profile name is new
         driver.navigate().refresh();
-        WebElement profile = driver.findElement(By.cssSelector(".view-profile>span"));
+        WebElement profile = waitUntilVisible(By.cssSelector(".view-profile>span"));
         String newName = profile.getText();
         Assert.assertEquals(newName, name);
     }

@@ -1,3 +1,4 @@
+import POM.LoginPage;
 import com.opencsv.CSVReader;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -38,8 +39,8 @@ public class CSVDataProviderTest extends BaseTest {
     }
     @Test(dataProvider = "getSongsData")
     public void searchForSong(String song) {
-
-        login("demo@class.com","te$t$tudent");
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login("demo@class.com","te$t$tudent");
 
         clickSearchField();
 
