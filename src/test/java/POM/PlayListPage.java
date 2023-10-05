@@ -37,5 +37,17 @@ public class PlayListPage extends BasePage{
         newPlaylist.click();
 
     }
+
+    public void enterNewPlaylistName(String name) {
+        WebElement enterField = wait.until(ExpectedConditions
+                .elementToBeClickable(By.cssSelector("input[name='name']")));
+        enterField.click();
+        enterField.clear();
+//    enterField.sendKeys(playlistName);
+
+        new Actions(driver).sendKeys(name)
+                .keyDown(Keys.ENTER)
+                .perform();
+    }
 }
 

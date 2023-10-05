@@ -25,20 +25,9 @@ public class PlayListTests extends BaseTest {
 
         playListPage.plusBtnClick();
         playListPage.goToPlayListField();
-
-  //      
+        playListPage.enterNewPlaylistName(playlistName);
 //
-        //playlist name Enter
 
-        WebElement enterField = wait.until(ExpectedConditions
-                .elementToBeClickable(By.cssSelector("input[name='name']")));
-        enterField.click();
-        enterField.clear();
-//    enterField.sendKeys(playlistName);
-
-        new Actions(driver).sendKeys(playlistName)
-                .keyDown(Keys.ENTER)
-                .perform();
         //       Thread.sleep(1000);
         //Assertions of playlist name
         WebElement playListHeader = driver.findElement(By.cssSelector("#playlistWrapper h1"));
