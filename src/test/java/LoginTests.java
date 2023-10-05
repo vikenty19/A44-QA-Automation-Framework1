@@ -36,9 +36,9 @@ public class LoginTests extends BaseTest {
 
     @Test
     public void loginEmptyPasswordTest() {
-
-        enterEmail("demo@class.com");
-        clickLoginBtn();
+        LoginPage loginpage = new LoginPage(driver);
+        loginpage.enterEmail("demo@class.com");
+        loginpage.clickLoginBtn();
         WebElement submitLogin =waitUntilVisible(By.cssSelector("button[type='submit']"));
         System.out.println("Is Submit button is displayed?  " + submitLogin.isDisplayed());
         Assert.assertTrue(submitLogin.isDisplayed());
@@ -46,19 +46,19 @@ public class LoginTests extends BaseTest {
 
     @Test
     public void loginInvalidEmailTest() {
-
-        enterEmail("notexists@class.com");
-        enterPassword("te$t$tudent");
-        clickLoginBtn();
+        LoginPage loginpage = new LoginPage(driver);
+        loginpage.enterEmail("notexists@class.com");
+        loginpage.enterPassword("te$t$tudent");
+        loginpage.clickLoginBtn();
         WebElement submitLogin = driver.findElement(By.cssSelector("button[type='submit']"));
         Assert.assertTrue(submitLogin.isDisplayed());
     }
   @Test(dataProvider = "IncorrectLoginProviders")
     public void negativeLoginTests(String email,String password){
-
-        enterEmail(email);
-        enterPassword(password);
-        clickLoginBtn();
+        LoginPage loginpage = new LoginPage(driver);
+        loginpage.enterEmail(email);
+        loginpage.enterPassword(password);
+        loginpage.clickLoginBtn();
         Assert.assertEquals(driver.getCurrentUrl(),url);
   }
 
