@@ -44,7 +44,7 @@ public class PlayListPage extends BasePage {
 
     }
 
-    public void enterNewPlaylistName(String name) {
+    public void createNewPlaylist(String name) {
         WebElement enterField = wait.until(ExpectedConditions
                 .elementToBeClickable(By.cssSelector("input[name='name']")));
         enterField.click();

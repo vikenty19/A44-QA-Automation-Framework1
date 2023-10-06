@@ -25,7 +25,7 @@ public class PlayListTests extends BaseTest {
 
         playListPage.plusBtnClick();
         playListPage.goToPlayListField();
-        playListPage.enterNewPlaylistName(playlistName);
+        playListPage.createNewPlaylist(playlistName);
 //
         //Assertions of playlist name
         playListPage.checkPlayListName(playlistName);
