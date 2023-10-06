@@ -20,6 +20,17 @@ public class PlayListPage extends BasePage {
     By pListLocator = By.cssSelector(".playlist:nth-child(3)>a");
 
     By pListNameField = By.cssSelector("input[name='name']");
+
+    By createPlaylistLocator = By.cssSelector("[data-testid='playlist-context-menu-create-simple']");
+
+    By header = By.cssSelector("#playlistWrapper h1");
+
+    By successLocator = By.cssSelector(".success");
+
+    By deletePlayList = By
+            .cssSelector(".btn-delete-playlist");
+
+    By playListsLocator = By.cssSelector(".playlist.playlist>a");
     public void choosePlayListToDelete() {
         WebElement pListNameToDelete = wait.until(ExpectedConditions
                 .visibilityOfElementLocated(pListLocator));
@@ -43,7 +54,7 @@ public class PlayListPage extends BasePage {
 
     public void goToPlayListField() {
         WebElement newPlaylist = wait.until(ExpectedConditions
-                .elementToBeClickable(By.cssSelector("[data-testid='playlist-context-menu-create-simple']")));
+                .elementToBeClickable(createPlaylistLocator));
         newPlaylist.click();
 
     }
@@ -61,24 +72,23 @@ public class PlayListPage extends BasePage {
     }
 
     public void checkPlayListName(String name) {
-        WebElement playListHeader = waitUntilVisible((By.cssSelector("#playlistWrapper h1")));
+        WebElement playListHeader = waitUntilVisible((header));
         wait.until(ExpectedConditions.textToBePresentInElement(playListHeader, name));
         Assert.assertEquals(playListHeader.getText(), name);
     }
 
     public void isSuccessBunnerDisplayed() {
         wait.until(ExpectedConditions
-                .visibilityOfElementLocated(By.cssSelector(".success")));
+                .visibilityOfElementLocated(successLocator));
     }
 
     public void deleteCreatedPlaylist() {
-        WebElement deletePlistBtn = waitUntilClickable(By
-                .cssSelector(".btn-delete-playlist"));
+        WebElement deletePlistBtn = waitUntilClickable(deletePlayList);
         deletePlistBtn.click();
     }
 
     public void isPlayListDeleted(String name) {
-        List<WebElement> playlistTable = driver.findElements(By.cssSelector(".playlist.playlist>a"));
+        List<WebElement> playlistTable = driver.findElements(playListsLocator);
          List<String> playListNames = new ArrayList<>();
         for (int i = 2; i < playlistTable.size(); i++) {  // i=2 to not include favorites,recently tabs
             String playlName = playlistTable.get(i).getText();
@@ -90,4 +100,11 @@ public class PlayListPage extends BasePage {
         System.out.println(playListNames);
         Assert.assertFalse(playListNames.contains(name));
     }
+    public String getPlaylistName() {
+        WebElement playlistInputField = wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By.cssSelector(".playlist:nth-child(3)>a")));
+        String name = playlistInputField.getText();
+        return name;
+    }
+
 }

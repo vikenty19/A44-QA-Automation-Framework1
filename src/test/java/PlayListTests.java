@@ -37,7 +37,7 @@ public class PlayListTests extends BaseTest {
 
              driver.navigate().refresh();
         //Assertions
-        Thread.sleep(1000);//left is because of instability 
+        Thread.sleep(1000);//left it because of instability
         playListPage.isPlayListDeleted(playlistName);
 
         }
@@ -55,15 +55,10 @@ public class PlayListTests extends BaseTest {
         playListPage.choosePlayListToDelete();
         playListPage.enterPlaylistName(newPlayLIstName);
         System.out.println(newPlayLIstName);
-        System.out.println(getPlaylistName());
-        Assert.assertEquals(newPlayLIstName, getPlaylistName());
+        System.out.println(playListPage.getPlaylistName());
+        Assert.assertEquals(newPlayLIstName, playListPage.getPlaylistName());
     }
 
 
-    public String getPlaylistName() {
-        WebElement playlistInputField = wait.until(ExpectedConditions
-                .visibilityOfElementLocated(By.cssSelector(".playlist:nth-child(3)>a")));
-        String name = playlistInputField.getText();
-        return name;
-    }
+   
 }

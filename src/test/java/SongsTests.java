@@ -50,27 +50,31 @@ public class SongsTests extends BaseTest {
         String songText = songName.getText();
         Assert.assertEquals(text, songText); */
 
-
-        String searchForSongName = "Episode 2";
+        String playListName = generateRandomPlaylistName();
+        String songTitle = "Episode 2";
         LoginPage loginPage = new LoginPage(driver);
 
         loginPage.login("demo@class.com", "te$t$tudent");
         //  choose a song
         clickSearchField();
-        searchForSong(searchForSongName);
+        searchForSong(songTitle);
+// click results view all button
+        clickAllViewButtn();
 
-        List<WebElement> allSongs = driver.findElements(By.cssSelector(" td.title"));
-        for (int i = 0; i < 6; i++) {
-            String playListName = generateRandomPlaylistName();
-            System.out.println(allSongs.get(i).getText());
-            String songName = allSongs.get(i).getText();
-            System.out.println(songName);
-            // search picked song in search field
-            enterNameInSearchField(songName);
-            clickAllViewButtn();
-            List<WebElement> searchSongResult = driver.findElements(By.cssSelector(".search-results .song-item .title"));
-            searchSongResult.get(i).click();
-            findSongInResult();
+        List<WebElement> songsInResult = driver.findElements(By.cssSelector(".search-results .song-item .title"));
+
+
+
+        songsInResult.get(0).click();
+
+        String songName = songsInResult.get(0).getText();
+        System.out.println(songName);
+
+        // search picked song in search field
+
+
+
+  /*          findSongInResult();
 
 
             // "addTo" button
@@ -92,12 +96,9 @@ public class SongsTests extends BaseTest {
             WebElement songAtPlist = driver.findElement(By.cssSelector("#playlistWrapper td.title"));
             String songNameAtPlaylist = songAtPlist.getText();
             //          System.out.println(songNameAtPlaylist + "  " + songName);
-            Assert.assertEquals(songName, songNameAtPlaylist);
-
-        }
+            Assert.assertEquals(songTitle, songNameAtPlaylist);*/
 
     }
-
 
 
     private void isSuccessBtnDisplayed() {

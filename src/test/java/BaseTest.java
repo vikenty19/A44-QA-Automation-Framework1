@@ -94,7 +94,7 @@ public class BaseTest {
                 .visibilityOfElementLocated(By.cssSelector("[type='search']")));
         searchInput.click();
         searchInput.clear();
-        ;
+
     }
 
     public WebElement waitUntilVisible(By element) {
