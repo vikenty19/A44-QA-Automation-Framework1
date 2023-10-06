@@ -29,23 +29,21 @@ public class SongsTests extends BaseTest {
         Thread.sleep(3000);
         // click results view all button
 
-
-             WebElement viewAllBtn = waitUntilClickable(By.xpath("//button[@data-test='view-all-songs-btn']"));
-        Thread.sleep(3000);
-                    viewAllBtn.click();
+        clickAllViewButtn();
+       
 
         // click first song
         Thread.sleep(3000);
         List<WebElement> songsInResults = driver.findElements(By.cssSelector(".search-results .song-item .title"));
 
-           songsInResults.get(0).click();
+        songsInResults.get(0).click();
         System.out.println(songsInResults.get(0).getText());
 
 
         // click Add To
         clickAddToBtn();
 
-    
+
         // create new playlist
         WebElement newPlaylistNameInput = waitUntilVisible(By.cssSelector("[id='songResultsWrapper'] [placeholder='Playlist name']"));
         newPlaylistNameInput.click();
@@ -138,17 +136,20 @@ public class SongsTests extends BaseTest {
 
 
 
-    private void clickAllViewButtn() {
-        WebElement viewAll = wait.until(ExpectedConditions.visibilityOfElementLocated(By
-                .xpath("//button[@data-test='view-all-songs-btn']")));
-        viewAll.click();
+
     }*/
 
     }
+
     private void clickAddToBtn() {
 
         WebElement addToButtn = driver.findElement(By.cssSelector(".btn-add-to"));
         addToButtn.click();
     }
 
+    private void clickAllViewButtn() {
+        WebElement viewAll = wait.until(ExpectedConditions.visibilityOfElementLocated(By
+                .xpath("//button[@data-test='view-all-songs-btn']")));
+        viewAll.click();
+    }
 }
