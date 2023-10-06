@@ -43,8 +43,9 @@ public class SongsTests extends BaseTest {
 
 
         // click Add To
-        WebElement addToBtn = waitUntilClickable(By.cssSelector("[data-test='add-to-btn']"));
-        addToBtn.click();
+        clickAddToBtn();
+
+    
         // create new playlist
         WebElement newPlaylistNameInput = waitUntilVisible(By.cssSelector("[id='songResultsWrapper'] [placeholder='Playlist name']"));
         newPlaylistNameInput.click();
@@ -135,11 +136,7 @@ public class SongsTests extends BaseTest {
         searchSongResult.get(0).click();
     }
 
-    private void clickAddtoBtn() {
 
-        WebElement addToButtn = driver.findElement(By.cssSelector(".btn-add-to"));
-        addToButtn.click();
-    }
 
     private void clickAllViewButtn() {
         WebElement viewAll = wait.until(ExpectedConditions.visibilityOfElementLocated(By
@@ -148,6 +145,10 @@ public class SongsTests extends BaseTest {
     }*/
 
     }
+    private void clickAddToBtn() {
 
+        WebElement addToButtn = driver.findElement(By.cssSelector(".btn-add-to"));
+        addToButtn.click();
+    }
 
 }
