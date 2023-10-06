@@ -29,10 +29,11 @@ public class SongsTests extends BaseTest {
         Thread.sleep(3000);
         // click results view all button
 
-            WebElement viewAllBtn = waitUntilClickable(By.xpath("//button[@data-test='view-all-songs-btn']"));
 
+             WebElement viewAllBtn = waitUntilClickable(By.xpath("//button[@data-test='view-all-songs-btn']"));
         Thread.sleep(3000);
-        viewAllBtn.click();
+                    viewAllBtn.click();
+
         // click first song
         Thread.sleep(3000);
         List<WebElement> songsInResults = driver.findElements(By.cssSelector(".search-results .song-item .title"));
