@@ -22,27 +22,20 @@ public class PlayListTests extends BaseTest {
         PlayListPage playListPage = new PlayListPage(driver);
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login("demo@class.com", "te$t$tudent");
-
         playListPage.plusBtnClick();
         playListPage.goToPlayListField();
         playListPage.createNewPlaylist(playlistName);
-//
         //Assertions of playlist name
         playListPage.checkPlayListName(playlistName);
         playListPage.isSuccessBunnerDisplayed();
-
-
         //delete playlist
         playListPage.deleteCreatedPlaylist();
-
-             driver.navigate().refresh();
+        driver.navigate().refresh();
         //Assertions
         Thread.sleep(1000);//left it because of instability
         playListPage.isPlayListDeleted(playlistName);
 
-        }
-
-
+    }
 
 
     @Test
@@ -60,5 +53,4 @@ public class PlayListTests extends BaseTest {
     }
 
 
-   
 }

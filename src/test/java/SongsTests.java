@@ -8,6 +8,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import static org.testng.Assert.assertEquals;
 
@@ -15,27 +16,36 @@ public class SongsTests extends BaseTest {
 
     @Test
     public void addSongToPlaylist() throws InterruptedException {
-/*    String text = "Dark Days";
+        String text = "Episode 2";
         String playlistName = generateRandomPlaylistName();
+        LoginPage loginPage = new LoginPage(driver);
         // login
-        openUrl();
-        login("demo@class.com", "te$t$tudent");
+        loginPage.login("demo@class.com", "te$t$tudent");
         // search for song
-        WebElement searchInput = driver.findElement(By.cssSelector("[type='search']"));
+        WebElement searchInput = waitUntilClickable(By.cssSelector("[type='search']"));
         searchInput.click();
         searchInput.clear();
         searchInput.sendKeys(text);
+        Thread.sleep(3000);
         // click results view all button
-        WebElement viewAllBtn = driver.findElement(By.xpath("//button[@data-test='view-all-songs-btn']"));
+
+            WebElement viewAllBtn = waitUntilClickable(By.xpath("//button[@data-test='view-all-songs-btn']"));
+
+        Thread.sleep(3000);
         viewAllBtn.click();
         // click first song
+        Thread.sleep(3000);
         List<WebElement> songsInResults = driver.findElements(By.cssSelector(".search-results .song-item .title"));
-        songsInResults.get(0).click();
+
+           songsInResults.get(0).click();
+        System.out.println(songsInResults.get(0).getText());
+
+
         // click Add To
-        WebElement addToBtn = driver.findElement(By.cssSelector("[data-test='add-to-btn']"));
+        WebElement addToBtn = waitUntilClickable(By.cssSelector("[data-test='add-to-btn']"));
         addToBtn.click();
         // create new playlist
-        WebElement newPlaylistNameInput = driver.findElement(By.cssSelector("[id='songResultsWrapper'] [placeholder='Playlist name']"));
+        WebElement newPlaylistNameInput = waitUntilVisible(By.cssSelector("[id='songResultsWrapper'] [placeholder='Playlist name']"));
         newPlaylistNameInput.click();
         newPlaylistNameInput.clear();
         newPlaylistNameInput.sendKeys(playlistName);
@@ -44,13 +54,13 @@ public class SongsTests extends BaseTest {
                 .keyDown(Keys.ENTER)
                 .perform();
         // assertions - success banner and song name in playlist
-        WebElement successBanner = driver.findElement(By.cssSelector(".success"));
+        WebElement successBanner = waitUntilVisible(By.cssSelector(".success"));
         Assert.assertTrue(successBanner.isDisplayed());
         WebElement songName = driver.findElement(By.cssSelector("#playlistWrapper .song-item .title"));
         String songText = songName.getText();
-        Assert.assertEquals(text, songText); */
+        Assert.assertEquals(text, songText);
 
-        String playListName = generateRandomPlaylistName();
+   /*     String playListName = generateRandomPlaylistName();
         String songTitle = "Episode 2";
         LoginPage loginPage = new LoginPage(driver);
 
@@ -98,7 +108,7 @@ public class SongsTests extends BaseTest {
             //          System.out.println(songNameAtPlaylist + "  " + songName);
             Assert.assertEquals(songTitle, songNameAtPlaylist);*/
 
-    }
+ /*   }
 
 
     private void isSuccessBtnDisplayed() {
@@ -134,6 +144,8 @@ public class SongsTests extends BaseTest {
         WebElement viewAll = wait.until(ExpectedConditions.visibilityOfElementLocated(By
                 .xpath("//button[@data-test='view-all-songs-btn']")));
         viewAll.click();
+    }*/
+
     }
 
 
