@@ -16,9 +16,13 @@ public class PlayListPage extends BasePage {
         super(givenDriver);
     }
 
-    public void clearPlayLIstNameField() {
+    By plusBtn = By.cssSelector(".fa-plus-circle");
+    By pListLocator = By.cssSelector(".playlist:nth-child(3)>a");
+
+    By pListNameField = By.cssSelector("input[name='name']");
+    public void choosePlayListToDelete() {
         WebElement pListNameToDelete = wait.until(ExpectedConditions
-                .visibilityOfElementLocated(By.cssSelector(".playlist:nth-child(3)>a")));
+                .visibilityOfElementLocated(pListLocator));
         System.out.println(pListNameToDelete.getText());
         new Actions(driver)
                 .doubleClick(pListNameToDelete)
@@ -27,14 +31,14 @@ public class PlayListPage extends BasePage {
     }
 
     public void enterPlaylistName(String name) {
-        WebElement playlistInputField = waitUntilClickable(By.cssSelector("input[name='name']"));
+        WebElement playlistInputField = waitUntilClickable(pListNameField);
         playlistInputField.sendKeys(Keys.HOME, Keys.chord(Keys.SHIFT, Keys.END), name);
         playlistInputField.sendKeys(Keys.ENTER);
     }
 
     public void plusBtnClick() {
-        WebElement plusBtn = waitUntilVisible(By.cssSelector(".fa-plus-circle"));
-        plusBtn.click();
+        WebElement plusButton = waitUntilVisible(plusBtn);
+        plusButton.click();
     }
 
     public void goToPlayListField() {
@@ -46,7 +50,7 @@ public class PlayListPage extends BasePage {
 
     public void createNewPlaylist(String name) {
         WebElement enterField = wait.until(ExpectedConditions
-                .elementToBeClickable(By.cssSelector("input[name='name']")));
+                .elementToBeClickable(pListNameField));
         enterField.click();
         enterField.clear();
 //    enterField.sendKeys(playlistName);
@@ -73,9 +77,9 @@ public class PlayListPage extends BasePage {
         deletePlistBtn.click();
     }
 
-    public void deletedPlistNotInTheList(String name) {
+    public void isPlayListDeleted(String name) {
         List<WebElement> playlistTable = driver.findElements(By.cssSelector(".playlist.playlist>a"));
-        List<String> playListNames = new ArrayList<>();
+         List<String> playListNames = new ArrayList<>();
         for (int i = 2; i < playlistTable.size(); i++) {  // i=2 to not include favorites,recently tabs
             String playlName = playlistTable.get(i).getText();
             playListNames.add(playlName);

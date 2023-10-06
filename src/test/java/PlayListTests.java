@@ -16,7 +16,7 @@ import static org.openqa.selenium.Keys.ENTER;
 public class PlayListTests extends BaseTest {
 
     @Test
-    public void deletePlaylistTest() throws InterruptedException{
+    public void deletePlaylistTest() throws InterruptedException {
         String playlistName = generateRandomPlaylistBookName();
         System.out.println(playlistName);
         PlayListPage playListPage = new PlayListPage(driver);
@@ -37,7 +37,8 @@ public class PlayListTests extends BaseTest {
 
              driver.navigate().refresh();
         //Assertions
-        playListPage.deletedPlistNotInTheList(playlistName);
+        Thread.sleep(1000);//left is because of instability 
+        playListPage.isPlayListDeleted(playlistName);
 
         }
 
@@ -51,7 +52,7 @@ public class PlayListTests extends BaseTest {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login("demo@class.com", "te$t$tudent");
 
-        playListPage.clearPlayLIstNameField();
+        playListPage.choosePlayListToDelete();
         playListPage.enterPlaylistName(newPlayLIstName);
         System.out.println(newPlayLIstName);
         System.out.println(getPlaylistName());
