@@ -1,3 +1,4 @@
+import POM.BasePage;
 import POM.LoginPage;
 import POM.PlayListPage;
 import org.openqa.selenium.By;
@@ -20,6 +21,7 @@ public class PlayListTests extends BaseTest {
         String playlistName = generateRandomPlaylistBookName();
         System.out.println(playlistName);
         PlayListPage playListPage = new PlayListPage(driver);
+        BasePage basePage = new BasePage(driver);
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login("demo@class.com", "te$t$tudent");
         playListPage.plusBtnClick();
@@ -30,7 +32,8 @@ public class PlayListTests extends BaseTest {
         playListPage.isSuccessBunnerDisplayed();
         //delete playlist
         playListPage.deleteCreatedPlaylist();
-        driver.navigate().refresh();
+        basePage.refreshDriver();
+       // driver.navigate().refresh();
         //Assertions
         Thread.sleep(1000);//left it because of instability
         playListPage.isPlayListDeleted(playlistName);

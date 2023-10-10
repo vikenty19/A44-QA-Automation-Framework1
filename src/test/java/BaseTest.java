@@ -12,6 +12,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.DataProvider;
 
 import java.time.Duration;
 import java.util.Locale;
@@ -67,7 +68,14 @@ public class BaseTest {
 
         driver.get(url);
     }
-
+    @DataProvider(name = "IncorrectLoginProviders")
+    public static Object[][] getDataFromDataProviders() {
+        return new Object[][]{
+                {"notExisting@email.com", "NotExistingPassword"},
+                {"demo@class.com", ""},
+                {"", ""},
+        };
+    }
 
 
 

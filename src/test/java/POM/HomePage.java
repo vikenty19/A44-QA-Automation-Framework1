@@ -10,9 +10,8 @@ public class HomePage extends BasePage{
     public HomePage(WebDriver givenDriver) {
         super(givenDriver);
     }
-    By userAvatarIcon = By.cssSelector(".avatar");
-public boolean getAvatar(){
-
-    return findElement(userAvatarIcon).isDisplayed();
-}
+    public boolean getAvatar(){
+        By userAvatarIcon = By.cssSelector(".avatar");
+        return findElement(userAvatarIcon).isDisplayed();
+    }
 }
