@@ -102,7 +102,7 @@ public class PlayListPage extends BasePage {
     }
     public String getPlaylistName() {
         WebElement playlistInputField = wait.until(ExpectedConditions
-                .visibilityOfElementLocated(By.cssSelector(".playlist:nth-child(3)>a")));
+                .visibilityOfElementLocated(pListLocator));
         String name = playlistInputField.getText();
         return name;
     }
