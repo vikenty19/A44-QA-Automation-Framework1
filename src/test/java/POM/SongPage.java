@@ -5,6 +5,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
@@ -13,22 +14,29 @@ public class SongPage extends BasePage{
     public SongPage(WebDriver givenDriver) {
         super(givenDriver);
     }
+
+    @FindBy(css = "#playlistWrapper .song-item .title" )
+    WebElement songName;
+    @FindBy(css ="[id='songResultsWrapper'] [placeholder='Playlist name']" )
+    WebElement newPlaylistNameInput;
     public void searchSongInSearchField(String text) {
-        WebElement searchInput = waitUntilClickable(By.cssSelector("[type='search']"));
+       WebElement searchInput = waitUntilClickable(By.cssSelector("[type='search']"));
         searchInput.click();
         searchInput.clear();
         searchInput.sendKeys(text);
     }
 
    public String getSongText() {
-        WebElement songName = driver.findElement(By.cssSelector("#playlistWrapper .song-item .title"));
+
         String songText = songName.getText();
         return songText;
     }
 
 
     public void createNewPlaylistWhileAddingSong(String playlistName) {
-        WebElement newPlaylistNameInput = waitUntilVisible(By.cssSelector("[id='songResultsWrapper'] [placeholder='Playlist name']"));
+ //
+        //       //WebElement newPlaylistNameInput = waitUntilVisible(By
+      //          .cssSelector("[id='songResultsWrapper'] [placeholder='Playlist name']"));
         newPlaylistNameInput.click();
         newPlaylistNameInput.clear();
         newPlaylistNameInput.sendKeys(playlistName);
