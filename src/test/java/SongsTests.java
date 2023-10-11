@@ -24,8 +24,8 @@ public class SongsTests extends BaseTest {
         loginPage.login("demo@class.com", "te$t$tudent");
         SongPage songPage = new SongPage(driver);
         BasePage basePage = new BasePage(driver);
-        songPage.searchSongInSearchField(text);
-        songPage.clickAllViewButtn();
+        songPage.searchSongInSearchField(text)
+                 .clickAllViewButtn();
         Thread.sleep(500);
         songPage.clickFirstSongInResult();
         System.out.println(songPage.clickFirstSongInResult());

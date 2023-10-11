@@ -19,11 +19,12 @@ public class SongPage extends BasePage{
     WebElement songName;
     @FindBy(css ="[id='songResultsWrapper'] [placeholder='Playlist name']" )
     WebElement newPlaylistNameInput;
-    public void searchSongInSearchField(String text) {
+    public SongPage searchSongInSearchField(String text) {
        WebElement searchInput = waitUntilClickable(By.cssSelector("[type='search']"));
         searchInput.click();
         searchInput.clear();
         searchInput.sendKeys(text);
+        return this;
     }
 
    public String getSongText() {
@@ -59,10 +60,11 @@ public class SongPage extends BasePage{
         addToButtn.click();
     }
 
-  public void clickAllViewButtn() {
+  public SongPage clickAllViewButtn() {
         WebElement viewAll = wait.until(ExpectedConditions.visibilityOfElementLocated(By
                 .xpath("//button[@data-test='view-all-songs-btn']")));
         viewAll.click();
+        return this;
     }
 
 }
