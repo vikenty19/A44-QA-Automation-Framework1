@@ -25,7 +25,7 @@ public class PlayListPage extends BasePage {
 
     By header = By.cssSelector("#playlistWrapper h1");
 
-    By successLocator = By.cssSelector(".success");
+
 
     By deletePlayList = By
             .cssSelector(".btn-delete-playlist");
@@ -77,10 +77,7 @@ public class PlayListPage extends BasePage {
         Assert.assertEquals(playListHeader.getText(), name);
     }
 
-    public void isSuccessBunnerDisplayed() {
-        wait.until(ExpectedConditions
-                .visibilityOfElementLocated(successLocator));
-    }
+
 
     public void deleteCreatedPlaylist() {
         WebElement deletePlistBtn = waitUntilClickable(deletePlayList);

@@ -22,6 +22,7 @@ public class BasePage {
 
 
     }
+    By successLocator = By.cssSelector(".success");
     public void refreshDriver(){
         driver.navigate().refresh();
     }
@@ -38,6 +39,9 @@ public class BasePage {
         return new WebDriverWait(driver, Duration.ofSeconds(4)).until(ExpectedConditions.elementToBeClickable(element));
 
     }
-
+    public void isSuccessBannerDisplayed() {
+        wait.until(ExpectedConditions
+                .visibilityOfElementLocated(successLocator));
+    }
 
 }

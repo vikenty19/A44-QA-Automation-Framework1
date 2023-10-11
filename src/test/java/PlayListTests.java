@@ -29,7 +29,7 @@ public class PlayListTests extends BaseTest {
         playListPage.createNewPlaylist(playlistName);
         //Assertions of playlist name
         playListPage.checkPlayListName(playlistName);
-        playListPage.isSuccessBunnerDisplayed();
+        playListPage.isSuccessBannerDisplayed();
         //delete playlist
         playListPage.deleteCreatedPlaylist();
         basePage.refreshDriver();
