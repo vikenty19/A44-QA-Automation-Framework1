@@ -32,7 +32,7 @@ public class PlayListTests extends BaseTest {
         playListPage.isSuccessBannerDisplayed();
         //delete playlist
         playListPage.deleteCreatedPlaylist();
-            //Assertions
+        //Assertions
         Thread.sleep(1000);//left it because of instability
         playListPage.isPlayListDeleted(playlistName);
 
@@ -53,5 +53,17 @@ public class PlayListTests extends BaseTest {
         Assert.assertEquals(newPlayLIstName, playListPage.getPlaylistName());
     }
 
+    @Test
+    public void renamePlistWithEditBtn() {
+        String newName = "Sausage Dog";
+        PlayListPage playListPage = new PlayListPage(driver);
+        BasePage basePage = new BasePage(driver);
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login("demo@class.com", "te$t$tudent");
+        playListPage.rightClickToEditPlistName();
+        playListPage.enterPlaylistName(newName);
+        basePage.isSuccessBannerDisplayed();
 
+
+    }
 }

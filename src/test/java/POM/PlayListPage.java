@@ -5,6 +5,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
@@ -24,8 +25,8 @@ public class PlayListPage extends BasePage {
     By createPlaylistLocator = By.cssSelector("[data-testid='playlist-context-menu-create-simple']");
 
     By header = By.cssSelector("#playlistWrapper h1");
-
-
+    @FindBy(css =".menu> ul > li:nth-of-type(1)" )
+      WebElement clickable;
 
     By deletePlayList = By
             .cssSelector(".btn-delete-playlist");
@@ -39,6 +40,22 @@ public class PlayListPage extends BasePage {
                 .doubleClick(pListNameToDelete)
                 .perform();
 
+    }
+    public void rightClickToEditPlistName(){
+        WebElement pListNameToDelete = wait.until(ExpectedConditions
+                .visibilityOfElementLocated(pListLocator));
+        pListNameToDelete.click();
+
+        new Actions(driver)
+                .contextClick(pListNameToDelete)
+                .perform();
+       // WebElement clickable = driver.findElement(By.cssSelector(".menu> ul > li:nth-of-type(1)"));
+        new Actions(driver)
+                .click(clickable)
+                .perform();
+
+
+        //.menu> ul > li:nth-of-type(1)
     }
 
     public void enterPlaylistName(String name) {
