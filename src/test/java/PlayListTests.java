@@ -63,7 +63,8 @@ public class PlayListTests extends BaseTest {
         playListPage.rightClickToEditPlistName();
         playListPage.enterPlaylistName(newName);
         basePage.isSuccessBannerDisplayed();
-
+        Assert.assertEquals(newName, playListPage.getPlaylistName());
+        System.out.println(newName+ "  "+ playListPage.getPlaylistName());
 
     }
 }

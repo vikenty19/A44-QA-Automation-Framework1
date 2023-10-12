@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 public class PlaySongs extends BaseTest {
 
     @Test
-    public void playSong() throws InterruptedException {
+    public void playSong()  {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login("vicplach123@gmail.com", "MEGAdelta06@");
         SongPage songPage = new SongPage(driver);
