@@ -38,11 +38,15 @@ public class SongsTests extends BaseTest {
 
 
     }
-@Test
-    public void playSongWithPlayBtn(){
-    LoginPage loginPage = new LoginPage(driver);
-    loginPage.login("demo@class.com", "te$t$tudent");
+    @Test
+    public void checkVisibilityTest() {
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login("demo@class.com", "te$t$tudent");
+        SongPage songPage = new SongPage(driver);
+        String text = songPage.getSongText();
+        System.out.println("WHERE IS TEXT?" + text);
+        System.out.println("Is element invisible? === " + wait
+                .until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("title"))));
 
-
-}
+    }
 }

@@ -15,7 +15,7 @@ public class SongPage extends BasePage{
         super(givenDriver);
     }
 
-    @FindBy(css = "#playlistWrapper .song-item .title" )
+    @FindBy(css = "#songsWrapper .items > tr:nth-of-type(1) > .title" )
     WebElement songName;
     @FindBy(css ="[id='songResultsWrapper'] [placeholder='Playlist name']" )
     WebElement newPlaylistNameInput;
@@ -76,7 +76,7 @@ public class SongPage extends BasePage{
         driver.findElement(By.cssSelector(".playback")).click();
     }
     public void playSongWithPlayBtn() {
-   
+
         WebElement plyBtn = driver.findElement(By.cssSelector("span.play .fa"));
         new Actions(driver)
                 .moveToElement(plyBtn)

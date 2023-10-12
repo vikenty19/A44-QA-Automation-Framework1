@@ -32,9 +32,7 @@ public class PlayListTests extends BaseTest {
         playListPage.isSuccessBannerDisplayed();
         //delete playlist
         playListPage.deleteCreatedPlaylist();
-        basePage.refreshDriver();
-       // driver.navigate().refresh();
-        //Assertions
+            //Assertions
         Thread.sleep(1000);//left it because of instability
         playListPage.isPlayListDeleted(playlistName);
 

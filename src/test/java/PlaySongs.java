@@ -31,8 +31,6 @@ public class PlaySongs extends BaseTest {
         SongPage songPage = new SongPage(driver);
         BasePage basePage = new BasePage(driver);
         songPage.goToAllSongsTub();
-        Thread.sleep(3000);
-        basePage.refreshDriver();
         songPage.selectSongFromAllSongs();
         songPage.playSongWithPlayBtn();
         Thread.sleep(3000);// to check the sound
