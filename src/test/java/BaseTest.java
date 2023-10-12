@@ -114,11 +114,6 @@ public class BaseTest {
         return new WebDriverWait(driver, Duration.ofSeconds(4)).until(ExpectedConditions.elementToBeClickable(element));
 
     }
-    public void isEqualizerDisplayed() {
-        WebElement equalizer = wait.until(ExpectedConditions
-                .visibilityOfElementLocated(By.cssSelector(".bars")));
-        Assert.assertTrue(equalizer.isDisplayed());
-        System.out.println("Is equalizer displayed  " + equalizer.isDisplayed());
-    }
+
 
 }

@@ -7,6 +7,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import java.time.Duration;
 
@@ -43,5 +44,18 @@ public class BasePage {
         wait.until(ExpectedConditions
                 .visibilityOfElementLocated(successLocator));
     }
-
+    public void isEqualizerDisplayed() {
+        WebElement equalizer = wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By.cssSelector(".bars")));
+        Assert.assertTrue(equalizer.isDisplayed());
+        System.out.println("Is equalizer displayed  " + equalizer.isDisplayed());
+    }
+    public void isPauseBtnDisplayed() {
+        WebElement pauseBtn = driver.findElement(By.cssSelector("span[role='button'] > .fa.fa-pause"));
+        new Actions(driver).moveToElement(pauseBtn)
+                .perform();
+        pauseBtn.click();
+        Assert.assertTrue(pauseBtn.isDisplayed());
+        System.out.println("Is pause btn displayed?  " + pauseBtn.isDisplayed());
+    }
 }

@@ -35,14 +35,11 @@ public class SongPage extends BasePage{
 
 
     public void createNewPlaylistWhileAddingSong(String playlistName) {
- //
-        //       //WebElement newPlaylistNameInput = waitUntilVisible(By
-      //          .cssSelector("[id='songResultsWrapper'] [placeholder='Playlist name']"));
+
         newPlaylistNameInput.click();
         newPlaylistNameInput.clear();
         newPlaylistNameInput.sendKeys(playlistName);
-        // click Enter
-        new Actions(driver)
+          new Actions(driver)
                 .keyDown(Keys.ENTER)
                 .perform();
 
@@ -65,6 +62,31 @@ public class SongPage extends BasePage{
                 .xpath("//button[@data-test='view-all-songs-btn']")));
         viewAll.click();
         return this;
+    }
+    public void goToAllSongsTub() {
+        WebElement allSongs = wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By.cssSelector(".songs")));
+        allSongs.click();
+    }
+    public void rightClickOnSong() {
+        WebElement playSong = driver.findElement(By.cssSelector(".items>:nth-child(4)"));
+        new Actions(driver).contextClick(playSong).perform();
+    }
+    public void playbackSongFromDropMenu() {
+        driver.findElement(By.cssSelector(".playback")).click();
+    }
+    public void playSongWithPlayBtn() {
+        WebElement plyBtn =wait.until(ExpectedConditions
+                .elementToBeClickable(By.cssSelector("[title='Play or resume'] .fa")));
+        new Actions(driver)
+                .moveToElement(plyBtn)
+                .perform();
+        plyBtn.click();
+    }
+    public void selectSongFromAllSongs() {
+        selectSongFromAllSongs();
+        WebElement selectedSong = waitUntilClickable(By.cssSelector("tr:nth-child(3)>.title"));
+        selectedSong.click();
     }
 
 }

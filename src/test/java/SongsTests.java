@@ -18,7 +18,8 @@ public class SongsTests extends BaseTest {
 
     @Test
     public void addSongToPlaylist() throws InterruptedException {
-        String text = "Episode 2";
+        String text =
+                "Tunnel of Lights (ID 1689)";
         String playlistName = generateRandomPlaylistName();
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login("demo@class.com", "te$t$tudent");
@@ -37,5 +38,11 @@ public class SongsTests extends BaseTest {
 
 
     }
+@Test
+    public void playSongWithPlayBtn(){
+    LoginPage loginPage = new LoginPage(driver);
+    loginPage.login("demo@class.com", "te$t$tudent");
 
+
+}
 }
