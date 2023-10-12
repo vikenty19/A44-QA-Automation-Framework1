@@ -76,15 +76,15 @@ public class SongPage extends BasePage{
         driver.findElement(By.cssSelector(".playback")).click();
     }
     public void playSongWithPlayBtn() {
-        WebElement plyBtn =wait.until(ExpectedConditions
-                .elementToBeClickable(By.cssSelector("[title='Play or resume'] .fa")));
+   
+        WebElement plyBtn = driver.findElement(By.cssSelector("span.play .fa"));
         new Actions(driver)
                 .moveToElement(plyBtn)
                 .perform();
         plyBtn.click();
     }
     public void selectSongFromAllSongs() {
-        selectSongFromAllSongs();
+
         WebElement selectedSong = waitUntilClickable(By.cssSelector("tr:nth-child(3)>.title"));
         selectedSong.click();
     }
