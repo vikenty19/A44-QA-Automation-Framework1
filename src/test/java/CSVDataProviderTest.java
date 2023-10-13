@@ -1,4 +1,6 @@
+import POM.BasePage;
 import POM.LoginPage;
+import POM.SongPage;
 import com.opencsv.CSVReader;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -40,17 +42,14 @@ public class CSVDataProviderTest extends BaseTest {
     @Test(dataProvider = "getSongsData")
     public void searchForSong(String song) {
         LoginPage loginPage = new LoginPage(driver);
+        SongPage songPage = new SongPage(driver);
         loginPage.login("demo@class.com","te$t$tudent");
+         songPage.clickSearchField();
+        songPage.enterNameInSearchField(song);
+        songPage.checkSearchResult();
+        System.out.println(songPage.checkSearchResult());
+        Assert.assertEquals(songPage.checkSearchResult(),song);
 
-        clickSearchField();
-
-        enterNameInSearchField(song);
-
-        WebElement findSong = wait.until(ExpectedConditions
-                .visibilityOfElementLocated(By.cssSelector("strong")));
-        String foundSong = findSong.getText();
-        System.out.println(foundSong);
-        Assert.assertEquals(foundSong,song);
 
     }
 }

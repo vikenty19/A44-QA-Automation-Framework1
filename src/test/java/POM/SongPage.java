@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import java.util.List;
 
@@ -26,14 +28,33 @@ public class SongPage extends BasePage{
         searchInput.sendKeys(text);
         return this;
     }
+    public void clickSearchField() {
+        WebElement searchInput = wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By.cssSelector("[type='search']")));
+        searchInput.click();
+        searchInput.clear();
 
-   public String getSongText() {
+    }
+    public void enterNameInSearchField(String name) {
+        WebElement searchField = driver.findElement(By.cssSelector("input[type='search']"));
+        searchField.click();
+        searchField.clear();
+        searchField.sendKeys(name);
+    }
+
+
+
+    public  String getSongText() {
+        WebElement title = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("title")));
+        String text = title.getText();
+        return text;
+
+    }
+    public String getSongName() {
 
         String songText = songName.getText();
         return songText;
     }
-
-
     public void createNewPlaylistWhileAddingSong(String playlistName) {
 
         newPlaylistNameInput.click();
@@ -89,4 +110,12 @@ public class SongPage extends BasePage{
         selectedSong.click();
     }
 
+    public String checkSearchResult() {
+        WebElement findSong = wait.until(ExpectedConditions
+            .visibilityOfElementLocated(By.cssSelector("strong")));
+        String foundSong = findSong.getText();
+        return foundSong;
+
+
+    }
 }

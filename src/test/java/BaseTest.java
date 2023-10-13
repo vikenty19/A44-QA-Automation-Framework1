@@ -90,20 +90,8 @@ public class BaseTest {
 
     }
 
-    void enterNameInSearchField(String name) {
-        WebElement searchField = driver.findElement(By.cssSelector("input[type='search']"));
-        searchField.click();
-        searchField.clear();
-        searchField.sendKeys(name);
-    }
 
-    public void clickSearchField() {
-        WebElement searchInput = wait.until(ExpectedConditions
-                .visibilityOfElementLocated(By.cssSelector("[type='search']")));
-        searchInput.click();
-        searchInput.clear();
 
-    }
 
     public WebElement waitUntilVisible(By element) {
         return new WebDriverWait(driver, Duration.ofSeconds(4)).until(ExpectedConditions.visibilityOfElementLocated(element));
