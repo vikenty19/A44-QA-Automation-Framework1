@@ -14,8 +14,8 @@ public class SongPage extends BasePage{
     public SongPage(WebDriver givenDriver) {
         super(givenDriver);
     }
-
-    @FindBy(css = "#songsWrapper .items > tr:nth-of-type(1) > .title" )
+//"#songsWrapper .items > tr:nth-of-type(1) > .title"
+    @FindBy(css ="#playlistWrapper .song-item .title"  )
     WebElement songName;
     @FindBy(css ="[id='songResultsWrapper'] [placeholder='Playlist name']" )
     WebElement newPlaylistNameInput;
