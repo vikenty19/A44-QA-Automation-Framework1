@@ -16,33 +16,23 @@ public class ProfileTests extends BaseTest {
         ProfilePage profilePage = new ProfilePage(driver);
         profilePage.openProfile();
 
-        // open profile
-       
         // type password
-        WebElement currentPasswordInput = waitUntilClickable(By.id("inputProfileCurrentPassword"));
-        currentPasswordInput.click();
-        currentPasswordInput.clear();
-        currentPasswordInput.sendKeys("te$t$tudent");
-        // type new name
+        profilePage.enterPasswordInProfile();
+
         String name = generateRandomName();
         System.out.println(name);
-        WebElement profileName = waitUntilClickable(By.cssSelector("#inputProfileName"));
-        profileName.click();
-        profileName.clear();
-        profileName.sendKeys(name);
+        // type new name
+        profilePage.enterNewNameInProfile(name);
+
         // type email
-        WebElement emailInput = waitUntilClickable(By.cssSelector("#inputProfileEmail"));
-        emailInput.click();
-        emailInput.clear();
-        emailInput.sendKeys("demo@class.com");
+        profilePage.enterEmailInProfilePage();
+
         // click save
-        WebElement saveBtn = waitUntilClickable(By.cssSelector(".btn-submit"));
-        saveBtn.click();
+        profilePage.clickSaveInProfile();
+
         // assert profile name is new
         basePage.isSuccessBannerDisplayed();
         driver.navigate().refresh();//разобраться!
-        WebElement profile = waitUntilVisible(By.cssSelector("span .name"));//.view-profile>span
-        String newName = profile.getText();
-        Assert.assertEquals(newName, name);
+         Assert.assertEquals( basePage.getNewProfileName(),name);
     }
 }

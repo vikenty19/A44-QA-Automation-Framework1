@@ -58,4 +58,11 @@ public class BasePage {
         Assert.assertTrue(pauseBtn.isDisplayed());
         System.out.println("Is pause btn displayed?  " + pauseBtn.isDisplayed());
     }
+
+    public String getNewProfileName() {
+        WebElement profile = waitUntilVisible(By.cssSelector("span .name"));//.view-profile>span
+        String newName = profile.getText();
+        return newName;
+
+    }
 }
