@@ -8,6 +8,7 @@ import org.openqa.selenium.interactions.WheelInput;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,12 +62,20 @@ public class ProfileTests extends BaseTest {
                     .moveToElement(backgrounds.get(i))
                     .perform();
             String color = backgrounds.get(i).getText();
-            Thread.sleep(1000);
+         //   Thread.sleep(1000);
             backColors.add(color);
         }
 
             System.out.println(backColors+" "+ backColors.size());
 
+
+        WebElement colorPane = driver.findElement(By.cssSelector("li:nth-of-type(3) > .theme > .name"));
+        new Actions(driver)
+                .click(colorPane)
+                .perform();
+        String colour = colorPane.getText();
+           System.out.println(colour +"  "+ backColors.get(2));
+          Assert.assertEquals(backColors.get(2),colorPane.getText());
 
       //  System.out.println(backgrounds.get(1).getText());
       //  System.out.println(backgrounds);
