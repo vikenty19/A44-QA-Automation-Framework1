@@ -93,15 +93,7 @@ public class BaseTest {
 
 
 
-    public WebElement waitUntilVisible(By element) {
-        return new WebDriverWait(driver, Duration.ofSeconds(4)).until(ExpectedConditions.visibilityOfElementLocated(element));
 
-    }
-
-    public WebElement waitUntilClickable(By element) {
-        return new WebDriverWait(driver, Duration.ofSeconds(4)).until(ExpectedConditions.elementToBeClickable(element));
-
-    }
 
 
 }

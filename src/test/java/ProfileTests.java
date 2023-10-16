@@ -2,16 +2,16 @@ import POM.BasePage;
 import POM.LoginPage;
 import POM.ProfilePage;
 import com.opencsv.CSVReader;
+import com.opencsv.exceptions.CsvValidationException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.interactions.WheelInput;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -20,6 +20,38 @@ import java.util.List;
 import java.util.Objects;
 
 public class ProfileTests extends BaseTest {
+  /* @DataProvider(name = "profileThemeTest")
+    // Method to read the data from .csv file and return it as array
+    public Object[][] getData() throws Exception {
+        // path to csv file that is located under resources folder
+        Reader reader = Files.newBufferedReader(Paths.get(System
+                .getProperty("user.dir") + "/src/test/resources/ColourLocators.csv"));
+        CSVReader csvReader = new CSVReader(reader);
+        List<String[]> records = csvReader.readAll();
+        Object[][] array = null;
+        for (int i = 0; i < records.size(); i++) {
+
+            Object[] row = records.get(i);
+            if (Objects.isNull(array)) {
+                array = new Object[records.size()][row.length];
+            }
+            array[i][0] = row[0];
+        array[i][1] = row[1];
+          //  array[i][2] = row[3];
+        }
+        return array;
+
+
+    }*/
+  @DataProvider(name = "profileThemeTest")
+  public static Object[][] getDataFromDataProviders() {
+      return new Object[][]{
+          //    {"li:nth-of-type(1) > .theme > .name", 0},
+              {"li:nth-of-type(8) > .theme > .name", 7},
+              {"li:nth-of-type(16) > .theme > .name", 15},
+      };
+  }
+
 
     @Test(groups = "ProfileTests")
     public void changeProfileName()  {
@@ -49,9 +81,9 @@ public class ProfileTests extends BaseTest {
         driver.navigate().refresh();//разобраться!
          Assert.assertEquals( basePage.getNewProfileName(),name);
     }
-    @Test (dataProvider = "getBackGroundLocator")
+    @Test (dataProvider = "profileThemeTest")
 
-    public void profileThemeTest(String colorLocator,Integer j) throws InterruptedException {
+    public void profileThemeTest(String colorLocator,int j) throws InterruptedException {
 
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login("demo@class.com","te$t$tudent");
@@ -78,45 +110,23 @@ public class ProfileTests extends BaseTest {
 
 
         WebElement colorPane = driver.findElement(By.cssSelector(colorLocator));
+
+
+
         new Actions(driver)
                 .click(colorPane)
                 .perform();
+        Thread.sleep(3000);
         String colour = colorPane.getText();
            System.out.println(colour +"  "+ backColors.get(j));
           Assert.assertEquals(backColors.get(j),colorPane.getText());
 
-
-
-
-    /*    WebElement footer = driver.findElement(By.cssSelector("li:nth-of-type(1) > .theme > .name"));
-        WheelInput.ScrollOrigin scrollOrigin = WheelInput.ScrollOrigin.fromElement(footer, 0, -50);
-        new Actions(driver)
-                .scrollFromOrigin(scrollOrigin,0, 200)
-                .perform();
-        System.out.println(footer.getText());
-        Thread.sleep(5000);*/
     }
-    @DataProvider(name = "getBackGroundLocator")
-    // Method to read the data from .csv file and return it as array
-    public Object[][] getData() throws Exception {
-        // path to csv file that is located under resources folder
-        Reader reader = Files.newBufferedReader(Paths.get(System.getProperty("user.dir") + "/src/test/resources/ColourLocators.csv"));
-        CSVReader csvReader = new CSVReader(reader);
-        List<String[]> records = csvReader.readAll();
-        Object[][] array = null;
-        for (int i = 0; i < records.size(); i++) {
 
-            Object[] row = records.get(i);
-            if (Objects.isNull(array)) {
-                array = new Object[records.size()][row.length];
-            }
-            array[i][0] = row[0];
-                array[i][1] = row[1];
-               //    array[i][2] = row[3];
-        }
-        return array;
-
-
-    }
 }
+
+
+
+
+
 //li:nth-of-type(2) > .theme > .name
