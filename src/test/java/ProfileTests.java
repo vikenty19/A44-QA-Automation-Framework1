@@ -51,7 +51,7 @@ public class ProfileTests extends BaseTest {
     }
     @Test (dataProvider = "getBackGroundLocator")
 
-    public void profileThemeTest(String colorLocator) throws InterruptedException {
+    public void profileThemeTest(String colorLocator,Integer j) throws InterruptedException {
 
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login("demo@class.com","te$t$tudent");
@@ -82,8 +82,8 @@ public class ProfileTests extends BaseTest {
                 .click(colorPane)
                 .perform();
         String colour = colorPane.getText();
-           System.out.println(colour +"  "+ backColors.get(1));
-          Assert.assertEquals(backColors.get(1),colorPane.getText());
+           System.out.println(colour +"  "+ backColors.get(j));
+          Assert.assertEquals(backColors.get(j),colorPane.getText());
 
 
 
@@ -111,8 +111,8 @@ public class ProfileTests extends BaseTest {
                 array = new Object[records.size()][row.length];
             }
             array[i][0] = row[0];
-           //       array[i][1] = row[1];
-            //       array[i][2] = row[3];
+                array[i][1] = row[1];
+               //    array[i][2] = row[3];
         }
         return array;
 
