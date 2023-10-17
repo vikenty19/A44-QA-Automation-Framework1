@@ -31,16 +31,38 @@ public class BaseTest {
 
     @BeforeMethod
     public void setUpBrowser() {
-     ChromeOptions options = new ChromeOptions();
+  /* ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
         options.addArguments("--disable-notifications");
         options.addArguments("--start-maximized");
 
-        driver = new ChromeDriver(options);
-
+        driver = new ChromeDriver(options);*/
+        driver = pickBrowser(System.getProperty("browser"));
         //   driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         openUrl(url);
+    }
+
+    private WebDriver pickBrowser(String browser) {
+        switch (browser) {
+      /*    case "firefox":
+                WebDriverManager.firefoxdriver().setup();
+                return driver = new FirefoxDriver();
+            case "safari":
+                WebDriverManager.safaridriver().setup();
+                return driver = new SafariDriver();*/
+            case "edge":
+                WebDriverManager.edgedriver().setup();
+                return driver = new EdgeDriver();
+            default:
+                WebDriverManager.chromedriver().setup();
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("--remote-allow-origins=*");
+                options.addArguments("--disable-notifications");
+                options.addArguments("--start-maximized");
+                return driver = new ChromeDriver(options);
+        }
+
     }
 
     @AfterMethod(alwaysRun = true)
