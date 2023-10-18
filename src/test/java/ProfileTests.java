@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class ProfileTests extends BaseTest {
-   @DataProvider(name = "profileThemeTest")
+/*   @DataProvider(name = "profileThemeTest")
     // Method to read the data from .csv file and return it as array
     public Object[][] getData() throws Exception {
         // path to csv file that is located under resources folder
@@ -42,15 +42,7 @@ public class ProfileTests extends BaseTest {
         return array;
 
 
-    }
-/* @DataProvider(name = "profileThemeTest")
-  public static Object[][] getDataFromDataProviders() {
-      return new Object[][]{
-          //    {"li:nth-of-type(1) > .theme > .name", 0},
-              {"li:nth-of-type(8) > .theme > .name", 7},
-              {"li:nth-of-type(16) > .theme > .name", 15},
-      };
-  }*/
+    }*/
 
 
     @Test(groups = "ProfileTests")
