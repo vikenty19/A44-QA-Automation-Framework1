@@ -61,36 +61,23 @@ public class SongsTests extends BaseTest {
         songPage.goToAllSongsTub();
 
         //count songs in All Songs Tab
-      //  Thread.sleep(1000);
 
-        List<WebElement> songList = songPage.getWebElements();
+   //     songPage.getAllSongWebElementsList();
 
-        int count = songList.size();
+        int count = songPage.getAllSongWebElementsList().size();
         System.out.println("Number of songs in Allsong  " + count);
         // count songs in th header
         WebElement songsCountHeader = basePage.waitUntilVisible(By.cssSelector("#songsWrapper .meta"));
         String countSongInHeader = songsCountHeader.getText();
-   //     System.out.println(countSongInHeader);
-        stringToInt(countSongInHeader);
+        //     System.out.println(countSongInHeader);
+        basePage.stringToInt(countSongInHeader);
 
 
         //Assertion of equality number songs in the list and in the header
         //<<<<<Put FALSE to pass the test!!>>>
-        Assert.assertNotEquals(countSongInHeader,count,"Number of songs NOT equal in list and header");
+        Assert.assertNotEquals(countSongInHeader, count, "Number of songs NOT equal in list and header");
 
     }
 
 
-    public Integer stringToInt(String song) {
-
-         char n0 = song.charAt(0);
-        char n1 = song.charAt(1);
-        String number = new String(new char[]{n0,n1});
-
-        int headerCounter = Integer.parseInt(number);//Bring string to int
-        System.out.println("Number of songs in HeaderCounter " +headerCounter);
-     //   int num = Character.getNumericValue(number); Bring char to int
-     //   System.out.println(num);
-        return headerCounter;
-    }
 }

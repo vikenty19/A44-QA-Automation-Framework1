@@ -119,7 +119,7 @@ public class SongPage extends BasePage{
 
 
     }
-    public List<WebElement> getWebElements() {
+    public List<WebElement> getAllSongWebElementsList() {
         List<WebElement> songList = driver.findElements(songListlocator);
         return songList;
     }
