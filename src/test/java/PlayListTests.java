@@ -21,7 +21,7 @@ public class PlayListTests extends BaseTest {
         String playlistName = generateRandomPlaylistBookName();
         System.out.println(playlistName);
         PlayListPage playListPage = new PlayListPage(driver);
-        BasePage basePage = new BasePage(driver);
+   
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login("demo@class.com", "te$t$tudent");
         playListPage.plusBtnClick();
@@ -65,6 +65,11 @@ public class PlayListTests extends BaseTest {
         basePage.isSuccessBannerDisplayed();
         Assert.assertEquals(newName, playListPage.getPlaylistName());
         System.out.println(newName+ "  "+ playListPage.getPlaylistName());
+
+    }
+    @Test
+    public void countSongsInPlaylist(){
+
 
     }
 }
