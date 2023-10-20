@@ -21,6 +21,7 @@ public class SongPage extends BasePage{
     WebElement songName;
     @FindBy(css ="[id='songResultsWrapper'] [placeholder='Playlist name']" )
     WebElement newPlaylistNameInput;
+    By songListlocator =By.cssSelector(" .item-container .title");
     public SongPage searchSongInSearchField(String text) {
        WebElement searchInput = waitUntilClickable(By.cssSelector("[type='search']"));
         searchInput.click();
@@ -118,4 +119,9 @@ public class SongPage extends BasePage{
 
 
     }
+    public List<WebElement> getWebElements() {
+        List<WebElement> songList = driver.findElements(songListlocator);
+        return songList;
+    }
+
 }

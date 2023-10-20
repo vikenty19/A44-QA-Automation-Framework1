@@ -62,7 +62,8 @@ public class SongsTests extends BaseTest {
 
         //count songs in All Songs Tab
       //  Thread.sleep(1000);
-        List<WebElement> songList = driver.findElements(By.cssSelector(" .item-container .title"));
+
+        List<WebElement> songList = songPage.getWebElements();
 
         int count = songList.size();
         System.out.println("Number of songs in Allsong  " + count);
@@ -78,6 +79,7 @@ public class SongsTests extends BaseTest {
         Assert.assertNotEquals(countSongInHeader,count,"Number of songs NOT equal in list and header");
 
     }
+
 
     public Integer stringToInt(String song) {
 
