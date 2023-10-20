@@ -21,7 +21,7 @@ public class PlayListTests extends BaseTest {
         String playlistName = generateRandomPlaylistBookName();
         System.out.println(playlistName);
         PlayListPage playListPage = new PlayListPage(driver);
-   
+
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login("demo@class.com", "te$t$tudent");
         playListPage.plusBtnClick();
@@ -69,6 +69,17 @@ public class PlayListTests extends BaseTest {
     }
     @Test
     public void countSongsInPlaylist(){
+        String playlistName = generateRandomPlaylistBookName();
+//create playlist
+        PlayListPage playListPage = new PlayListPage(driver);
+
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login("demo@class.com", "te$t$tudent");
+        playListPage.plusBtnClick();
+        playListPage.goToPlayListField();
+        playListPage.createNewPlaylist(playlistName);
+//add song to playlist with dragging it from allsongs
+
 
 
     }

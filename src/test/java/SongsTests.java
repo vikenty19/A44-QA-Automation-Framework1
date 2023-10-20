@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -26,7 +27,7 @@ public class SongsTests extends BaseTest {
         SongPage songPage = new SongPage(driver);
         BasePage basePage = new BasePage(driver);
         songPage.searchSongInSearchField(text)
-                 .clickAllViewButtn();
+                .clickAllViewButtn();
         Thread.sleep(500);
         songPage.clickFirstSongInResult();
         System.out.println(songPage.clickFirstSongInResult());
@@ -38,6 +39,7 @@ public class SongsTests extends BaseTest {
 
 
     }
+
     @Test
     public void checkVisibilityTest() {
         LoginPage loginPage = new LoginPage(driver);
@@ -48,5 +50,46 @@ public class SongsTests extends BaseTest {
         System.out.println("Is element invisible? === " + wait
                 .until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("title"))));
 
+    }
+
+    @Test
+    public void countSongsInAllSongs() throws InterruptedException {
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login("demo@class.com", "te$t$tudent");
+        SongPage songPage = new SongPage(driver);
+        BasePage basePage = new BasePage(driver);
+        songPage.goToAllSongsTub();
+
+        //count songs in All Songs Tab
+      //  Thread.sleep(1000);
+        List<WebElement> songList = driver.findElements(By.cssSelector(" .item-container .title"));
+
+        int count = songList.size();
+        System.out.println(count);
+        WebElement songsCountHeader = basePage.waitUntilVisible(By.cssSelector("#songsWrapper .meta"));
+        String countSongInHeader = songsCountHeader.getText();
+   //     System.out.println(countSongInHeader);
+        stringToInt(countSongInHeader);
+
+
+        //Assertion of equality number songs in the list and in the header
+        //<<<<<Put FALSE to pass the test!!>>>
+        Assert.assertEquals(countSongInHeader,count,"Number of songs NOT equal in list and header");
+
+    }
+
+    public Integer stringToInt(String song) {
+
+  //      String string = "3 songs";
+
+        char n0 = song.charAt(0);
+        char n1 = song.charAt(1);
+        String number = new String(new char[]{n0,n1});
+
+        int headerCounter = Integer.parseInt(number);//Bring string to int
+        System.out.println(headerCounter);
+     //   int num = Character.getNumericValue(number); Bring char to int
+     //   System.out.println(num);
+        return headerCounter;
     }
 }
