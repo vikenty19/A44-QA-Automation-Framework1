@@ -1,6 +1,7 @@
 import POM.BasePage;
 import POM.LoginPage;
 import POM.PlayListPage;
+import POM.SongPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -68,19 +69,50 @@ public class PlayListTests extends BaseTest {
 
     }
     @Test
-    public void countSongsInPlaylist(){
-        String playlistName = generateRandomPlaylistBookName();
+    public void addSongsInPlaylistByDragging() throws InterruptedException {
+       // String playlistName = generateRandomPlaylistBookName();
+        String playlistName ="00000000";
+        System.out.println(playlistName);
 //create playlist
         PlayListPage playListPage = new PlayListPage(driver);
-
+        SongPage songPage = new SongPage(driver);
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login("demo@class.com", "te$t$tudent");
         playListPage.plusBtnClick();
         playListPage.goToPlayListField();
         playListPage.createNewPlaylist(playlistName);
+        playListPage.isSuccessBannerDisplayed();
+        songPage.goToAllSongsTub();
 //add song to playlist with dragging it from allsongs
+        WebElement song = loginPage.waitUntilClickable(By
+                .cssSelector(".all-songs .song-item:nth-of-type(1) .title"));
+       String songInAllSong =  song.getText();
+        System.out.println(songInAllSong);
+        WebElement playlist = loginPage.waitUntilClickable(By
+                .cssSelector("#playlists li:nth-child(3)"));
+        //drag song to created playlist
+          Thread.sleep((1000));
+
+                new Actions(driver)
+                        .dragAndDrop(song, playlist)
+                        .perform();
+           Thread.sleep(3000);
+           playlist.click();
+           WebElement addedSong = loginPage.waitUntilVisible(By
+                   .cssSelector(".playlist .item-container .items tr.song-item:nth-child(1) .title"));
+           addedSong.click();
+          String songInPlaylist =  addedSong.getText();
+        System.out.println(songInPlaylist);
+           Assert.assertEquals(songInAllSong,songInPlaylist);
+           playListPage.isSuccessBannerDisplayed();
+           Thread.sleep(3000);
+   /*     playListPage.deleteCreatedPlaylist();
+        //Assertions
+        Thread.sleep(1000);//left it because of instability
+        playListPage.isPlayListDeleted(playlistName);*/
 
 
 
     }
 }
+//#playlists li:nth-child(3)

@@ -81,7 +81,6 @@ public class PlayListPage extends BasePage {
                 .elementToBeClickable(pListNameField));
         enterField.click();
         enterField.clear();
-//    enterField.sendKeys(playlistName);
 
         new Actions(driver).sendKeys(name)
                 .keyDown(Keys.ENTER)

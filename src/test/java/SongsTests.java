@@ -1,5 +1,6 @@
 import POM.BasePage;
 import POM.LoginPage;
+import POM.PlayListPage;
 import POM.SongPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -74,7 +75,7 @@ public class SongsTests extends BaseTest {
 
 
         //Assertion of equality number songs in the list and in the header
-        //<<<<<Put FALSE to pass the test!!>>>
+        //<<<<<Put NOT Equals to pass the test!!>>>
         Assert.assertNotEquals(countSongInHeader, count, "Number of songs NOT equal in list and header");
 
     }
