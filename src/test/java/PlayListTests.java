@@ -75,6 +75,7 @@ public class PlayListTests extends BaseTest {
         System.out.println(playlistName);
 //create playlist
         PlayListPage playListPage = new PlayListPage(driver);
+        BasePage basePage = new BasePage(driver);
         SongPage songPage = new SongPage(driver);
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login("demo@class.com", "te$t$tudent");
@@ -105,11 +106,22 @@ public class PlayListTests extends BaseTest {
         System.out.println(songInPlaylist);
            Assert.assertEquals(songInAllSong,songInPlaylist);
            playListPage.isSuccessBannerDisplayed();
+           //delete playlist
            Thread.sleep(3000);
-   /*     playListPage.deleteCreatedPlaylist();
+       basePage.refreshDriver();
+      playListPage.deleteCreatedPlaylist();
+
+
+      WebElement deleteOK = basePage.waitUntilClickable(By.cssSelector("div:nth-of-type(3) nav > .ok"));
+        new Actions(driver)
+                .moveToElement(deleteOK)
+                .perform();
         //Assertions
         Thread.sleep(1000);//left it because of instability
-        playListPage.isPlayListDeleted(playlistName);*/
+        new Actions(driver)
+                .moveToElement(deleteOK)
+                .perform();
+        playListPage.isPlayListDeleted(playlistName);
 
 
 
