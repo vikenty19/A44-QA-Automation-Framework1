@@ -70,7 +70,7 @@ public class PlayListTests extends BaseTest {
     }
 
     @Test
-    public void addSongsInPlaylistByDraggingAndDeletePlaylist() throws InterruptedException {
+    public void deletePlaylistAddingSongsByDragging() throws InterruptedException {
         String playlistName = generateRandomPlaylistBookName();
   //      String playlistName = "00000001";
         System.out.println(playlistName);
