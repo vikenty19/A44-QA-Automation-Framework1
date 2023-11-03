@@ -65,15 +65,16 @@ public class PlayListTests extends BaseTest {
         playListPage.enterPlaylistName(newName);
         basePage.isSuccessBannerDisplayed();
         Assert.assertEquals(newName, playListPage.getPlaylistName());
-        System.out.println(newName+ "  "+ playListPage.getPlaylistName());
+        System.out.println(newName + "  " + playListPage.getPlaylistName());
 
     }
+
     @Test
     public void addSongsInPlaylistByDraggingAndDeletePlaylist() throws InterruptedException {
-       // String playlistName = generateRandomPlaylistBookName();
-        String playlistName ="00000001";
+        // String playlistName = generateRandomPlaylistBookName();
+        String playlistName = "00000001";
         System.out.println(playlistName);
-//create playlist
+        //create playlist
         PlayListPage playListPage = new PlayListPage(driver);
         BasePage basePage = new BasePage(driver);
         SongPage songPage = new SongPage(driver);
@@ -84,16 +85,15 @@ public class PlayListTests extends BaseTest {
         playListPage.createNewPlaylist(playlistName);
         playListPage.isSuccessBannerDisplayed();
         songPage.goToAllSongsTub();
-//add song to playlist with dragging it from allsongs
-        
+//add song to playlist with dragging it from Allsongs
+
         playListPage.dragSongToPlaylist();
 
-           playListPage.isSuccessBannerDisplayed();
-           //delete playlist
+        playListPage.isSuccessBannerDisplayed();
+        //delete playlist
 
-           playListPage.deleteCreatedPlaylist();
-           playListPage.clickOKbuttonToDEletePlist();
-
+        playListPage.deleteCreatedPlaylist();
+        playListPage.clickOKbuttonToDeletePlist();
 
 
         //Assertions
@@ -101,8 +101,6 @@ public class PlayListTests extends BaseTest {
 
         playListPage.isPlayListDeleted(playlistName);
         playListPage.isSuccessBannerDisplayed();
-
-
 
 
     }
