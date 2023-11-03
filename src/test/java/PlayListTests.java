@@ -69,9 +69,9 @@ public class PlayListTests extends BaseTest {
 
     }
     @Test
-    public void addSongsInPlaylistByDragging() throws InterruptedException {
+    public void addSongsInPlaylistByDraggingAndDeletePlaylist() throws InterruptedException {
        // String playlistName = generateRandomPlaylistBookName();
-        String playlistName ="00000000";
+        String playlistName ="00000001";
         System.out.println(playlistName);
 //create playlist
         PlayListPage playListPage = new PlayListPage(driver);
@@ -88,40 +88,40 @@ public class PlayListTests extends BaseTest {
         WebElement song = loginPage.waitUntilClickable(By
                 .cssSelector(".all-songs .song-item:nth-of-type(1) .title"));
        String songInAllSong =  song.getText();
-        System.out.println(songInAllSong);
+        System.out.println("song in all songs  " + songInAllSong);
         WebElement playlist = loginPage.waitUntilClickable(By
                 .cssSelector("#playlists li:nth-child(3)"));
         //drag song to created playlist
           Thread.sleep((1000));
 
-                new Actions(driver)
-                        .dragAndDrop(song, playlist)
-                        .perform();
+        new Actions(driver)
+                .dragAndDrop(song, playlist)
+                .perform();
            Thread.sleep(3000);
            playlist.click();
            WebElement addedSong = loginPage.waitUntilVisible(By
                    .cssSelector(".playlist .item-container .items tr.song-item:nth-child(1) .title"));
            addedSong.click();
           String songInPlaylist =  addedSong.getText();
-        System.out.println(songInPlaylist);
+        System.out.println("Song In Playlist  " + songInPlaylist);
            Assert.assertEquals(songInAllSong,songInPlaylist);
            playListPage.isSuccessBannerDisplayed();
            //delete playlist
            Thread.sleep(3000);
-       basePage.refreshDriver();
-      playListPage.deleteCreatedPlaylist();
+            WebElement deletePlistBtn = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".btn-delete-playlist")));
+        deletePlistBtn.click();
 
 
-      WebElement deleteOK = basePage.waitUntilClickable(By.cssSelector("div:nth-of-type(3) nav > .ok"));
+      WebElement deleteOK = basePage.waitUntilClickable(By.xpath("//body/div[4]//nav/button[@class='ok']"));  // " div:nth-of-type(3) nav > .ok"
         new Actions(driver)
-                .moveToElement(deleteOK)
+                .click(deleteOK )
                 .perform();
         //Assertions
         Thread.sleep(1000);//left it because of instability
-        new Actions(driver)
-                .moveToElement(deleteOK)
-                .perform();
+
         playListPage.isPlayListDeleted(playlistName);
+        playListPage.isSuccessBannerDisplayed();
+
 
 
 

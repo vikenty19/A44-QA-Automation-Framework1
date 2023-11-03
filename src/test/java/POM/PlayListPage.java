@@ -110,7 +110,7 @@ public class PlayListPage extends BasePage {
             Assert.assertNotEquals(playListNames.get(i - 2), name);
 
         }
-        System.out.println(playListNames);
+      //  System.out.println(playListNames);
         Assert.assertFalse(playListNames.contains(name));
     }
     public String getPlaylistName() {
