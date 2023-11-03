@@ -71,12 +71,11 @@ public class PlayListTests extends BaseTest {
 
     @Test
     public void deletePlaylistAddingSongsByDragging() throws InterruptedException {
-        String playlistName = generateRandomPlaylistBookName();
-  //      String playlistName = "00000001";
+      //  String playlistName = generateRandomPlaylistBookName();
+             String playlistName = "00000001";
         System.out.println(playlistName);
         //create playlist
         PlayListPage playListPage = new PlayListPage(driver);
-        BasePage basePage = new BasePage(driver);
         SongPage songPage = new SongPage(driver);
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login("demo@class.com", "te$t$tudent");
