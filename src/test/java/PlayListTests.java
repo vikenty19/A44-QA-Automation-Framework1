@@ -71,8 +71,8 @@ public class PlayListTests extends BaseTest {
 
     @Test
     public void addSongsInPlaylistByDraggingAndDeletePlaylist() throws InterruptedException {
-        // String playlistName = generateRandomPlaylistBookName();
-        String playlistName = "00000001";
+        String playlistName = generateRandomPlaylistBookName();
+  //      String playlistName = "00000001";
         System.out.println(playlistName);
         //create playlist
         PlayListPage playListPage = new PlayListPage(driver);
