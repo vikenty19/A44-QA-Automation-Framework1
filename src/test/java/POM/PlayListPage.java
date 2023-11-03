@@ -120,4 +120,11 @@ public class PlayListPage extends BasePage {
         return name;
     }
 
+    public void clickOKbuttonToDEletePlist() {
+        BasePage basePage = new BasePage(driver);
+        WebElement deleteOK = basePage.waitUntilClickable(By.xpath("//body/div[4]//nav/button[@class='ok']"));  // " div:nth-of-type(3) nav > .ok"
+        new Actions(driver)
+                .click(deleteOK )
+                .perform();
+    }
 }

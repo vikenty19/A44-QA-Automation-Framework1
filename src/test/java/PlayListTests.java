@@ -92,13 +92,13 @@ public class PlayListTests extends BaseTest {
         WebElement playlist = loginPage.waitUntilClickable(By
                 .cssSelector("#playlists li:nth-child(3)"));
         //drag song to created playlist
-    //      Thread.sleep((1000));
+
 
         new Actions(driver)
                 .dragAndDrop(song, playlist)
                 .perform();
- //          Thread.sleep(3000);
            playlist.click();
+
            WebElement addedSong = loginPage.waitUntilVisible(By
                    .cssSelector(".playlist .item-container .items tr.song-item:nth-child(1) .title"));
            addedSong.click();
@@ -107,15 +107,12 @@ public class PlayListTests extends BaseTest {
            Assert.assertEquals(songInAllSong,songInPlaylist);
            playListPage.isSuccessBannerDisplayed();
            //delete playlist
- //          Thread.sleep(3000);
+
            playListPage.deleteCreatedPlaylist();
+           playListPage.clickOKbuttonToDEletePlist();
 
 
-
-      WebElement deleteOK = basePage.waitUntilClickable(By.xpath("//body/div[4]//nav/button[@class='ok']"));  // " div:nth-of-type(3) nav > .ok"
-        new Actions(driver)
-                .click(deleteOK )
-                .perform();
+    
         //Assertions
         Thread.sleep(1000);//left it because of instability
 
