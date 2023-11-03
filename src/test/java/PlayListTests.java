@@ -85,26 +85,9 @@ public class PlayListTests extends BaseTest {
         playListPage.isSuccessBannerDisplayed();
         songPage.goToAllSongsTub();
 //add song to playlist with dragging it from allsongs
-        WebElement song = loginPage.waitUntilClickable(By
-                .cssSelector(".all-songs .song-item:nth-of-type(1) .title"));
-       String songInAllSong =  song.getText();
-        System.out.println("song in all songs  " + songInAllSong);
-        WebElement playlist = loginPage.waitUntilClickable(By
-                .cssSelector("#playlists li:nth-child(3)"));
-        //drag song to created playlist
+        
+        playListPage.dragSongToPlaylist();
 
-
-        new Actions(driver)
-                .dragAndDrop(song, playlist)
-                .perform();
-           playlist.click();
-
-           WebElement addedSong = loginPage.waitUntilVisible(By
-                   .cssSelector(".playlist .item-container .items tr.song-item:nth-child(1) .title"));
-           addedSong.click();
-          String songInPlaylist =  addedSong.getText();
-        System.out.println("Song In Playlist  " + songInPlaylist);
-           Assert.assertEquals(songInAllSong,songInPlaylist);
            playListPage.isSuccessBannerDisplayed();
            //delete playlist
 
@@ -112,7 +95,7 @@ public class PlayListTests extends BaseTest {
            playListPage.clickOKbuttonToDEletePlist();
 
 
-    
+
         //Assertions
         Thread.sleep(1000);//left it because of instability
 
