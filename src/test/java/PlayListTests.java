@@ -83,8 +83,9 @@ public class PlayListTests extends BaseTest {
         playListPage.goToPlayListField();
         playListPage.createNewPlaylist(playlistName);
         playListPage.isSuccessBannerDisplayed();
+        //chose the song to drag to playlist
         songPage.goToAllSongsTub();
-//add song to playlist with dragging it from Allsongs
+        //add song to playlist with dragging it from Allsongs
 
         playListPage.dragSongToPlaylist();
 

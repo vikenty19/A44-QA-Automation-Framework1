@@ -63,7 +63,7 @@ public class SongsTests extends BaseTest {
 
         //count songs in All Songs Tab
 
-   //     songPage.getAllSongWebElementsList();
+        //     songPage.getAllSongWebElementsList();
 
         int count = songPage.getAllSongWebElementsList().size();
         System.out.println("Number of songs in Allsong  " + count);
@@ -80,5 +80,21 @@ public class SongsTests extends BaseTest {
 
     }
 
+    @Test
+    public void searchForSong() throws InterruptedException {
+        String text = "Riqui-Riqui";
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login("demo@class.com", "te$t$tudent");
+        Thread.sleep(3000);
+        SongPage songPage = new SongPage(driver);
+        BasePage basePage = new BasePage(driver);
+        songPage.searchSongInSearchField(text);
+        WebElement song = wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By.cssSelector("strong")));   //span[contains(text(),'Riqui-Riqui')]")));
 
+
+        String NameSong = song.getText();
+        System.out.println("----" + NameSong);
+        Assert.assertEquals(NameSong, text);
+    }
 }
