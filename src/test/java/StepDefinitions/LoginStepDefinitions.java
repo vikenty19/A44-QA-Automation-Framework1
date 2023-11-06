@@ -1,10 +1,15 @@
 package StepDefinitions;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -23,6 +28,28 @@ public class LoginStepDefinitions {
         options.addArguments("--start-maximized");
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         driver = new ChromeDriver(options);
+
+    }
+    @When("I open login page")
+    public void iOpenLoginPage(){
+        driver.get(url);
+    }
+    @And("i enter valid email")
+    public void iEnterEmail(){
+        WebElement emailInput = wait.until(ExpectedConditions
+                            .visibilityOfElementLocated(By.cssSelector("[type='email']")));
+                emailInput.click();
+        emailInput.clear();
+        emailInput.sendKeys("demo@class.com");
+
+    }
+    @And("I enter valid password")
+    public void iEnterPassword(){
+        WebElement passwordInput = wait.until(ExpectedConditions
+                              .visibilityOfElementLocated(By.cssSelector("[type='password']")));
+                passwordInput.click();
+        passwordInput.clear();
+        passwordInput.sendKeys("te$t$tudent");
 
     }
 }
