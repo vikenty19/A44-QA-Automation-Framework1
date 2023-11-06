@@ -30,7 +30,7 @@ public class LoginStepDefinitions {
         options.addArguments("--remote-allow-origins=*");
         options.addArguments("--disable-notifications");
         options.addArguments("--start-maximized");
-    //    wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+   //    wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         driver = new ChromeDriver(options);
 
     }
@@ -48,14 +48,17 @@ public class LoginStepDefinitions {
     }
     @And("I enter valid password")
     public void iEnterPassword(){
-        WebElement passwordInput = driver.findElement(By.cssSelector("[type='password']"));
+     /*   WebElement passwordInput = driver.findElement(By.cssSelector("[type='password']"));
                 passwordInput.click();
         passwordInput.clear();
-        passwordInput.sendKeys("te$t$tudent");
-
+        passwordInput.sendKeys("te$t$tudent");*/
+   LoginPage loginPage = new LoginPage(driver);
+   loginPage.enterPassword("te$t$tudent");
     }
     @And(" I click Submit")
     public void iClickSubmit(){
+     /*   WebElement submitLogin = driver.findElement(By.cssSelector("button[type='submit']"));
+                submitLogin.click();*/
         LoginPage loginPage = new LoginPage(driver);
         loginPage.clickLoginBtn();
     }
