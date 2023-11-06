@@ -96,5 +96,6 @@ public class SongsTests extends BaseTest {
         String NameSong = song.getText();
         System.out.println("----" + NameSong);
         Assert.assertEquals(NameSong, text);
+
     }
 }
