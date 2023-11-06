@@ -5,4 +5,4 @@ Feature: login tests
     And  i enter valid email
     And I enter valid password
     And  I click Submit
-    Then I am logged in 
+    Then I am logged in
