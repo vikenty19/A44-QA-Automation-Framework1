@@ -30,7 +30,7 @@ public class LoginStepDefinitions {
         options.addArguments("--remote-allow-origins=*");
         options.addArguments("--disable-notifications");
         options.addArguments("--start-maximized");
-        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+    //    wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         driver = new ChromeDriver(options);
 
     }
@@ -40,8 +40,7 @@ public class LoginStepDefinitions {
     }
     @And("i enter valid email")
     public void iEnterEmail(){
-        WebElement emailInput = wait.until(ExpectedConditions
-                            .visibilityOfElementLocated(By.cssSelector("[type='email']")));
+        WebElement emailInput = driver.findElement(By.cssSelector("[type='email']"));
                 emailInput.click();
         emailInput.clear();
         emailInput.sendKeys("demo@class.com");
@@ -49,8 +48,7 @@ public class LoginStepDefinitions {
     }
     @And("I enter valid password")
     public void iEnterPassword(){
-        WebElement passwordInput = wait.until(ExpectedConditions
-                              .visibilityOfElementLocated(By.cssSelector("[type='password']")));
+        WebElement passwordInput = driver.findElement(By.cssSelector("[type='password']"));
                 passwordInput.click();
         passwordInput.clear();
         passwordInput.sendKeys("te$t$tudent");
