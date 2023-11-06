@@ -1,7 +1,10 @@
 package StepDefinitions;
 
+import POM.HomePage;
+import POM.LoginPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
@@ -51,5 +54,16 @@ public class LoginStepDefinitions {
         passwordInput.clear();
         passwordInput.sendKeys("te$t$tudent");
 
+    }
+    @And(" I click Submit")
+    public void iClickSubmit(){
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.clickLoginBtn();
+    }
+    @Then("I am logged in")
+    public void iLoggedIn(){
+
+        HomePage homePage = new HomePage(driver);
+        homePage.getAvatar();
     }
 }
