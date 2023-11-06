@@ -2,6 +2,7 @@ package StepDefinitions;
 
 import POM.HomePage;
 import POM.LoginPage;
+import io.cucumber.java.After;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -15,6 +16,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 
 import java.time.Duration;
 
@@ -22,7 +24,10 @@ public class LoginStepDefinitions {
     public static WebDriver driver = null;
     public static String url ="https://qa.koel.app/";
     public static WebDriverWait wait = null;
-
+    @After
+    public void tearDown() {
+        driver.quit();
+    }
     @Given ("I open browser")
     public void openBrowser(){
         WebDriverManager.chromedriver().setup();
@@ -57,10 +62,10 @@ public class LoginStepDefinitions {
     }
     @And(" I click Submit")
     public void iClickSubmit(){
-     /*   WebElement submitLogin = driver.findElement(By.cssSelector("button[type='submit']"));
-                submitLogin.click();*/
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.clickLoginBtn();
+     WebElement submitLogin = driver.findElement(By.cssSelector("button[type='submit']"));
+                submitLogin.click();
+  /*      LoginPage loginPage = new LoginPage(driver);
+        loginPage.clickLoginBtn();*/
     }
     @Then("I am logged in")
     public void iLoggedIn(){
@@ -68,4 +73,5 @@ public class LoginStepDefinitions {
         HomePage homePage = new HomePage(driver);
        Assert.assertTrue(homePage.getAvatar());
     }
+
 }
