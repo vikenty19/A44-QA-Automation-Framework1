@@ -16,6 +16,40 @@ import java.util.List;
 public class LoginTests extends BaseTest {
 
 
+<<<<<<< Updated upstream
+=======
+
+    @Test
+    public void loginSucceedTest() {
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
+        loginPage.login("demo@class.com","te$t$tudent");
+
+            // find if avatar exists
+        Assert.assertTrue(homePage.getAvatar(), " User is NOT Logged in");
+        System.out.println("User logged successfully   " + homePage.getAvatar());
+    }
+
+
+    @Test
+    public void loginEmptyPasswordTest() {
+        LoginPage loginpage = new LoginPage(driver);
+        loginpage.login("demo@class.com", "");
+        System.out.println("Is Submit button  displayed?  " + loginpage.isSubmitLoginBtnDisplayed());
+        Assert.assertTrue(loginpage.isSubmitLoginBtnDisplayed());
+    }
+
+    @Test
+    public void loginInvalidEmailTest() {
+        LoginPage loginpage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
+        loginpage.login("notexists@class.com","te$t$tudent");
+        System.out.println("Is Submit button is displayed?  " + loginpage.isSubmitLoginBtnDisplayed());
+        Assert.assertTrue(loginpage.isSubmitLoginBtnDisplayed());
+         //       Assert.assertFalse(homePage.getAvatar());
+    }
+
+>>>>>>> Stashed changes
     @Test(dataProvider = "IncorrectLoginProviders")
     public void negativeLoginTests(String email, String password) {
         LoginPage loginPage = new LoginPage(driver);

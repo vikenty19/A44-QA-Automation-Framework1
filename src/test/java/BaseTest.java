@@ -1,3 +1,6 @@
+import POM.BasePage;
+import POM.LoginPage;
+import POM.SongPage;
 import com.github.javafaker.Faker;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
@@ -35,6 +38,8 @@ public class BaseTest {
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 
         openUrl(url);
+       ;
+
     }
 
     @AfterMethod(alwaysRun = true)
@@ -79,5 +84,35 @@ public class BaseTest {
                 {"", ""},
         };
     }
+<<<<<<< Updated upstream
+=======
+    @DataProvider(name = "profileThemeTest")
+    public static Object[][] getProfileThemeFromDataProvider(){
+        return new Object[][]{
+                //    {"li:nth-of-type(1) > .theme > .name", 0},
+                {"li:nth-of-type(8) > .theme > .name", 7},
+                {"li:nth-of-type(16) > .theme > .name", 15},
+        };
+    }
+
+
+
+    public void searchForSong(String text)  {
+
+        WebElement searchInput = wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By.cssSelector("[type='search']")));
+        searchInput.click();
+        searchInput.clear();
+        searchInput.sendKeys(text);
+
+
+    }
+
+
+
+
+
+
+>>>>>>> Stashed changes
 
 }

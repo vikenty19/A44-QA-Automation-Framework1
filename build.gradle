@@ -38,3 +38,17 @@ task smoke(type: Test) {
        // includeGroups 'ProfileTests'
     }
 }
+<<<<<<< Updated upstream
+=======
+task playSong(type: Test) {
+    useTestNG() {
+        suites "src/test/resources/PlaySong.xml"
+
+    }
+}
+task invalidLogin(type: Test){
+    useTestNG(){
+        suites("src/test/resources/NewTestNG.xml")
+    }
+}
+>>>>>>> Stashed changes

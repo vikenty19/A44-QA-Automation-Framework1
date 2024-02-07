@@ -49,9 +49,23 @@ public class SongsTests extends BaseTest {
         LoginPage loginPage = new LoginPage(driver);
         SongsPage songsPage = new SongsPage(driver);
         loginPage.login("demo@class.com", "te$t$tudent");
+<<<<<<< Updated upstream
         songsPage.startPlaySong();
         Assert.assertTrue(songsPage.isPauseBtnDisplayed());
         Assert.assertTrue(songsPage.isEqualizerDisplayed());
+=======
+        Thread.sleep(3000);
+        SongPage songPage = new SongPage(driver);
+        songPage.searchSongInSearchField(text);
+        WebElement song = wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By.cssSelector("strong")));   //span[contains(text(),'Riqui-Riqui')]")));
+
+
+        String NameSong = song.getText();
+        System.out.println("----" + NameSong);
+        Assert.assertEquals(NameSong, text);
+
+>>>>>>> Stashed changes
     }
 
 }
