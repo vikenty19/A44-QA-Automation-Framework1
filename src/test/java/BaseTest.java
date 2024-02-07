@@ -19,7 +19,9 @@ import java.util.List;
 import java.util.Locale;
 
 public class BaseTest {
-
+      static WebDriver driver;
+    WebDriverWait wait;
+     String url = "https://qa.koel.app/";
     @BeforeSuite
     static void setupDriver() {
         WebDriverManager.chromedriver().setup();

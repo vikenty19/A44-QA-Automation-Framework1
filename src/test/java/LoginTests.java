@@ -16,8 +16,6 @@ import java.util.List;
 public class LoginTests extends BaseTest {
 
 
-<<<<<<< Updated upstream
-=======
 
     @Test
     public void loginSucceedTest() {
@@ -49,7 +47,7 @@ public class LoginTests extends BaseTest {
          //       Assert.assertFalse(homePage.getAvatar());
     }
 
->>>>>>> Stashed changes
+
     @Test(dataProvider = "IncorrectLoginProviders")
     public void negativeLoginTests(String email, String password) {
         LoginPage loginPage = new LoginPage(driver);
