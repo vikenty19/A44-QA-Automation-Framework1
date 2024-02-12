@@ -15,22 +15,26 @@ public class BasePage {
     WebDriver driver;
     WebDriverWait wait;
     Actions actions;
-    public BasePage( WebDriver givenDriver){
+
+    public BasePage(WebDriver givenDriver) {
         driver = givenDriver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         actions = new Actions(givenDriver);
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
 
 
     }
+
     By successLocator = By.cssSelector(".success");
-    public void refreshDriver(){
+
+    public void refreshDriver() {
         driver.navigate().refresh();
     }
 
-    public WebElement findElement(By locator){
+    public WebElement findElement(By locator) {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
+
     public WebElement waitUntilVisible(By element) {
         return new WebDriverWait(driver, Duration.ofSeconds(4)).until(ExpectedConditions.visibilityOfElementLocated(element));
 
@@ -40,16 +44,19 @@ public class BasePage {
         return new WebDriverWait(driver, Duration.ofSeconds(4)).until(ExpectedConditions.elementToBeClickable(element));
 
     }
+
     public void isSuccessBannerDisplayed() {
         wait.until(ExpectedConditions
                 .visibilityOfElementLocated(successLocator));
     }
+
     public void isEqualizerDisplayed() {
         WebElement equalizer = wait.until(ExpectedConditions
                 .visibilityOfElementLocated(By.cssSelector(".bars")));
         Assert.assertTrue(equalizer.isDisplayed());
         System.out.println("Is equalizer displayed  " + equalizer.isDisplayed());
     }
+
     public void isPauseBtnDisplayed() {
         WebElement pauseBtn = driver.findElement(By.cssSelector("span[role='button'] > .fa.fa-pause"));
         new Actions(driver).moveToElement(pauseBtn)
@@ -65,14 +72,15 @@ public class BasePage {
         return newName;
 
     }
+
     public Integer stringToInt(String song) {
 
         char n0 = song.charAt(0);
         char n1 = song.charAt(1);
-        String number = new String(new char[]{n0,n1});
+        String number = new String(new char[]{n0, n1});
 
         int headerCounter = Integer.parseInt(number);//Bring string to int
-        System.out.println("Number of songs in HeaderCounter " +headerCounter);
+        System.out.println("Number of songs in HeaderCounter " + headerCounter);
         //   int num = Character.getNumericValue(number); Bring char to int
         //   System.out.println(num);
         return headerCounter;

@@ -90,7 +90,7 @@ public class BaseTest {
 
 
 
-    public void searchForSong(String text) throws InterruptedException {
+    public void searchForSong(String text){
 
         WebElement searchInput = wait.until(ExpectedConditions
                 .visibilityOfElementLocated(By.cssSelector("[type='search']")));
