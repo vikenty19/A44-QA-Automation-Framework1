@@ -27,8 +27,8 @@ public class LoginPage extends BasePage {
   private By loginBtn = By.cssSelector("button[type='submit']");
 
     public void clickLoginBtn() {
- //       WebElement submitLogin = wait.until(ExpectedConditions
-  //              .visibilityOfElementLocated(loginBtn));
+       WebElement submitLogin = wait.until(ExpectedConditions
+                .visibilityOfElementLocated(loginBtn));
         submitLogin.click();
     }
 

@@ -60,13 +60,14 @@ public class LoginStepDefinitions {
    LoginPage loginPage = new LoginPage(driver);
    loginPage.enterPassword("te$t$tudent");
     }
-    @And(" I click Submit")
+    @And("I click Submit")
     public void iClickSubmit(){
-     WebElement submitLogin = driver.findElement(By.cssSelector("button[type='submit']"));
-                submitLogin.click();
-  /*      LoginPage loginPage = new LoginPage(driver);
-        loginPage.clickLoginBtn();*/
-    }
+   /*  WebElement submitLogin = driver.findElement(By.cssSelector("button[type='submit']"));
+                submitLogin.click();*/
+     LoginPage loginPage = new LoginPage(driver);
+        loginPage.clickLoginBtn();
+           }
+
     @Then("I am logged in")
     public void iLoggedIn(){
 
