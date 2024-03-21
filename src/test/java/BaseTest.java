@@ -36,6 +36,7 @@ public class BaseTest {
         options.addArguments("--disable-notifications");
         options.addArguments("--start-maximized");
 
+
         driver = new ChromeDriver(options);
 
            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
