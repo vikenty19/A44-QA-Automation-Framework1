@@ -24,7 +24,7 @@ public class LoginPage extends BasePage {
     @FindBy(xpath = "//button[@type='submit']")
             WebElement submitLogin;
 
-  private By loginBtn = By.cssSelector("button[type='submit']");
+  public By loginBtn = By.cssSelector("button[type='submit']");
 
     public void clickLoginBtn() {
  //       WebElement submitLogin = wait.until(ExpectedConditions
