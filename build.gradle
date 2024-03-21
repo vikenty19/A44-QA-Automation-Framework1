@@ -10,8 +10,13 @@ repositories {
 }
 
 dependencies {
-    testImplementation 'org.testng:testng:7.6.1'
-    implementation 'org.seleniumhq.selenium:selenium-java:4.5.0'
+    implementation group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '5.6.4'
+
+    testImplementation 'org.testng:testng:7.7.0'
+  //  implementation group: 'org.seleniumhq.selenium', name: 'selenium-api', version: '4.16.1'
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.11.0'
+
+  // implementation 'org.seleniumhq.selenium:selenium-java:4.15.0'
     testImplementation 'io.github.bonigarcia:webdrivermanager:5.5.2'
     implementation group: 'com.github.javafaker', name: 'javafaker', version: '1.0.2'
        implementation 'com.opencsv:opencsv:5.7.1'

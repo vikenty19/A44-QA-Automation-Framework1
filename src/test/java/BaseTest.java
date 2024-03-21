@@ -24,10 +24,11 @@ public class BaseTest {
     public static String url ="https://qa.koel.app/";
     public static WebDriverWait wait = null;
 
-    @BeforeSuite
+   @BeforeSuite
     static void setupDriver() {
-        WebDriverManager.chromedriver().setup();
-    }
+       WebDriverManager.chromedriver().clearDriverCache().setup();
+       WebDriverManager.chromedriver().setup();
+   }
 
     @BeforeMethod
     public void setUpBrowser() {
@@ -35,7 +36,7 @@ public class BaseTest {
         options.addArguments("--remote-allow-origins=*");
         options.addArguments("--disable-notifications");
         options.addArguments("--start-maximized");
-
+   System.setProperty("webdriver.chromedriver","C:\\Users\\Acer\\Downloads\\chrome-win64 (1).zip\\chrome-win64\\");
 
         driver = new ChromeDriver(options);
 
