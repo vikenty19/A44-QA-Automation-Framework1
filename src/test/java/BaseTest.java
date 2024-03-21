@@ -38,17 +38,15 @@ public class BaseTest {
         options.addArguments("--start-maximized");
   // System.setProperty("webdriver.chromedriver","C:\\Users\\Acer\\Downloads\\chrome-win64 (1).zip\\chrome-win64\\");
 
-     //   driver = new ChromeDriver(options);
-driver = pickBrowser(System.getProperty("browser"));
+        driver = new ChromeDriver(options);
+
 
            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         openUrl(url);
     }
 
-    private WebDriver pickBrowser(String browser) {
-       
-    }
+
 
     @AfterMethod(alwaysRun = true)
     public void tearDown() {
