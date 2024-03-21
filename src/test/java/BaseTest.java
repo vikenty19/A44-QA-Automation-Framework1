@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -21,33 +22,50 @@ import java.util.Locale;
 
 public class BaseTest {
     public static WebDriver driver = null;
-    public static String url ="https://qa.koel.app/";
+    public static String url = "https://qa.koel.app/";
     public static WebDriverWait wait = null;
 
-   @BeforeSuite
+    @BeforeSuite
     static void setupDriver() {
-       WebDriverManager.chromedriver().clearDriverCache().setup();
-       WebDriverManager.chromedriver().setup();
-   }
+        WebDriverManager.chromedriver().clearDriverCache().setup();
+        WebDriverManager.chromedriver().setup();
+    }
 
     @BeforeMethod
     public void setUpBrowser() {
-     ChromeOptions options = new ChromeOptions();
+        ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
         options.addArguments("--disable-notifications");
         options.addArguments("--start-maximized");
-  // System.setProperty("webdriver.chromedriver","C:\\Users\\Acer\\Downloads\\chrome-win64 (1).zip\\chrome-win64\\");
+        // System.setProperty("webdriver.chromedriver","C:\\Users\\Acer\\Downloads\\chrome-win64 (1).zip\\chrome-win64\\");
 
-     //   driver = new ChromeDriver(options);
-driver = pickBrowser(System.getProperty("browser"));
+        //   driver = new ChromeDriver(options);
+        driver = pickBrowser(System.getProperty("browser"));
 
-           driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         openUrl(url);
     }
 
     private WebDriver pickBrowser(String browser) {
-       
+        switch (browser) {
+            case "edge":
+                WebDriverManager.edgedriver().setup();
+                return driver = new EdgeDriver();
+            case "firefox":
+                WebDriverManager.firefoxdriver().setup();
+                return driver = new FirefoxDriver();
+
+
+            default:
+                WebDriverManager.chromedriver().setup();
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("--remote-allow-origins=*");
+                options.addArguments("--disable-notifications");
+                options.addArguments("--start-maximized");
+                return driver = new ChromeDriver(options);
+        }
+
     }
 
     @AfterMethod(alwaysRun = true)
@@ -66,18 +84,20 @@ driver = pickBrowser(System.getProperty("browser"));
         String newName = faker.address().country();
         return newName;
     }
-   public String generateRandomPlaylistBookName() {
-       Faker faker=new Faker();
-      String newName =  faker.book().title();;
+
+    public String generateRandomPlaylistBookName() {
+        Faker faker = new Faker();
+        String newName = faker.book().title();
+        ;
         return newName;
     }
-
 
 
     public void openUrl(String url) {
 
         driver.get(url);
     }
+
     @DataProvider(name = "IncorrectLoginProviders")
     public static Object[][] getDataFromDataProviders() {
         return new Object[][]{
@@ -86,15 +106,15 @@ driver = pickBrowser(System.getProperty("browser"));
                 {"", ""},
         };
     }
+
     @DataProvider(name = "profileThemeTest")
-    public static Object[][] getProfileThemeFromDataProvider(){
+    public static Object[][] getProfileThemeFromDataProvider() {
         return new Object[][]{
                 //    {"li:nth-of-type(1) > .theme > .name", 0},
                 {"li:nth-of-type(8) > .theme > .name", 7},
                 {"li:nth-of-type(16) > .theme > .name", 15},
         };
     }
-
 
 
     public void searchForSong(String text) throws InterruptedException {
@@ -107,11 +127,6 @@ driver = pickBrowser(System.getProperty("browser"));
 
 
     }
-
-
-
-
-
 
 
 }
