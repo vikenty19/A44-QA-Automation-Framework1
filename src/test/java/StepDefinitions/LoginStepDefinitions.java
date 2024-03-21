@@ -57,7 +57,7 @@ public class LoginStepDefinitions {
     }
     @And("I enter valid password")
     public void iEnterPassword(){
-
+        LoginPage loginPage = new LoginPage(driver);
        WebElement passwordInput = driver.findElement(By.cssSelector("[type='password']"));
                 passwordInput.click();
         passwordInput.clear();
@@ -65,7 +65,7 @@ public class LoginStepDefinitions {
  /* LoginPage loginPage = new LoginPage(driver);
   loginPage.clickLoginBtn();*/
 
-    }
+
 
      /*   WebElement passwordInput = driver.findElement(By.cssSelector("[type='password']"));
                 passwordInput.click();
