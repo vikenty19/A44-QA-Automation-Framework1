@@ -81,7 +81,7 @@ public class BaseTest {
         return new Object[][]{
                 {"notExisting@email.com", "NotExistingPassword"},
                 {"demo@class.com", ""},
-                {"", ""},
+                {"", ""},{"demo@@class.com","te$t$tudent"},{"<include name=test'></include>@class.com","te$t$tudent"}
         };
     }
     @DataProvider(name = "profileThemeTest")
