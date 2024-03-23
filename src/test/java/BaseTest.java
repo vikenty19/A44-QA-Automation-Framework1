@@ -33,10 +33,10 @@ public class BaseTest {
 
     @BeforeMethod
     public void setUpBrowser() {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
-        options.addArguments("--disable-notifications");
-        options.addArguments("--start-maximized");
+//        ChromeOptions options = new ChromeOptions();
+//        options.addArguments("--remote-allow-origins=*");
+//        options.addArguments("--disable-notifications");
+//        options.addArguments("--start-maximized");
         // System.setProperty("webdriver.chromedriver","C:\\Users\\Acer\\Downloads\\chrome-win64 (1).zip\\chrome-win64\\");
 
         //   driver = new ChromeDriver(options);
@@ -55,8 +55,6 @@ public class BaseTest {
             case "firefox":
                 WebDriverManager.firefoxdriver().setup();
                 return driver = new FirefoxDriver();
-
-
             default:
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions options = new ChromeOptions();
