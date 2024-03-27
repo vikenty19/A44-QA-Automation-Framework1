@@ -1,6 +1,7 @@
 package org.example;
 
 import java.util.Arrays;
+import java.util.Locale;
 
 public class BubbleSorted {
     public static void main(String[] args) {
@@ -19,6 +20,12 @@ public class BubbleSorted {
             }
         }
         System.out.println(Arrays.toString(arr));
+
+        //StringBuilder exercise
+        StringBuilder sb = new StringBuilder("hello");
+        sb.append("hello!");
+        System.out.println(sb);
+        System.out.println(sb.deleteCharAt(4));
 
     }
 }
