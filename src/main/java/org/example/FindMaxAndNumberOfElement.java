@@ -3,8 +3,8 @@ package org.example;
 import java.util.Arrays;
 import java.util.Optional;
 
-public class FindMaxAndNumberOfElement {
-    public static void main(String[] args) {
+public class FindMaxAndNumberOfElement  {
+    public static void main(String[] args)throws IndexOutOfBoundsException{
         var array = new int[]{34,45,17,4,8,198};
         int[] array1 = null;
 //        System.out.println(max(array) + " 67");
@@ -18,7 +18,7 @@ public class FindMaxAndNumberOfElement {
 //        System.out.println(firstIndexFind(array,77) + "  empty");
 //        System.out.println(firstIndexFind(null,77) + "  empty");
         System.out.println(Arrays.toString(array));
-        System.out.println(searchMinByNumber((array),7));
+        System.out.println(searchMinByNumber((array),5));
 
     }
 
@@ -83,9 +83,10 @@ public class FindMaxAndNumberOfElement {
 
         // сортируем пузырьком
         if (arr1 == null || arr1.length < n ||n <1) {
-         //   throw new   IndexOutOfBoundsException("Wrong n or array");
-           return null;
+       return null;
         }
+
+
         boolean check = false;
         int temp;
         while ((!check)) {
@@ -100,9 +101,10 @@ public class FindMaxAndNumberOfElement {
 
                 }
             }
-           System.out.println(Arrays.toString(arr1));
+
             // return n-th element
-        }return  arr1[arr1.length-n];
+        }System.out.println(Arrays.toString(arr1));
+        return  arr1[arr1.length-n];
 
     }
 
