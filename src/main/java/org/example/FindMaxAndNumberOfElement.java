@@ -35,13 +35,13 @@ public class FindMaxAndNumberOfElement {
         if (arr==null||arr.length == 0) {
             return null;
         }
-        int maximum = arr[0];
+        int minimum = arr[0];
         for (int i = 1; i < arr.length; i++) {
-            if (arr[i] < maximum) {
-                maximum = arr[i];
+            if (arr[i] < minimum) {
+                minimum = arr[i];
             }
         }
-        return maximum;
+        return minimum;
     }
 
     public static Optional<Integer> firstIndexFind(int[]arr, int querry) {
