@@ -23,9 +23,10 @@ public class BubbleSorted {
 
         //StringBuilder exercise
         StringBuilder sb = new StringBuilder("hello");
-        sb.append("hello!");
+        sb.append(" hello!");
         System.out.println(sb);
-        System.out.println(sb.deleteCharAt(4));
+        System.out.println(sb.deleteCharAt(5));
+        System.out.println(sb.reverse());
 
     }
 }
