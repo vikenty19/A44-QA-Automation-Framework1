@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Optional;
 
 public class FindMaxAndNumberOfElement  {
-    public static void main(String[] args)throws IndexOutOfBoundsException{
+    public static void main(String[] args){
         var array = new int[]{34,45,17,4,8,198};
         int[] array1 = null;
 //        System.out.println(max(array) + " 67");
@@ -17,8 +17,8 @@ public class FindMaxAndNumberOfElement  {
 //        System.out.println(firstIndexFind(array,0) + "4");
 //        System.out.println(firstIndexFind(array,77) + "  empty");
 //        System.out.println(firstIndexFind(null,77) + "  empty");
-        System.out.println(Arrays.toString(array));
-        System.out.println(searchMinByNumber((array),5));
+  //      System.out.println(Arrays.toString(array));
+  //      System.out.println(searchMinByNumber((array),5));
 
     }
 
@@ -79,10 +79,11 @@ public class FindMaxAndNumberOfElement  {
         return min2;
     }
     // ищем н-ый максимальный элемент
-    public static Integer searchMinByNumber(int[] arr1, int n) throws IndexOutOfBoundsException{
+    public static Integer searchMinByNumber(int[] arr1, int n) {
 
         // сортируем пузырьком
         if (arr1 == null || arr1.length < n ||n <1) {
+     //       throw new IllegalArgumentException("Wrong argument");
        return null;
         }
 
