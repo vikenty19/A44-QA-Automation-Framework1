@@ -37,7 +37,7 @@ public class Task1299 {
         boolean ans = false;
 
         for (int i = str.length() - 1; i >= 0; i--) {
-            rev = rev + str.charAt(i);
+            rev  += str.charAt(i);// rev = rev + str.charAt(i);
         }
 
         // Checking if both the strings are equal
