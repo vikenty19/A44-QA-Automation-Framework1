@@ -50,7 +50,7 @@ public class SandBox {
                 if (ch.contains("e")) {
                     break;
                 }
-                ch = ch + days[i].charAt(j);
+                ch  += days[i].charAt(j);
                 //    System.out.println(ch);
 
 
