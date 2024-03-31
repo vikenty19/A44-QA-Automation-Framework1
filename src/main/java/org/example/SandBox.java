@@ -8,10 +8,13 @@ public class SandBox {
     public static void main(String[] args) {
         int[]array1 = new int[]{1,2,3,100};
         int[]array = new int[]{1};
-        System.out.println(searchMax(array));
-        System.out.println(findElement(array1,3));
-        System.out.println(findElement(array,3));
-        System.out.println(findElement(new int[0],3));
+        String[]daysOfWeek = {"Monday","Tuesday","Thursday","Sunday","Wednesday"};
+//        System.out.println(searchMax(array));
+//        System.out.println(findElement(array1,3));
+//        System.out.println(findElement(array,3));
+//        System.out.println(findElement(new int[0],3));
+        findDayWithLetter(daysOfWeek);
+
     }
 
 
@@ -35,4 +38,21 @@ public class SandBox {
         }
         return Optional.empty();
     }
-}
+
+    public static void findDayWithLetter(String[]days){
+
+        for (int i = 0; i < days.length; i++) {
+            for (int j = 0; j <days[i].length() ; j++) {
+
+
+                String ch = "" + days[i].charAt(j);
+                System.out.println(ch);
+                if(ch.contains("e")){
+
+                    System.out.println(days[i]);
+
+                }
+            }
+        }
+    }
+    }
