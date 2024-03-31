@@ -2,13 +2,15 @@ package org.example;
 
 import org.openqa.selenium.json.JsonOutput;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 public class SandBox {
     public static void main(String[] args) {
-        int[]array1 = new int[]{1,2,3,100};
-        int[]array = new int[]{1};
-        String[]daysOfWeek = {"Monday","Tuesday","Thursday","Sunday","Wednesday"};
+        int[] array1 = new int[]{1, 2, 3, 100};
+        int[] array = new int[]{1};
+        String[] daysOfWeek = {"Monday", "Tuesday", "Thursday", "Sunday", "Wednesday","Saturday"};
 //        System.out.println(searchMax(array));
 //        System.out.println(findElement(array1,3));
 //        System.out.println(findElement(array,3));
@@ -19,7 +21,7 @@ public class SandBox {
 
 
     public static Integer searchMax(int[] arr) {
-        if(arr == null||arr.length==0){
+        if (arr == null || arr.length == 0) {
             return null;
         }
         int max = arr[0];
@@ -30,29 +32,35 @@ public class SandBox {
         }
         return max;
     }
-    public static Optional<Integer>findElement(int[]arr,int querry){
-        for(int i = 0;i<arr.length;i++){
-            if(arr[i]==querry){
-                return  Optional.of(i);
+
+    public static Optional<Integer> findElement(int[] arr, int querry) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == querry) {
+                return Optional.of(i);
             }
         }
         return Optional.empty();
     }
 
-    public static void findDayWithLetter(String[]days){
+    public static void findDayWithLetter(String[] days) {
 
         for (int i = 0; i < days.length; i++) {
-            for (int j = 0; j <days[i].length() ; j++) {
+            String ch = "";
+            for (int j = 0; j < days[i].length(); j++) {
+                if (ch.contains("e")) {
+                    break;
+                }
+                ch = ch + days[i].charAt(j);
+                //    System.out.println(ch);
 
 
-                String ch = "" + days[i].charAt(j);
-                System.out.println(ch);
-                if(ch.contains("e")){
+                if (ch.contains("e")) {
 
                     System.out.println(days[i]);
+
 
                 }
             }
         }
     }
-    }
+}
