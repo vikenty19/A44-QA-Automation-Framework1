@@ -10,6 +10,10 @@ public class SandBox {
     public static void main(String[] args) {
         int[] array1 = new int[]{1, 2, 3, 100};
         int[] array = new int[]{1};
+        //забавляемся с int
+        String x1=Integer.toString(12345);
+                System.out.printf("%dvalue is - %s", 1000,x1);
+       // ищем день с буквой e
         String[] daysOfWeek = {"Monday", "Tuesday", "Thursday", "Sunday", "Wednesday","Saturday"};
 //        System.out.println(searchMax(array));
 //        System.out.println(findElement(array1,3));

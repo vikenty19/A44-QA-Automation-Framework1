@@ -7,7 +7,8 @@ public class DeleteDuplicates {
         String example = "1№***ФФ aaa kk";
         String result = "";
         for (int i = 0; i < example.length(); i++) {
-            String ch = ""+(example.charAt(i));
+            String ch = String.valueOf(example.charAt(i));// String ch = "" + (example.charAt(i));
+
             if(result.contains(ch)){
                 continue;
             }
