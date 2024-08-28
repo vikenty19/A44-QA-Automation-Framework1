@@ -43,7 +43,7 @@ public class CSVDataProviderTest extends BaseTest {
     public void searchForSong(String song) {
         LoginPage loginPage = new LoginPage(driver);
         SongPage songPage = new SongPage(driver);
-        loginPage.login("demo@class.com","te$t$tudent");
+        loginPage.login(myEmail,myLogin);
          songPage.clickSearchField();
         songPage.enterNameInSearchField(song);
         songPage.checkSearchResult();

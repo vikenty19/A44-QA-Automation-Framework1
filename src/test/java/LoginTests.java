@@ -17,7 +17,7 @@ public class LoginTests extends BaseTest {
     public void loginSucceedTest() {
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
-        loginPage.login("vicplach123@gmail.com","MEGAdelta06@");
+        loginPage.login("vicplach123@gmail.com","MEGAdelta123@");
 
             // find if avatar exists
         Assert.assertTrue(homePage.getAvatar(), " User is NOT Logged in");

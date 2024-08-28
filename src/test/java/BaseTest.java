@@ -22,6 +22,8 @@ import java.util.Locale;
 public class BaseTest {
     public static WebDriver driver = null;
     public static String url ="https://qa.koel.app/";
+    public static String myLogin = "MEGAdelta123@";
+    public static String myEmail = "vicplach123@gmail.com";
     public static WebDriverWait wait = null;
 
    @BeforeSuite
