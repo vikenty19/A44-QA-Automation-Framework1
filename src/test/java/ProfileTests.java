@@ -45,7 +45,7 @@ public class ProfileTests extends BaseTest {
     }*/
 
 
-    @Test(groups = "ProfileTests")
+    @Test(groups = {"ProfileTests"})
     public void changeProfileName()  {
 
         LoginPage loginPage = new LoginPage(driver);

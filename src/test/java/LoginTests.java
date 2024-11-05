@@ -13,7 +13,7 @@ public class LoginTests extends BaseTest {
 
 
 
-    @Test
+    @Test(groups = {"smoke1"})
     public void loginSucceedTest() {
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
