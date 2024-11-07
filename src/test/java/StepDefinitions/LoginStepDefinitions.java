@@ -61,7 +61,7 @@ WebDriverManager.chromedriver().clearDriverCache().setup();
        WebElement passwordInput = driver.findElement(By.cssSelector("[type='password']"));
                 passwordInput.click();
         passwordInput.clear();
-        passwordInput.sendKeys("MEGAdelta06@");
+        passwordInput.sendKeys("MEGAdelta123@");
  /* LoginPage loginPage = new LoginPage(driver);
   loginPage.clickLoginBtn();*/
 
@@ -72,7 +72,6 @@ WebDriverManager.chromedriver().clearDriverCache().setup();
         passwordInput.clear();
         passwordInput.sendKeys("te$t$tudent");*/
 
-   loginPage.enterPassword("te$t$tudent");
     }
     @And("I click Submit")
     public void iClickSubmit(){
