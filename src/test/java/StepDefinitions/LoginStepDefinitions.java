@@ -30,7 +30,7 @@ public class LoginStepDefinitions {
     }
     @Given ("I open browser")
     public void setUpDriver(){
-
+WebDriverManager.chromedriver().clearDriverCache().setup();
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
@@ -52,7 +52,7 @@ public class LoginStepDefinitions {
         WebElement emailInput = driver.findElement(By.cssSelector("[type='email']"));
                 emailInput.click();
         emailInput.clear();
-        emailInput.sendKeys("demo@class.com");
+        emailInput.sendKeys("vicplach123@gmail.com");
 
     }
     @And("I enter valid password")
@@ -61,7 +61,7 @@ public class LoginStepDefinitions {
        WebElement passwordInput = driver.findElement(By.cssSelector("[type='password']"));
                 passwordInput.click();
         passwordInput.clear();
-        passwordInput.sendKeys("te$t$tudent");
+        passwordInput.sendKeys("MEGAdelta06@");
  /* LoginPage loginPage = new LoginPage(driver);
   loginPage.clickLoginBtn();*/
 

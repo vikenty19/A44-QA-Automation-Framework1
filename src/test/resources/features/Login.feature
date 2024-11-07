@@ -1,11 +1,13 @@
 Feature: Login user
-  Scenario: Login with valid credentials
+
+  Scenario Outline: Login with valid credentials
     Given User opens application URL
     And navigates om Login page
     When User enters valid email "amotooricap9@gmail.com"
     And Enters valid password "12345"
     And Click on login button
     Then User login successfully
+    Examples:
 
   Scenario: Login with invalid credentials
     Given User opens application URL
