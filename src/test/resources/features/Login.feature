@@ -2,7 +2,7 @@ Feature: Login user
 Background:
   Given User opens application URL
   And navigates om Login page
-  
+
   Scenario Outline: Login with valid credentials
     When User enters valid email <email>
     And Enters valid password <password>
@@ -11,7 +11,7 @@ Background:
     Examples:
       | email                    | password |
       | "amotooricap9@gmail.com" | "12345"  |
-
+      | "amotooricap3@gmail.com" | "12345"  |
 
   Scenario Outline: Login with invalid credentials
 
@@ -22,6 +22,9 @@ Background:
     Examples:
       | email                        | password |
       | "amotooricap93433@gmail.com" | "123456" |
+      | "amotooricap934@gmail.com"   |  "123456"|
+      | "amotooricap9@gmail.com"      | "12345"  |
+
 
   Scenario Outline: Login with valid email and invalid password
 
