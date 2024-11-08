@@ -14,7 +14,6 @@ Background:
       | "amotooricap3@gmail.com" | "12345"  |
 
   Scenario Outline: Login with invalid credentials
-
     When User enters valid email <email>
     And Enters valid password <password>
     And Click on login button
