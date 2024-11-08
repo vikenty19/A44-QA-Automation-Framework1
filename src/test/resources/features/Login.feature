@@ -1,8 +1,9 @@
 Feature: Login user
-
+Background:
+  Given User opens application URL
+  And navigates om Login page
+  
   Scenario Outline: Login with valid credentials
-    Given User opens application URL
-    And navigates om Login page
     When User enters valid email <email>
     And Enters valid password <password>
     And Click on login button
@@ -13,8 +14,7 @@ Feature: Login user
 
 
   Scenario Outline: Login with invalid credentials
-    Given User opens application URL
-    And navigates om Login page
+
     When User enters valid email <email>
     And Enters valid password <password>
     And Click on login button
@@ -24,8 +24,7 @@ Feature: Login user
       | "amotooricap93433@gmail.com" | "123456" |
 
   Scenario Outline: Login with valid email and invalid password
-    Given User opens application URL
-    And navigates om Login page
+
     When User enters valid email <email>
     And Enters invalid password <password>
     And Click on login button
@@ -35,8 +34,7 @@ Feature: Login user
       | "amotooricap9@gmail.com" | "123456" |
 
   Scenario Outline: Login with invalid email and valid password
-    Given User opens application URL
-    And navigates om Login page
+
     When User enters invalid email <email>
     And Enters valid password <password>
     And Click on login button
