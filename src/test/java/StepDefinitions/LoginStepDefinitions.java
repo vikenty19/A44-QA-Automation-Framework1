@@ -37,10 +37,7 @@ WebDriverManager.chromedriver().clearDriverCache().setup();
         options.addArguments("--disable-notifications");
         options.addArguments("--start-maximized");
 
-     //   wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-   //    wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-
-        driver = new ChromeDriver(options);
+          driver = new ChromeDriver(options);
 
     }
     @When("I open login page")
@@ -88,5 +85,28 @@ WebDriverManager.chromedriver().clearDriverCache().setup();
         HomePage homePage = new HomePage(driver);
        Assert.assertTrue(homePage.getAvatar());
     }
+
+
+
+
+    @And("I enter wrong email")
+    public void iEnterWrongEmail() {
+        WebElement emailInput = driver.findElement(By.cssSelector("[type='email']"));
+        emailInput.click();
+        emailInput.clear();
+        emailInput.sendKeys("vicplach13@gmail.com");
+    }
+
+
+
+
+    @Then("I am not logged in")
+    public void iAmNotLoggedIn() {
+        LoginPage loginpage = new LoginPage(driver);
+               System.out.println("Is Submit button is displayed?  " + loginpage.isSubmitLoginBtnDisplayed());
+        Assert.assertTrue(loginpage.isSubmitLoginBtnDisplayed());
+    }
+
+
 
 }

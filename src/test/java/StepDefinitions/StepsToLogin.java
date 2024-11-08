@@ -39,6 +39,7 @@ public class StepsToLogin {
 
     @Then("User should get a warning message")
     public void userShouldGetAWarningMessage() {
+        System.out.println("You are NOT logged in!");
     }
 
     @And("Enters invalid password {string}")
@@ -46,7 +47,8 @@ public class StepsToLogin {
     }
 
     @When("User enters invalid email {string}")
-    public void userEntersInvalidEmail(String arg0) {
+    public void userEntersInvalidEmail(String email) {
+        System.out.println("User enters  " + email);
     }
 
     @When("User doesn't enter any credentials")

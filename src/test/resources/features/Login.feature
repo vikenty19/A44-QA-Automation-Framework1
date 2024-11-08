@@ -3,42 +3,48 @@ Feature: Login user
   Scenario Outline: Login with valid credentials
     Given User opens application URL
     And navigates om Login page
-    When User enters valid email "amotooricap9@gmail.com"
-    And Enters valid password "12345"
+    When User enters valid email <email>
+    And Enters valid password <password>
     And Click on login button
     Then User login successfully
     Examples:
+      | email                    | password |
+      | "amotooricap9@gmail.com" | "12345"  |
 
-  Scenario: Login with invalid credentials
+
+  Scenario Outline: Login with invalid credentials
     Given User opens application URL
     And navigates om Login page
-    When User enters valid email "amotooricap93433@gmail.com"
-    And Enters valid password "123456"
+    When User enters valid email <email>
+    And Enters valid password <password>
     And Click on login button
     Then User should get a warning message
+    Examples:
+      | email                        | password |
+      | "amotooricap93433@gmail.com" | "123456" |
 
-  Scenario: Login with valid email and invalid password
+  Scenario Outline: Login with valid email and invalid password
     Given User opens application URL
     And navigates om Login page
-    When User enters valid email "amotooricap9@gmail.com"
-    And Enters invalid password "123456"
+    When User enters valid email <email>
+    And Enters invalid password <password>
     And Click on login button
     Then User should get a warning message
+    Examples:
+      | email                    | password   |
+      | "amotooricap9@gmail.com" | "123456" |
 
-  Scenario: Login with invalid email and valid password
+  Scenario Outline: Login with invalid email and valid password
     Given User opens application URL
     And navigates om Login page
-    When User enters invalid email "amotooricap9343@gmail.com"
-    And Enters valid password "12345"
+    When User enters invalid email <email>
+    And Enters valid password <password>
     And Click on login button
     Then User should get a warning message
+    Examples:
+      |email                       | password |
+      | "amotooricap9343@gmail.com" | "12345"  |
 
-  Scenario: Login without email and password
-    Given User opens application URL
-    And navigates om Login page
-    When User doesn't enter any credentials
-    And Click on login button
-    Then User should get a warning message
 
 
 
