@@ -12,12 +12,13 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.Objects;
 
-public class ProfilePage extends BasePage{
+public class ProfilePage extends BasePage {
     public ProfilePage(WebDriver givenDriver) {
         super(givenDriver);
     }
-    public void openProfile(){
-        WebElement avatar =waitUntilVisible(By.cssSelector(".avatar"));
+
+    public void openProfile() {
+        WebElement avatar = waitUntilVisible(By.cssSelector(".avatar"));
         avatar.click();
     }
 

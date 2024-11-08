@@ -77,11 +77,12 @@ public class Homework17 extends BaseTest {
         WebElement successBanner = driver.findElement(By.cssSelector(".success"));
         return successBanner.isDisplayed();
     }
- public String getSongName(){
-     WebElement songName = driver.findElement(By.cssSelector("#playlistWrapper .song-item .title"));
-     String songText = songName.getText();
-     System.out.println(songText);
-     return songText;
 
- }
+    public String getSongName() {
+        WebElement songName = driver.findElement(By.cssSelector("#playlistWrapper .song-item .title"));
+        String songText = songName.getText();
+        System.out.println(songText);
+        return songText;
+
+    }
 }

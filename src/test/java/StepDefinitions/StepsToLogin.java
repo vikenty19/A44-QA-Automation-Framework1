@@ -9,7 +9,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class StepsToLogin {
     @Given("User opens application URL")
     public void userOpensApplicationURL() {
-      //  WebDriverManager.chromedriver().setup();
+        //  WebDriverManager.chromedriver().setup();
         System.out.println("User open the URL");
     }
 

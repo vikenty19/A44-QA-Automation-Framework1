@@ -25,13 +25,14 @@ public class PlayListPage extends BasePage {
     By createPlaylistLocator = By.cssSelector("[data-testid='playlist-context-menu-create-simple']");
 
     By header = By.cssSelector("#playlistWrapper h1");
-    @FindBy(css =".menu> ul > li:nth-of-type(1)" )
-      WebElement clickable;
+    @FindBy(css = ".menu> ul > li:nth-of-type(1)")
+    WebElement clickable;
 
     By deletePlayList = By
             .cssSelector(".btn-delete-playlist");
 
     By playListsLocator = By.cssSelector(".playlist.playlist>a");
+
     public void choosePlayListToDelete() {
         WebElement pListNameToDelete = wait.until(ExpectedConditions
                 .visibilityOfElementLocated(pListLocator));
@@ -41,7 +42,8 @@ public class PlayListPage extends BasePage {
                 .perform();
 
     }
-    public void rightClickToEditPlistName(){
+
+    public void rightClickToEditPlistName() {
         WebElement pListNameToDelete = wait.until(ExpectedConditions
                 .visibilityOfElementLocated(pListLocator));
         pListNameToDelete.click();
@@ -49,7 +51,7 @@ public class PlayListPage extends BasePage {
         new Actions(driver)
                 .contextClick(pListNameToDelete)
                 .perform();
-       // WebElement clickable = driver.findElement(By.cssSelector(".menu> ul > li:nth-of-type(1)"));
+        // WebElement clickable = driver.findElement(By.cssSelector(".menu> ul > li:nth-of-type(1)"));
         new Actions(driver)
                 .click(clickable)
                 .perform();
@@ -94,7 +96,6 @@ public class PlayListPage extends BasePage {
     }
 
 
-
     public void deleteCreatedPlaylist() {
         WebElement deletePlistBtn = waitUntilClickable(deletePlayList);
         deletePlistBtn.click();
@@ -102,7 +103,7 @@ public class PlayListPage extends BasePage {
 
     public void isPlayListDeleted(String name) {
         List<WebElement> playlistTable = driver.findElements(playListsLocator);
-         List<String> playListNames = new ArrayList<>();
+        List<String> playListNames = new ArrayList<>();
         for (int i = 2; i < playlistTable.size(); i++) {  // i=2 to not include favorites,recently tabs
             String playlName = playlistTable.get(i).getText();
             playListNames.add(playlName);
@@ -110,9 +111,10 @@ public class PlayListPage extends BasePage {
             Assert.assertNotEquals(playListNames.get(i - 2), name);
 
         }
-      //  System.out.println(playListNames);
+        //  System.out.println(playListNames);
         Assert.assertFalse(playListNames.contains(name));
     }
+
     public String getPlaylistName() {
         WebElement playlistInputField = wait.until(ExpectedConditions
                 .visibilityOfElementLocated(pListLocator));
@@ -124,7 +126,7 @@ public class PlayListPage extends BasePage {
         BasePage basePage = new BasePage(driver);
         WebElement deleteOK = basePage.waitUntilClickable(By.xpath("//body/div[4]//nav/button[@class='ok']"));  // " div:nth-of-type(3) nav > .ok"
         new Actions(driver)
-                .click(deleteOK )
+                .click(deleteOK)
                 .perform();
     }
 
@@ -132,7 +134,7 @@ public class PlayListPage extends BasePage {
         LoginPage loginPage = new LoginPage(driver);
         WebElement song = loginPage.waitUntilClickable(By
                 .cssSelector(".all-songs .song-item:nth-of-type(1) .title"));
-        String songInAllSong =  song.getText();
+        String songInAllSong = song.getText();
         System.out.println("song in all songs  " + songInAllSong);
         WebElement playlist = loginPage.waitUntilClickable(By
                 .cssSelector("#playlists li:nth-child(3)"));
@@ -146,9 +148,9 @@ public class PlayListPage extends BasePage {
         WebElement addedSong = loginPage.waitUntilVisible(By
                 .cssSelector(".playlist .item-container .items tr.song-item:nth-child(1) .title"));
         addedSong.click();
-        String songInPlaylist =  addedSong.getText();
+        String songInPlaylist = addedSong.getText();
         System.out.println("Song In Playlist  " + songInPlaylist);
-        Assert.assertEquals(songInAllSong,songInPlaylist);
+        Assert.assertEquals(songInAllSong, songInPlaylist);
 
     }
 }

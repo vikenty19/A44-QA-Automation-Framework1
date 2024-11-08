@@ -17,24 +17,24 @@ public class LoginPage extends BasePage {
 //   WebElement passwordInput;
     // private   By emailField = By.cssSelector("[type='email']");
     @FindBy(css = "[type='email']")
-            WebElement emailInput;
+    WebElement emailInput;
     @FindBy(css = "[type='password']")
-            WebElement passwordInput;
-  //  By passwordField = By.cssSelector("[type='password']");
+    WebElement passwordInput;
+    //  By passwordField = By.cssSelector("[type='password']");
     @FindBy(xpath = "//button[@type='submit']")
-            WebElement submitLogin;
+    WebElement submitLogin;
 
-  public By loginBtn = By.cssSelector("button[type='submit']");
+    public By loginBtn = By.cssSelector("button[type='submit']");
 
     public void clickLoginBtn() {
-       WebElement submitLogin = wait.until(ExpectedConditions
+        WebElement submitLogin = wait.until(ExpectedConditions
                 .visibilityOfElementLocated(loginBtn));
         submitLogin.click();
     }
 
     public LoginPage enterPassword(String password) {
 //       WebElement passwordInput = wait.until(ExpectedConditions
- //               .visibilityOfElementLocated(passwordField));
+        //               .visibilityOfElementLocated(passwordField));
         passwordInput.click();
         passwordInput.clear();
         passwordInput.sendKeys(password);

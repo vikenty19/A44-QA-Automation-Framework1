@@ -32,23 +32,24 @@ public class CSVDataProviderTest extends BaseTest {
                 array = new Object[records.size()][row.length];
             }
             array[i][0] = row[0];
-       //      array[i][1] = row[1];
-       //       array[i][2] = row[3];
+            //      array[i][1] = row[1];
+            //       array[i][2] = row[3];
         }
         return array;
 
 
     }
+
     @Test(dataProvider = "getSongsData")
     public void searchForSong(String song) {
         LoginPage loginPage = new LoginPage(driver);
         SongPage songPage = new SongPage(driver);
-        loginPage.login(myEmail,myLogin);
-         songPage.clickSearchField();
+        loginPage.login(myEmail, myLogin);
+        songPage.clickSearchField();
         songPage.enterNameInSearchField(song);
         songPage.checkSearchResult();
         System.out.println(songPage.checkSearchResult());
-        Assert.assertEquals(songPage.checkSearchResult(),song);
+        Assert.assertEquals(songPage.checkSearchResult(), song);
 
 
     }

@@ -46,10 +46,10 @@ public class ProfileTests extends BaseTest {
 
 
     @Test(groups = {"ProfileTests"})
-    public void changeProfileName()  {
+    public void changeProfileName() {
 
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.login("demo@class.com","te$t$tudent");
+        loginPage.login("demo@class.com", "te$t$tudent");
         BasePage basePage = new BasePage(driver);
         ProfilePage profilePage = new ProfilePage(driver);
         profilePage.openProfile();
@@ -71,21 +71,22 @@ public class ProfileTests extends BaseTest {
         // assert profile name is new
         basePage.isSuccessBannerDisplayed();
         driver.navigate().refresh();//разобраться!
-         Assert.assertEquals( basePage.getNewProfileName(),name);
+        Assert.assertEquals(basePage.getNewProfileName(), name);
     }
-    @Test (dataProvider = "profileThemeTest")
 
-    public void profileThemeTest(String colorLocator,int j) throws InterruptedException {
+    @Test(dataProvider = "profileThemeTest")
+
+    public void profileThemeTest(String colorLocator, int j) throws InterruptedException {
 
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.login("demo@class.com","te$t$tudent");
+        loginPage.login("demo@class.com", "te$t$tudent");
         ProfilePage profilePage = new ProfilePage(driver);
         profilePage.openProfile();
         Thread.sleep(3000);
-     //   WebElement colorPane = driver.findElement(By.tagName("li:nth-of-type(1) > .theme > .name"));
+        //   WebElement colorPane = driver.findElement(By.tagName("li:nth-of-type(1) > .theme > .name"));
 
 
-        List<WebElement> backgrounds =driver.findElements(By.cssSelector(".theme .name"));
+        List<WebElement> backgrounds = driver.findElements(By.cssSelector(".theme .name"));
         List<String> backColors = new ArrayList<>();
         for (int i = 0; i < backgrounds.size(); i++) {
 
@@ -98,11 +99,10 @@ public class ProfileTests extends BaseTest {
             backColors.add(color);
         }
 
-            System.out.println(backColors+" "+ backColors.size());
+        System.out.println(backColors + " " + backColors.size());
 
 
         WebElement colorPane = driver.findElement(By.cssSelector(colorLocator));
-
 
 
         new Actions(driver)
@@ -110,15 +110,12 @@ public class ProfileTests extends BaseTest {
                 .perform();
         Thread.sleep(3000);
         String colour = colorPane.getText();
-           System.out.println(colour +"  "+ backColors.get(j));
-          Assert.assertEquals(backColors.get(j),colorPane.getText());
+        System.out.println(colour + "  " + backColors.get(j));
+        Assert.assertEquals(backColors.get(j), colorPane.getText());
 
     }
 
 }
-
-
-
 
 
 //li:nth-of-type(2) > .theme > .name

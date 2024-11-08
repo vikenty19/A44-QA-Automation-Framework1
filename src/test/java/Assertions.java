@@ -4,7 +4,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
-public class Assertions extends BaseTest{
+
+public class Assertions extends BaseTest {
 
     // Soft assert example
 /*    SoftAssert softAssert = new SoftAssert();

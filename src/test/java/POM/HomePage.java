@@ -8,12 +8,13 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
-public class HomePage extends BasePage{
+public class HomePage extends BasePage {
     public HomePage(WebDriver givenDriver) {
         super(givenDriver);
 
     }
-    public boolean getAvatar(){
+
+    public boolean getAvatar() {
         By userAvatarIcon = By.cssSelector(".avatar");
         return findElement(userAvatarIcon).isDisplayed();
     }
