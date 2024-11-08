@@ -1,18 +1,24 @@
 Feature: login tests
-  Scenario Outline: login success
+  Background:
     Given I open browser
     When I open login page
-    And  i enter valid email
-    And I enter valid password
+  Scenario Outline: login success
+
+    And  i enter valid email <email>
+    And I enter valid password <password>
     And  I click Submit
     Then I am logged in
    Examples:
+    |email                  |   password|
+    |"vicplach123@gmail.com"|"MEGAdelta123@"|
 
 
-  Scenario:LoginWrongEmail
-    Given I open browser
-     When  I open login page
+  Scenario Outline:LoginWrongEmail
+
     And I enter wrong email
-    And I enter valid password
+    And I enter valid password <password>
     And I click Submit
     Then I am not logged in
+    Examples:
+      |   password|
+      |"MEGAdelta123@"|

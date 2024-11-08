@@ -24,10 +24,10 @@ public class LoginStepDefinitions {
     public static WebDriver driver = null;
     public static String url ="https://qa.koel.app/";
     public static WebDriverWait wait = null;
-/*    @After
+    @After
     public void tearDown() {
         driver.quit();
-    }*/
+    }
     @Given ("I open browser")
     public void setUpDriver(){
 WebDriverManager.chromedriver().clearDriverCache().setup();
@@ -44,21 +44,21 @@ WebDriverManager.chromedriver().clearDriverCache().setup();
     public void iOpenLoginPage(){
         driver.get(url);
     }
-    @And("i enter valid email")
-    public void iEnterEmail(){
+    @And("i enter valid email {string}")
+    public void iEnterEmail(String email){
         WebElement emailInput = driver.findElement(By.cssSelector("[type='email']"));
                 emailInput.click();
         emailInput.clear();
-        emailInput.sendKeys("vicplach123@gmail.com");
+        emailInput.sendKeys(email);
 
     }
-    @And("I enter valid password")
-    public void iEnterPassword() {
+    @And("I enter valid password {string}")
+    public void iEnterPassword(String password) {
         LoginPage loginPage = new LoginPage(driver);
         WebElement passwordInput = driver.findElement(By.cssSelector("[type='password']"));
         passwordInput.click();
         passwordInput.clear();
-        passwordInput.sendKeys("MEGAdelta123@");
+        passwordInput.sendKeys(password);
 
     }
 
