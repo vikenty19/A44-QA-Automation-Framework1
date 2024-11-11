@@ -2,6 +2,7 @@ package StepDefinitions;
 
 import POM.HomePage;
 import POM.LoginPage;
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.After;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -19,15 +20,17 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
 
 public class LoginStepDefinitions {
     public static WebDriver driver = null;
     public static String url ="https://qa.koel.app/";
     public static WebDriverWait wait = null;
-    @After
+ /*   @After
     public void tearDown() {
         driver.quit();
-    }
+    }*/
     @Given ("I open browser")
     public void setUpDriver(){
 WebDriverManager.chromedriver().clearDriverCache().setup();
@@ -99,5 +102,18 @@ WebDriverManager.chromedriver().clearDriverCache().setup();
     }
 
 
-
+    @And("I enter details below into fields")
+    public void iEnterDetailsBelowIntoFields(DataTable dataTable) {
+       Map<String,String> map  =  dataTable.asMap(String.class,String.class);
+    //email
+        WebElement emailInput = driver.findElement(By.cssSelector("[type='email']"));
+        emailInput.click();
+        emailInput.clear();
+        emailInput.sendKeys(map.get("email"));
+    //password
+        WebElement passwordInput = driver.findElement(By.cssSelector("[type='password']"));
+        passwordInput.click();
+        passwordInput.clear();
+        passwordInput.sendKeys(map.get("password"));
+    }
 }

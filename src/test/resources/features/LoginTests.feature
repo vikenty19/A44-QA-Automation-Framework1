@@ -22,3 +22,19 @@ Feature: login tests
     Examples:
       |   password|
       |"MEGAdelta123@"|
+
+Feature: login1 tests
+  Background:
+    Given I open browser
+    When I open login page
+  Scenario  : login1 success
+    And  I enter details below into fields
+      |email                        |password|
+      | vicplach123@gmail.com    |  MEGAdelta123@   |
+#    And  i enter valid email <email>
+ #   And I enter valid password <password>
+    And  I click Submit
+    Then I am logged in
+  #  Examples:
+   #   |email                  |   password|
+    #  |"vicplach123@gmail.com"|"MEGAdelta123@"|
