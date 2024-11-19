@@ -24,7 +24,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LoginStepDefinitions {
-    public static WebDriver driver = null;
+  public static WebDriver driver = null;
     public static String url ="https://qa.koel.app/";
     public static WebDriverWait wait = null;
  /*   @After

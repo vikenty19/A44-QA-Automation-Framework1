@@ -9,8 +9,10 @@ import org.testng.annotations.DataProvider;
 @CucumberOptions(
         features = {"src/test/resources/features/Login.feature"},
         glue = {"StepDefinitions","hooks"},
+        publish = true,
         plugin = {"pretty",
-               "html:target/Cucumber.Report.html"  }
+               "html:target/CucumberReports/CucumberReport.html" ,
+        "json:target/CucumberReports/CucumberReport.json"}
 )
 
 

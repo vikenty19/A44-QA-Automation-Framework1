@@ -12,7 +12,7 @@ public class MyHooks {
    public static WebDriver driver = null;
     public static String url = "https://qa.koel.app/";
 
-    @Before
+   @Before
     public void setUpDriver() {
         WebDriverManager.chromedriver().clearDriverCache().setup();
         WebDriverManager.chromedriver().setup();
@@ -25,6 +25,7 @@ public class MyHooks {
 
     @After
     public void tearDown() {
+
         driver.quit();
     }
 }

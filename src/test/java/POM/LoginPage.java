@@ -42,9 +42,7 @@ public class LoginPage extends BasePage {
     }
 
     public LoginPage enterEmail(String email) {
-        //     WebElement emailInput = wait.until(ExpectedConditions
-        //              .visibilityOfElementLocated(emailField));
-        emailInput.click();
+          emailInput.click();
         emailInput.clear();
         emailInput.sendKeys(email);
         return this;
