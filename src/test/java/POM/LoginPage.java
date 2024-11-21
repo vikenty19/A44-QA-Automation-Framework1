@@ -53,6 +53,7 @@ public class LoginPage extends BasePage {
         enterEmail(email);
         enterPassword(password);
         clickLoginBtn();
+
     }
 
     public boolean isSubmitLoginBtnDisplayed() {

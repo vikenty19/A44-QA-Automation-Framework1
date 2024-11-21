@@ -43,12 +43,13 @@ public class StepsToLogin {
     }
 
     @And("Enters invalid password {string}")
-    public void entersInvalidPassword(String arg0) {
+    public void entersInvalidPassword(String invalidPassword) {
+        System.out.println("user entered invalid password"+invalidPassword );
     }
 
     @When("User enters invalid email {string}")
     public void userEntersInvalidEmail(String email) {
-        System.out.println("User enters  " + email);
+        System.out.println("User enters invalid email  " + email);
     }
 
     @When("User doesn't enter any credentials")

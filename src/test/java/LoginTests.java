@@ -8,11 +8,10 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-
 public class LoginTests extends BaseTest {
 
 
-    @Test(groups = {"smoke1"})
+    @Test//(groups = {"smoke1"})
     public void loginSucceedTest() {
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
@@ -26,8 +25,8 @@ public class LoginTests extends BaseTest {
 
     @Test
     public void loginEmptyPasswordTest() {
-        LoginPage loginpage = new LoginPage(driver);
-        loginpage.login("demo@class.com", "");
+       LoginPage loginpage = new LoginPage(driver);
+        loginpage.login("vicplach123@gmail.com", "");
         System.out.println("Is Submit button is displayed?  " + loginpage.isSubmitLoginBtnDisplayed());
         Assert.assertTrue(loginpage.isSubmitLoginBtnDisplayed());
     }
