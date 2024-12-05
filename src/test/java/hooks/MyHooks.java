@@ -9,10 +9,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 public class MyHooks {
-   public static WebDriver driver = null;
-    public static String url = "https://qa.koel.app/";
+   public  WebDriver driver;
+  //  public static String url = "https://qa.koel.app/";
 
-   @Before
+  @Before
     public void setUpDriver() {
         WebDriverManager.chromedriver().clearDriverCache().setup();
         WebDriverManager.chromedriver().setup();

@@ -22,8 +22,8 @@ import java.util.Locale;
 public class BaseTest {
     public static WebDriver driver = null;
     public static String url = "https://qa.koel.app/";
-    public static String myLogin = "MEGAdelta123@";
-    public static String myEmail = "vicplach123@gmail.com";
+    public static String myLogin = "te$t$tudent1";
+    public static String myEmail = "galy.o@testpro.io";
     public static WebDriverWait wait = null;
 
     @BeforeSuite
@@ -69,9 +69,9 @@ public class BaseTest {
     public String generateRandomPlaylistBookName() {
         Faker faker = new Faker();
         String newName = faker.book().title();
-        ;
         return newName;
     }
+
 
 
     public void openUrl(String url) {

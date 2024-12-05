@@ -1,5 +1,6 @@
 package POM;
 
+import com.github.javafaker.Faker;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,6 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.time.Duration;
+import java.util.Locale;
 
 public class BasePage {
     WebDriver driver;
@@ -71,6 +73,11 @@ public class BasePage {
         String newName = profile.getText();
         return newName;
 
+    }
+    public String generateRandomEmail(){
+        Faker faker = new Faker(new Locale("en-US"));
+        String newEmail =faker.animal().name();
+        return newEmail+"@gmail.com";
     }
 
     public Integer stringToInt(String song) {

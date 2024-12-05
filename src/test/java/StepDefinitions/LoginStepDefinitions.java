@@ -2,6 +2,7 @@ package StepDefinitions;
 
 import POM.HomePage;
 import POM.LoginPage;
+import hooks.MyHooks;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.After;
 import io.cucumber.java.en.And;
@@ -23,15 +24,15 @@ import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LoginStepDefinitions {
-  public static WebDriver driver = null;
+public class LoginStepDefinitions  {
+     public  WebDriver driver;
     public static String url ="https://qa.koel.app/";
     public static WebDriverWait wait = null;
- /*   @After
+ /* @After
     public void tearDown() {
         driver.quit();
     }*/
-    @Given ("I open browser")
+   @Given ("I open browser")
     public void setUpDriver(){
 WebDriverManager.chromedriver().clearDriverCache().setup();
         WebDriverManager.chromedriver().setup();

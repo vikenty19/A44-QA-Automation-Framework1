@@ -22,11 +22,11 @@ public class ProfilePage extends BasePage {
         avatar.click();
     }
 
-    public void enterPasswordInProfile() {
+    public void enterPasswordInProfile(String password) {
         WebElement currentPasswordInput = waitUntilClickable(By.id("inputProfileCurrentPassword"));
         currentPasswordInput.click();
         currentPasswordInput.clear();
-        currentPasswordInput.sendKeys("te$t$tudent");
+        currentPasswordInput.sendKeys(password);
     }
 
     public void enterNewNameInProfile(String name) {
@@ -40,7 +40,7 @@ public class ProfilePage extends BasePage {
         WebElement emailInput = waitUntilClickable(By.cssSelector("#inputProfileEmail"));
         emailInput.click();
         emailInput.clear();
-        emailInput.sendKeys("demo@class.com");
+        emailInput.sendKeys(generateRandomEmail());
     }
 
     public void clickSaveInProfile() {

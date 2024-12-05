@@ -49,13 +49,13 @@ public class ProfileTests extends BaseTest {
     public void changeProfileName() {
 
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.login("demo@class.com", "te$t$tudent");
+        loginPage.login(myEmail, myLogin);
         BasePage basePage = new BasePage(driver);
         ProfilePage profilePage = new ProfilePage(driver);
         profilePage.openProfile();
 
         // type password
-        profilePage.enterPasswordInProfile();
+        profilePage.enterPasswordInProfile(myLogin);
 
         String name = generateRandomName();
         System.out.println(name);
